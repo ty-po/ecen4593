@@ -4,4 +4,10 @@ project (ecen4593final)
 set (CMAKE_CXX_FLAGS "${CMAKE_C_FLAGS} -std=c++11")
 set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 
-add_executable(ecen4593final test.cc printy.cc)
+add_executable(ecen4593final
+  main.cc
+  trace.cc
+  config.cc
+  simulator.cc
+  output.cc
+)
