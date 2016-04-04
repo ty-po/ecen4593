@@ -6,7 +6,6 @@ set (CMAKE_RUNTIME_OUTPUT_DIRECTORY "../bin")
 
 add_executable(ecen4593final
   main.cc
-  trace.cc
   config.cc
   simulator.cc
   output.cc
