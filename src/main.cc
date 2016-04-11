@@ -5,17 +5,26 @@
 using namespace std;
 #endif
 
-
+#ifndef CONFIG_H
+#define CONFIG_H
 #include "config.h"
+#endif
+
+
+#ifndef SIMULATOR_H
+#define SIMULATOR_H
 #include "simulator.h"
+#endif
+
 #include "output.h"
 
 
 int main(int argc, char ** argv) {
-  
-  Config(argc, argv);
+ 
+  Config params = Config(argc, argv);
 
+  Data data = simulator(params);
 
-  output(1);
+  output(params, data);
   return 0;
 }

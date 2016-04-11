@@ -1,6 +1,13 @@
 #ECEN 4593 Final Project
 Memory Simulation
 
+##Usage
+1.
+2.
+3.
+4.
+5.
+
 ##Requirements
 1. Simulate and Evaluate Multiple Memory Configurations
 2. Configurable Memory Configuration
@@ -44,10 +51,10 @@ Print Collected Data
 
 
 ##TODO
-[ ] Unit Testing Framework
-[ ] Module Parameters
-[ ] Data Output Module
-[ ] Trace Parser Module
-[ ] Memory Config Module
-[ ] Simulator Module
-[ ] Tracker Module
+-[ ] Unit Testing Framework
+-[ ] Module Parameters
+-[ ] Data Output Module
+-[ ] Trace Parser Module
+-[ ] Memory Config Module
+-[ ] Simulator Module
+-[ ] Tracker Module
