@@ -2,11 +2,14 @@
 Memory Simulation
 
 ##Usage
-1.
-2.
-3.
-4.
-5.
+To Run Once
+
+1. in `src/` do `cmake .`, `make`
+2. in `bin/` do `./ecen4593final`
+
+To Watch
+1. in `test/utils/` do `./watch.sh`
+2. or `./watch.sh test`
 
 ##Requirements
 1. Simulate and Evaluate Multiple Memory Configurations
