@@ -8,19 +8,19 @@ void help() {
 void output(Config params, Data data) {
   cout << endl;
   cout << "-------------------------------------------------------------------------" << endl;
-  cout << setw(6)<<"" << left << setw(3)<< "tr1"/*params.trace*/ << "." << setw(16)<<"default"/*params.setup*/ << "Simulation Results" << endl;
+  cout << setw(6)<<"" << left << setw(3)<< params.traceFile << "." << setw(16)<< params.setupName << "Simulation Results" << endl;
   cout << "-------------------------------------------------------------------------" << endl;
   cout << endl;
 
   cout << setw(2)<<"" << "Memory system:" << endl;
-  cout << setw(4)<<"" << "Dcache size = " << 8192/*params.dcacheSize*/ << " : ways = " << 1/*params.dcacheWays*/ << " : block size = " << 32/*params.dcacheBlockSize*/ << endl;
-  cout << setw(4)<<"" << "Icache size = " << 8192/*params.icacheSize*/ << " : ways = " << 1/*params.icacheWays*/ << " : block size = " << 32/*params.icacheBlockSize*/ << endl;
-  cout << setw(4)<<"" << "L2-cache size = " << 32768/*params.l2cacheSize*/ << " : ways = " << 1/*params.l2cacheWays*/ << " : block size = " << 64/*params.l2cacheBlockSize*/ << endl;
-  cout << setw(4)<<"" << "Memory ready time = " << 50/*params.memoryReadyTime*/ << " : chunksize = " << 8/*params.chunkSize*/ << " : chunktime = " << 15/*params.chunktime*/ << endl;
+  cout << setw(4)<<"" << "Dcache size = " << params.dcacheSize << " : ways = " << params.dcacheWays << " : block size = " << params.dcacheBlockSize << endl;
+  cout << setw(4)<<"" << "Icache size = " << params.icacheSize << " : ways = " << params.icacheWays << " : block size = " << params.icacheBlockSize << endl;
+  cout << setw(4)<<"" << "L2-cache size = " << params.l2cacheSize << " : ways = " << params.l2cacheWays << " : block size = " << params.l2cacheBlockSize << endl;
+  cout << setw(4)<<"" << "Memory ready time = " << params.memoryReadyTime << " : chunksize = " << params.chunkSize << " : chunktime = " << params.chunkTime << endl;
   cout << endl;
 
   cout << setw(2)<<"" << "Execute time = " << right << setw(12) << 678/*data.executeTime*/ << ";  Total refs = " << 10/*data.totalRefs*/ << endl;
-  cout << setw(2)<<"" << "Inst refs = " << 6/*data.instructionRefs*/ << ";   Data refs = " << 4/*data.dataRefs*/ << endl;
+  cout << setw(2)<<"" << "Inst refs = " << 6/*data.instructionRefs*/ << ";   Data refs = " << 4/*data.readRefs+data.writeRefs*/ << endl;
   cout <<endl;
 
   cout << setw(2)<<"" << "Number of reference types:  [Percentage]" << endl;
@@ -44,30 +44,30 @@ void output(Config params, Data data) {
 
   cout << setw(2)<<"" << "Memory Level:  L1i" << endl;
   cout << setw(4)<<"" << "Hit Count = " << 5/*data.l1iHitCount*/ << "  Miss Count = " << 2/*data.l1iMissCount*/ << endl;
-  cout << setw(4)<<"" << "Total Requests = " << 5+2/*data.l1iHitCount + data.l1iMissCount*/ << endl;
-  cout << setw(4)<<"" << "Hit Rate = " << (float)5/7 * 100/*data.l1iHitCount/(data.l1iHitCount+l1iMissCount)*/ << "%  Miss Rate = " << (float)2/7 * 100/*data.l1iMissCount/(data.l1iHitCount+l1iMissCount)*/ << "%" << endl;
+  cout << setw(4)<<"" << "Total Requests = " << 5+2/*data.l1iTotalRequests*/ << endl;
+  cout << setw(4)<<"" << "Hit Rate = " << (float)5/7 * 100/*data.l1iHitCount/data.l1iTotalRequests*/ << "%  Miss Rate = " << (float)2/7 * 100/*data.l1iMissCount/data.l1iTotalRequests*/ << "%" << endl;
   cout << setw(4)<<"" << "Kickouts = " << 0/*data.l1iKickouts*/ << "; Dirty kickouts = " << 0/*data.l1iDirtyKickouts*/ << "; Transfers = " << 2/*data.l1iTransfers*/ << endl;
   cout << setw(4)<<"" << "VC Hit count = " << 0/*data.l1iVCHitCount*/ << endl;
   cout << endl;
 
   cout << setw(2)<<"" << "Memory Level:  L1d" << endl;
   cout << setw(4)<<"" << "Hit Count = " << 7/*data.l1dHitCount*/ << "  Miss Count = " << 1/*data.l1dMissCount*/ << endl;
-  cout << setw(4)<<"" << "Total Requests = " << 7+1/*data.l1dHitCount + data.l1dMissCount*/ << endl;
-  cout << setw(4)<<"" << "Hit Rate = " << (float)7/8 * 100/*data.l1dHitCount/(data.l1dHitCount+l1dMissCount)*/ << "%  Miss Rate = " << (float)1/8 * 100/*data.l1dMissCount/(data.l1dHitCount+l1dMissCount)*/ << "%" << endl;
+  cout << setw(4)<<"" << "Total Requests = " << 7+1/*data.l1dTotalRequests*/ << endl;
+  cout << setw(4)<<"" << "Hit Rate = " << (float)7/8 * 100/*data.l1dHitCount/data.l1dTotalRequests*/ << "%  Miss Rate = " << (float)1/8 * 100/*data.l1dMissCount/data.l1dTotalRequests*/ << "%" << endl;
   cout << setw(4)<<"" << "Kickouts = " << 0/*data.l1dKickouts*/ << "; Dirty kickouts = " << 0/*data.l1dDirtyKickouts*/ << "; Transfers = " << 1/*data.l1dTransfers*/ << endl;
   cout << setw(4)<<"" << "VC Hit count = " << 0/*data.l1dVCHitCount*/ << endl;
   cout << endl;
 
   cout << setw(2)<<"" << "Memory Level:  L2" << endl;
   cout << setw(4)<<"" << "Hit Count = " << 0/*data.l2HitCount*/ << "  Miss Count = " << 3/*data.l2MissCount*/ << endl;
-  cout << setw(4)<<"" << "Total Requests = " << 0+3/*data.l2HitCount + data.l2MissCount*/ << endl;
-  cout << setw(4)<<"" << "Hit Rate = " << (float)0/3 * 100/*data.l2HitCount/(data.l2HitCount+l2MissCount)*/ << "%  Miss Rate = " << (float)3/3 * 100/*data.l2MissCount/(data.l2HitCount+l2MissCount)*/ << "%" << endl;
+  cout << setw(4)<<"" << "Total Requests = " << 0+3/*data.l2TotalRequests*/ << endl;
+  cout << setw(4)<<"" << "Hit Rate = " << (float)0/3 * 100/*data.l2HitCount/data.l2TotalRequests*/ << "%  Miss Rate = " << (float)3/3 * 100/*data.l2MissCount/data.l2TotalRequests*/ << "%" << endl;
   cout << setw(4)<<"" << "Kickouts = " << 0/*data.l2Kickouts*/ << "; Dirty kickouts = " << 0/*data.l2DirtyKickouts*/ << "; Transfers = " << 3/*data.l2Transfers*/ << endl;
   cout << setw(4)<<"" << "VC Hit count = " << 0/*data.l2VCHitCount*/ << endl;
   cout << endl;
 
-  cout << setw(2)<<"" << "L1 cache cost (Icache $" << 200/*params.l1iCost*/ << ") + (Dcache $" << 200/*params.l1dCost*/ << ") = $" << 200+200/*params.l1iCost+params.l1dCost*/ << endl;
-  cout << setw(2)<<"" << "L2 cache cost = $" << 100/*params.l2Cost*/ << ";  Memory cost = $" << 75/*params.memoryCost*/ << "  Total cost = $" << 200+200+100+75/*sum everything*/<< endl;
+  cout << setw(2)<<"" << "L1 cache cost (Icache $" << params.l1iCost << ") + (Dcache $" << params.l1dCost << ") = $" << params.l1iCost+params.l1dCost << endl;
+  cout << setw(2)<<"" << "L2 cache cost = $" << params.l2Cost << ";  Memory cost = $" << params.memoryCost << "  Total cost = $" << params.l1iCost+params.l1dCost+params.l2Cost+params.memoryCost<< endl;
   cout << endl;
 
   cout << "-------------------------------------------------------------------------" << endl;

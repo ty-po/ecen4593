@@ -21,7 +21,7 @@ using namespace std;
 
 int main(int argc, char ** argv) {
  
-  Config params = Config(argc, argv);
+  Config params = newConfig(argc, argv);
 
   Data data = simulator(params);
 
