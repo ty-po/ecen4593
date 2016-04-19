@@ -9,4 +9,5 @@ add_executable(ecen4593final
   config.cc
   simulator.cc
   output.cc
+  cache.cc
 )

@@ -3,6 +3,10 @@
 #include "config.h"
 #endif
 
+#ifndef CACHE_H
+#define CACHE_H
+#include "cache.h"
+#endif
 
 struct Data {
 
@@ -59,6 +63,5 @@ struct Data {
   unsigned long int l2Transfers;
   unsigned long int l2VCHitCount;
 };
-
 
 Data simulator(Config params);

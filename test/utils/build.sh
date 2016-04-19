@@ -2,5 +2,5 @@
 cd ../../src
 make
 if [ $? -eq 0 ]; then
-  ../bin/ecen4593final
+  cat ../test/traces/tr1 | ../bin/ecen4593final
 fi

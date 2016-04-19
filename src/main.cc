@@ -10,10 +10,14 @@ using namespace std;
 #include "config.h"
 #endif
 
-
 #ifndef SIMULATOR_H
 #define SIMULATOR_H
 #include "simulator.h"
+#endif
+
+#ifndef CACHE_H
+#define CACHE_H
+#include "cache.h"
 #endif
 
 #include "output.h"
