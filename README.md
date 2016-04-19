@@ -21,43 +21,31 @@ To Watch
 ###Memory Config File/Parser/Specification
 Read in Memory Config/Compute Simulator Config Inputs
 #####Inputs
-
+Command Line Arguments
 #####Outputs
-
-
-###Trace Parser
-Read in Trace File for Simulator
-#####Inputs
-
-#####Outputs
+Config data type with cache configuration
 
 
 ###Cache Simulator
 Body
 #####Inputs
-
+Config data type
 #####Outputs
-
-
-###Tracker
-Collect Performance Data
-#####Inputs
-
-#####Outputs
+Raw data
 
 
 ###Data Output
 Print Collected Data
 #####Inputs
-
+Raw data
 #####Outputs
-
+Printout
 
 ##TODO
--[ ] Unit Testing Framework
--[ ] Module Parameters
--[ ] Data Output Module
--[ ] Trace Parser Module
--[ ] Memory Config Module
--[ ] Simulator Module
--[ ] Tracker Module
+- [ ] Unit Testing Framework
+- [ ] Module Parameters
+- [ ] Data Output Module
+- [ ] Trace Parser Module
+- [ ] Memory Config Module
+- [ ] Simulator Module
+- [ ] Tracker Module
