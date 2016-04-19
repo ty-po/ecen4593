@@ -83,6 +83,7 @@ void output(Config params, Data data) {
   for(i=0;i<2;i++) {
     cout << "Index: " << setw(4) << 0/*index*/ << " | V:" << 1/*valid*/ << " D:" << 0/*dirty*/ << " Tag: " << setw(12) << "3fc0e7112"/*dirty*/ << " |" << endl;
   }
+
   cout << "Victim cache:" << endl;
   for(i=0;i<8;i++) {
     if(!(i%2)) {

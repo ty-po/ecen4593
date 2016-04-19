@@ -7,13 +7,13 @@ Config defaultConfig() {
   d.traceFile = "trX";
   d.setupName = "default";
 
-  d.dcacheSize = 8192;
-  d.dcacheWays = 1;
-  d.dcacheBlockSize = 32;
-
   d.icacheSize = 8192;
   d.icacheWays = 1;
   d.icacheBlockSize = 32;
+
+  d.dcacheSize = 8192;
+  d.dcacheWays = 1;
+  d.dcacheBlockSize = 32;
 
   d.l1hitTime = 1;
   d.l1missTime = 1;

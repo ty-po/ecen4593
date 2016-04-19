@@ -4,14 +4,14 @@ struct Config {
   std::string traceFile;
   std::string setupName;
 
-  unsigned int dcacheSize;
-  unsigned int dcacheWays;
-  unsigned int dcacheBlockSize;
-  
   unsigned int icacheSize;
   unsigned int icacheWays;
   unsigned int icacheBlockSize;
 
+  unsigned int dcacheSize;
+  unsigned int dcacheWays;
+  unsigned int dcacheBlockSize;
+  
   unsigned int l1hitTime;
   unsigned int l1missTime;
 
