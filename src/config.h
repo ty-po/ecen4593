@@ -29,6 +29,8 @@ struct Config {
   unsigned int chunkSize;
   unsigned int chunkTime;
 
+  unsigned int vcSize;
+
   unsigned int l1iCost;
   unsigned int l1dCost;
   unsigned int l2Cost;

@@ -16,6 +16,6 @@
 #include "cache.h"
 #endif
 
-void help();
+void printCache(Cache * currentCache, std::string cacheName, unsigned int vcSize);
 
 void output(Config params, Data data);

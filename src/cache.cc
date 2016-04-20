@@ -16,10 +16,24 @@ LRU::LRU(unsigned int maxSize) {
   tail = previous;
 }
 
-Cache::Cache(unsigned int Size, unsigned int Ways, unsigned int BlockSize) {
-  victimCache = new LRU(8);
+Node * LRU::getNode(unsigned int index) {
+  Node * current = head;
+  unsigned int i = 0;
+
+  while(i < index && current->next) {
+    current = current->next;
+  }
+
+  return current;
+}
+
+
+
+Cache::Cache(unsigned int Size, unsigned int Ways, unsigned int BlockSize, unsigned int vcSize) {
+  victimCache = new LRU(vcSize);
 
   cacheSets = Size/BlockSize;
+  ways = Ways;
 
   indexArray = new LRU * [cacheSets];
 

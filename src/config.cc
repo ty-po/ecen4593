@@ -32,6 +32,8 @@ Config defaultConfig() {
   d.chunkSize = 8;
   d.chunkTime = 15;
 
+  d.vcSize = 8;
+
   d.l1iCost = 200;
   d.l1dCost = 200;
   d.l2Cost = 100;

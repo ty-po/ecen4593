@@ -4,9 +4,9 @@ Data simulator(Config params) {
   
   Data data = {0};
  
-  data.L1i = new Cache(params.icacheSize, params.icacheWays, params.icacheBlockSize);
-  data.L1d = new Cache(params.dcacheSize, params.dcacheWays, params.dcacheBlockSize);
-  data.L2  = new Cache(params.l2cacheSize, params.l2cacheWays, params.l2cacheBlockSize);
+  data.L1i = new Cache(params.icacheSize, params.icacheWays, params.icacheBlockSize, params.vcSize);
+  data.L1d = new Cache(params.dcacheSize, params.dcacheWays, params.dcacheBlockSize, params.vcSize);
+  data.L2  = new Cache(params.l2cacheSize, params.l2cacheWays, params.l2cacheBlockSize, params.vcSize);
 
   char op;
   unsigned long long int address;

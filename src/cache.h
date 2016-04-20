@@ -14,6 +14,7 @@ class LRU {
 
     LRU(unsigned int maxSize);
     bool contains(unsigned long long int address);
+    Node * getNode(unsigned int index);
 };
 
 
@@ -24,12 +25,13 @@ class Cache {
     LRU ** indexArray;
 
     unsigned int cacheSets;
+    unsigned int ways;
 
     unsigned int byteOffsetBits;
     unsigned int blockOffsetBits;
     unsigned int indexBits;
     unsigned int tagBits;
 
-    Cache(unsigned int Size, unsigned int Ways, unsigned int BlockSize);
+    Cache(unsigned int Size, unsigned int Ways, unsigned int BlockSize, unsigned int vcSize);
     bool contains(unsigned long long int address);
 };
