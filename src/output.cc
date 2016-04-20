@@ -13,14 +13,14 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
   for(i = 0; i < currentCache->cacheSets; i++) {
     currentLRU = currentCache->indexArray[i];
     if(currentLRU->head->valid) {
-      cout << "Index: " << setw(4) << i;
+      cout << "Index: " << setw(4)<<hex << i << dec;
       for(j = 0; j < currentCache->ways; j++) {
         currentNode = currentLRU->getNode(j);
         if(!(j%2) && j) cout << setw(12)<<"";
         if(!j) cout << " ";
         cout << "| V:" << currentNode->valid;
         cout << " D:" << currentNode->dirty;
-        cout << " Addr: ";
+        cout << " Tag: ";
         if(currentNode->valid) cout << setw(12)<<hex << currentNode->address << dec;
         else cout << setw(12) << "-";
 
@@ -31,7 +31,6 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
       }
     }
   }
-
 
 
   cout << "Victim cache:" << endl;

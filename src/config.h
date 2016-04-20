@@ -30,6 +30,7 @@ struct Config {
   unsigned int chunkTime;
 
   unsigned int vcSize;
+  unsigned int addressBits;
 
   unsigned int l1iCost;
   unsigned int l1dCost;

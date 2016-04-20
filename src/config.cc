@@ -33,6 +33,7 @@ Config defaultConfig() {
   d.chunkTime = 15;
 
   d.vcSize = 8;
+  d.addressBits = 64;
 
   d.l1iCost = 200;
   d.l1dCost = 200;
