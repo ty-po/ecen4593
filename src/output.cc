@@ -16,11 +16,18 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
       cout << "Index: " << setw(4) << i;
       for(j = 0; j < currentCache->ways; j++) {
         currentNode = currentLRU->getNode(j);
-        cout << " | V:" << currentNode->valid;
+        if(!(j%2) && j) cout << setw(12)<<"";
+        if(!j) cout << " ";
+        cout << "| V:" << currentNode->valid;
         cout << " D:" << currentNode->dirty;
-        cout << " Tag: ";
-        cout << setw(12)<<hex << currentNode->address;
-        cout << dec << " |" << endl;
+        cout << " Addr: ";
+        if(currentNode->valid) cout << setw(12)<<hex << currentNode->address << dec;
+        else cout << setw(12) << "-";
+
+        if(j%2 || j == (currentCache->ways - 1)) {
+          cout << " |" << endl;
+        }
+
       }
     }
   }
@@ -37,7 +44,7 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
     cout << "| V:" << currentNode->valid;
     cout << " D:" << currentNode->dirty;
     cout << " Addr: ";
-    if(currentNode->valid) cout << setw(12)<<hex << currentNode->address;
+    if(currentNode->valid) cout << setw(12)<<hex << currentNode->address << dec;
     else cout << setw(12) << "-";
 
     if(i%2) {
