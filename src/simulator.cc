@@ -3,7 +3,11 @@
 Data simulator(Config params) {
   
   Data data = {0};
-  
+ 
+  data.L1i = new Cache(params.icacheSize, params.icacheWays, params.icacheBlockSize, params.vcSize, params.addressBits);
+  data.L1d = new Cache(params.dcacheSize, params.dcacheWays, params.dcacheBlockSize, params.vcSize, params.addressBits);
+  data.L2  = new Cache(params.l2cacheSize, params.l2cacheWays, params.l2cacheBlockSize, params.vcSize, params.addressBits);
+
   char op;
   unsigned long long int address;
   unsigned int bytesize;
@@ -13,12 +17,18 @@ Data simulator(Config params) {
     switch(op) {
       case 'R':
         data.readRefs++;
+        data.L1d->access(address);
+        data.L2->access(address);
         break;
       case 'W':
         data.writeRefs++;
+        data.L1d->access(address);
+        data.L2->access(address);
         break;
       case 'I':
         data.instructionRefs++;
+        data.L1i->access(address);
+        data.L2->access(address);
         break;
     }
   }

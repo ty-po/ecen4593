@@ -30,7 +30,9 @@ struct Data {
   unsigned long long int idealTime;
   unsigned long long int idealMisAlignedTime;
 
- /*L1 Icache*/ 
+ /*L1 Icache*/
+  Cache * L1i;
+
   unsigned long int l1iTotalRequests;
 
   unsigned long int l1iHitCount;
@@ -42,6 +44,8 @@ struct Data {
   unsigned long int l1iVCHitCount;
 
  /*L1 Dcache*/ 
+  Cache * L1d;
+
   unsigned long int l1dTotalRequests;
 
   unsigned long int l1dHitCount;
@@ -53,6 +57,8 @@ struct Data {
   unsigned long int l1dVCHitCount;
 
  /*L2 cache*/ 
+  Cache * L2;
+
   unsigned long int l2TotalRequests;
 
   unsigned long int l2HitCount;

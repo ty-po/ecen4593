@@ -1,7 +1,55 @@
 #include "output.h"
 using namespace std;
 
-void help() {
+void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
+  unsigned int i;
+  unsigned int j; 
+
+
+  LRU * currentLRU;
+  Node * currentNode;
+
+  cout << "Memory Level: " << cacheName << endl;
+  for(i = 0; i < currentCache->cacheSets; i++) {
+    currentLRU = currentCache->indexArray[i];
+    if(currentLRU->head->valid) {
+      cout << "Index: " << setw(4)<<hex << i << dec;
+      for(j = 0; j < currentCache->ways; j++) {
+        currentNode = currentLRU->getNode(j);
+        if(!(j%2) && j) cout << setw(12)<<"";
+        if(!j) cout << " ";
+        cout << "| V:" << currentNode->valid;
+        cout << " D:" << currentNode->dirty;
+        cout << " Tag: ";
+        if(currentNode->valid) cout << setw(12)<<hex << currentNode->address << dec;
+        else cout << setw(12) << "-";
+
+        if(j%2 || j == (currentCache->ways - 1)) {
+          cout << " |" << endl;
+        }
+
+      }
+    }
+  }
+
+
+  cout << "Victim cache:" << endl;
+  currentLRU = currentCache->victimCache;
+  for(i = 0; i < vcSize; i++) {
+    currentNode = currentLRU->getNode(i);
+    if(!(i%2)) {
+      cout << setw(11)<<"";
+    }
+    cout << " | V:" << currentNode->valid;
+    cout << " D:" << currentNode->dirty;
+    cout << " Addr: ";
+    if(currentNode->valid) cout << setw(12)<<hex << currentNode->address << dec;
+    else cout << setw(12) << "-";
+
+    if(i%2) {
+      cout << " |" << endl;
+    }
+  }
 
 }
 
@@ -76,62 +124,7 @@ void output(Config params, Data data) {
   cout << "Cache final contents - Index and Tag values are in HEX" << endl;
   cout << endl;
 
-  int i;
-
-  /*****    L1i Print    *****/
-  cout << "Memory Level: L1i" << endl;
-  for(i=0;i<2;i++) {
-    cout << "Index: " << setw(4) << 0/*index*/ << " | V:" << 1/*valid*/ << " D:" << 0/*dirty*/ << " Tag: " << setw(12) << "3fc0e7112"/*dirty*/ << " |" << endl;
-  }
-  cout << "Victim cache:" << endl;
-  for(i=0;i<8;i++) {
-    if(!(i%2)) {
-      cout << setw(12)<<"";
-    }
-
-    cout << "| V:" << 0/*VC-v*/ << " D:" << 0/*VC-d*/ << " Addr: " << setw(12) << "-"/*VC-address*/;
-
-    if(i%2) {
-      cout << " |" << endl;
-    }
-  }
-  /*****  End L1i Print  *****/
-
-  /*****    L1d Print    *****/
-  cout << "Memory Level: L1d" << endl;
-  for(i=0;i<2;i++) {
-    cout << "Index: " << setw(4) << 0/*index*/ << " | V:" << 1/*valid*/ << " D:" << 0/*dirty*/ << " Tag: " << setw(12) << "3fc0e7112"/*dirty*/ << " |" << endl;
-  }
-  cout << "Victim cache:" << endl;
-  for(i=0;i<8;i++) {
-    if(!(i%2)) {
-      cout << setw(12)<<"";
-    }
-
-    cout << "| V:" << 0/*VC-v*/ << " D:" << 0/*VC-d*/ << " Addr: " << setw(12) << "-"/*VC-address*/;
-
-    if(i%2) {
-      cout << " |" << endl;
-    }
-  }
-  /*****  End L1d Print  *****/
-  
-  /*****    L2  Print    *****/
-  cout << "Memory Level: L2" << endl;
-  for(i=0;i<2;i++) {
-    cout << "Index: " << setw(4) << 0/*index*/ << " | V:" << 1/*valid*/ << " D:" << 0/*dirty*/ << " Tag: " << setw(12) << "3fc0e7112"/*dirty*/ << " |" << endl;
-  }
-  cout << "Victim cache:" << endl;
-  for(i=0;i<8;i++) {
-    if(!(i%2)) {
-      cout << setw(12)<<"";
-    }
-
-    cout << "| V:" << 0/*VC-v*/ << " D:" << 0/*VC-d*/ << " Addr: " << setw(12) << "-"/*VC-address*/;
-
-    if(i%2) {
-      cout << " |" << endl;
-    }
-  }
-  /*****  End L2  Print  *****/
+  printCache(data.L1i, "L1i", params.vcSize);
+  printCache(data.L1d, "L1d", params.vcSize);
+  printCache(data.L2, "L2", params.vcSize);
 }
