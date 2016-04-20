@@ -8,7 +8,7 @@ while [[ true ]]; do
     if [[ $1 == test ]]; then
       ./test.sh
     else
-      ./build.sh
+      ./build.sh $1
     fi
     chsum1=$chsum2
   fi

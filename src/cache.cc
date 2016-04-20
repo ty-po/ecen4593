@@ -28,14 +28,15 @@ Node * LRU::getNode(unsigned int index) {
   return current;
 }
 
-bool LRU::access(unsigned long long int address) {
+int LRU::access(unsigned long long int tag, unsigned long long int &address, bool dirty) {
   Node * current = head;
   Node * previous;
 
   unsigned int count = 0;
+  unsigned long long int kickedAddress;
 
   while(current->valid && count < size) {
-    if(current->address == address) {
+    if(current->tag == tag) {
       if(current == head) return true;
       if(tail == previous) tail = getNode(size - 2);
       if(tail == current) tail = previous;
@@ -43,7 +44,7 @@ bool LRU::access(unsigned long long int address) {
       current->next = head;
       head = current;
 
-      return 0;
+      return 1;
     }
     previous = current;
     previous->next = current;
@@ -53,16 +54,22 @@ bool LRU::access(unsigned long long int address) {
   //TODO Handle kickouts
   if(head != current) {
     current = tail->next;
+    kickedAddress = current->address;
     current->next = head;
     head = current;
     tail->next = nullptr;
     tail = getNode(size-2);
   }
   current->valid = true;
-  current->dirty = false;//TODO
+  current->dirty = dirty;//TODO
+  current->tag = tag;
   current->address = address;
 
-  return 1;
+  return 0;
+}
+
+bool LRU::accessVC(unsigned long long int address, bool dirty) {
+  return true;
 }
 
 unsigned int log2(unsigned int x) {
@@ -98,11 +105,22 @@ unsigned long long int Cache::getTag(unsigned long long int address) {
   return address>>(blockOffsetBits + indexBits);
 }
 
-unsigned int Cache::access(unsigned long long int address) {
+int Cache::access(unsigned long long int address) {
+
   unsigned long int index = getIndex(address);
   unsigned long long int tag = getTag(address);
+  unsigned long long int kickedAddress = address;
 
-  if(indexArray[index]->access(tag)) return 0;
-  if(victimCache->access(address)) return 1;//Def not right
-  return 2;
+  if(indexArray[index]->access(tag, kickedAddress, false)) {
+    //found in standard Cache
+    return 2;
+  }
+  else {/*
+    if(victimCache->accessVC(address, kickedAddress, false)) {
+      //found in victim Cache
+      return 1; 
+    }*/
+  }
+
+  return 0;
 }

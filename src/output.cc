@@ -38,9 +38,9 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
   for(i = 0; i < vcSize; i++) {
     currentNode = currentLRU->getNode(i);
     if(!(i%2)) {
-      cout << setw(12)<<"";
+      cout << setw(11)<<"";
     }
-    cout << "| V:" << currentNode->valid;
+    cout << " | V:" << currentNode->valid;
     cout << " D:" << currentNode->dirty;
     cout << " Addr: ";
     if(currentNode->valid) cout << setw(12)<<hex << currentNode->address << dec;
