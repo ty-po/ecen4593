@@ -5,11 +5,11 @@ Memory Simulation
 To Run Once
 
 1. in `src/` do `cmake .`, `make`
-2. in `bin/` do `./ecen4593final`
+2. in `bin/` do `cat trX | ./ecen4593final`
 
 To Watch
 1. in `test/utils/` do `./watch.sh`
-2. or `./watch.sh test`
+2. or `./watch.sh trX
 
 ##Requirements
 1. Simulate and Evaluate Multiple Memory Configurations
