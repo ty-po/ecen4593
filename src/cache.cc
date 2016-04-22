@@ -4,16 +4,27 @@ LRU::LRU(unsigned int maxSize) {
   size = 1;
   head = new Node();
 
+  Node * next = nullptr;
   Node * current = head;
-  Node * previous;
+  Node * previous = nullptr;
 
   while(size < maxSize) {
+
+    current->previous = previous;
+    next = new Node();
+    current->next = next;
+
     previous = current;
-    current = new Node();
-    previous->next = current;
+    current = next;
+    
     size++;
   }
-  tail = previous;
+
+  current->previous = previous;
+  current->next = nullptr;
+
+  tail = current;
+
   //tail->next->next = nullptr;
 }
 
@@ -23,53 +34,129 @@ Node * LRU::getNode(unsigned int index) {
 
   while(i < index && current->next) {
     current = current->next;
+    i++;
   }
 
   return current;
 }
 
-int LRU::access(unsigned long long int tag, unsigned long long int &address, bool dirty) {
+bool LRU::access(unsigned long long int tag, unsigned long long int &address, bool &dirty) {
   Node * current = head;
-  Node * previous;
 
-  unsigned int count = 0;
-  unsigned long long int kickedAddress;
+  unsigned long long int trueAddress = address;
+  bool trueDirty = dirty;
 
-  while(current->valid && count < size) {
+  while(current && current->valid) {
     if(current->tag == tag) {
-      if(current == head) return true;
-      if(tail == previous) tail = getNode(size - 2);
-      if(tail == current) tail = previous;
-      previous->next = current->next;
+      //found no kick; move to front
+      if(current == head) return true; //Already first
+      if(current == tail) tail = current->previous;
+      current->previous->next = current->next;
+      current->next->previous = current->previous;
+
+      head->previous = current;
       current->next = head;
+      current->previous = nullptr;
+
       head = current;
 
-      return 1;
+      return true;
     }
-    previous = current;
-    previous->next = current;
-    count++;
+    current = current->next;
   }
-  
-  //TODO Handle kickouts
-  if(head != current) {
-    current = tail->next;
-    kickedAddress = current->address;
-    current->next = head;
-    head = current;
-    tail->next = nullptr;
-    tail = getNode(size-2);
-  }
-  current->valid = true;
-  current->dirty = dirty;//TODO
-  current->tag = tag;
-  current->address = address;
+  //not found; swap + kick
+  address = 0;
+  dirty = 0;
 
-  return 0;
+  current = tail;
+
+  if(current->valid) {
+    address = current->address;
+    dirty = current->dirty;
+  }
+
+  current->tag = tag;
+  current->address = trueAddress;
+  current->valid = true;
+  current->dirty = trueDirty; 
+  
+  if(current->previous) {
+    tail = current->previous;
+    current->previous->next = nullptr;
+
+  }
+
+
+  if(head->next) {
+    head->previous = current;
+    current->next = head->next;
+    current->previous = nullptr;
+    head = current;
+  }
+
+  return false;
 }
 
-bool LRU::accessVC(unsigned long long int address, bool dirty) {
-  return true;
+bool LRU::accessVC(unsigned long long int address, unsigned long long int &kickedAddress, bool &dirty, unsigned int blockOffsetBits) {
+  Node * current = head;
+
+  unsigned long long int tag = (address>>blockOffsetBits)<<blockOffsetBits;
+  unsigned long long int kickedTag = (kickedAddress>>blockOffsetBits)<<blockOffsetBits;
+
+  bool trueDirty = dirty;
+  unsigned long long int trueKicked = kickedAddress;
+
+  while(current && current->valid) {
+    if(current->tag == tag){
+      //found in VC; remove, push kicked and pass back dirty
+      if(current == head) return true; //Already first
+      current->previous->next = current->next;
+      current->next->previous = current->previous;
+
+      head->previous = current;
+      current->next = head;
+      current->previous = nullptr;
+
+      dirty = current->dirty;
+      current->dirty = trueDirty;
+
+      current->address = kickedAddress;
+      current->tag = kickedTag;
+
+      head = current;
+      tail = tail->previous;
+
+      return true;
+    }
+    current = current->next;
+  }
+  //not in VC; add Kicked and compute kickout; pass back dirty and address
+  
+  kickedAddress = 0;
+  dirty = 0;
+
+  current = head;
+
+  if(tail) {
+    current = tail;
+    current->previous->next = nullptr;
+    tail = current->previous;
+
+    head->previous = current;
+    current->next = head;
+    head = current;
+    current->previous = nullptr;
+  }
+
+  kickedAddress = current->address;
+  dirty = current->dirty;
+
+  current->tag = kickedTag;
+  current->address = trueKicked;
+  current->valid = true;
+  current->dirty = trueDirty;
+
+  return false;
 }
 
 unsigned int log2(unsigned int x) {
@@ -81,7 +168,7 @@ unsigned int log2(unsigned int x) {
 Cache::Cache(unsigned int Size, unsigned int Ways, unsigned int BlockSize, unsigned int vcSize, unsigned int addressBits) {
   victimCache = new LRU(vcSize);
 
-  cacheSets = Size/BlockSize;
+  cacheSets = (Size/BlockSize)/Ways;
   ways = Ways;
 
   blockOffsetBits = log2(BlockSize);
@@ -105,22 +192,40 @@ unsigned long long int Cache::getTag(unsigned long long int address) {
   return address>>(blockOffsetBits + indexBits);
 }
 
-int Cache::access(unsigned long long int address) {
+int Cache::access(unsigned long long int address, bool write) {
 
   unsigned long int index = getIndex(address);
   unsigned long long int tag = getTag(address);
   unsigned long long int kickedAddress = address;
 
-  if(indexArray[index]->access(tag, kickedAddress, false)) {
+  bool dirty = write;
+  //STILL GOING TO BE BROKEN
+  if(indexArray[index]->access(tag, kickedAddress, dirty)) {
     //found in standard Cache
-    return 2;
-  }
-  else {/*
-    if(victimCache->accessVC(address, kickedAddress, false)) {
-      //found in victim Cache
-      return 1; 
-    }*/
+    //HIT - done
+    return 0;
   }
 
-  return 0;
-}
+  //not found in standard
+  if(kickedAddress == 0) {
+    //NOT in VC
+    //MISS NO KICKOUT - done
+    return 1;
+  }
+
+  //may be in VC
+  if(victimCache->accessVC(address, kickedAddress, dirty, blockOffsetBits)) {
+    //found in VC
+    //remove found from LRU, add kicked
+    //mark block as dirty/not in normal :TODO:
+  //indexArray[kickedIndex]->markDirty(tag, kickedAddress);
+    //HIT NO KICKOUT
+    return 0;
+  }  
+
+  //not in VC
+  //add kickedAddress to LRU
+  //KICKOUT
+  if(dirty) return 3; //dirty kickout return Address somehow?
+  return 2; //clean kickout
+}     
