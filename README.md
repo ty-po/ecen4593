@@ -42,10 +42,8 @@ Raw data
 Printout
 
 ##TODO
-- [ ] Unit Testing Framework
-- [ ] Module Parameters
-- [ ] Data Output Module
-- [ ] Trace Parser Module
-- [ ] Memory Config Module
-- [ ] Simulator Module
-- [ ] Tracker Module
+- [ ] Config File and Parsing
+- [ ] Alignment Calculation
+- [ ] Tracking in simulator.cc
+- [ ] Testing
+- [ ] VC Dirty kickout writeback

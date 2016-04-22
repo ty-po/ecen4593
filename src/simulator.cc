@@ -1,5 +1,8 @@
 #include "simulator.h"
 
+void align();
+
+
 Data simulator(Config params) {
   
   Data data = {0};
@@ -17,18 +20,18 @@ Data simulator(Config params) {
     switch(op) {
       case 'R':
         data.readRefs++;
-        data.L1d->access(address);
-        data.L2->access(address);
+        data.L1d->access(address, false);
+        data.L2->access(address, false);
         break;
       case 'W':
         data.writeRefs++;
-        data.L1d->access(address);
-        data.L2->access(address);
+        data.L1d->access(address, true);
+        data.L2->access(address, true);
         break;
       case 'I':
         data.instructionRefs++;
-        data.L1i->access(address);
-        data.L2->access(address);
+        data.L1i->access(address, false);
+        data.L2->access(address, false);
         break;
     }
   }

@@ -21,7 +21,7 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
         cout << "| V:" << currentNode->valid;
         cout << " D:" << currentNode->dirty;
         cout << " Tag: ";
-        if(currentNode->valid) cout << setw(12)<<hex << currentNode->address << dec;
+        if(currentNode->valid) cout << setw(12)<<hex << currentNode->tag << dec;
         else cout << setw(12) << "-";
 
         if(j%2 || j == (currentCache->ways - 1)) {
@@ -43,7 +43,7 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
     cout << " | V:" << currentNode->valid;
     cout << " D:" << currentNode->dirty;
     cout << " Addr: ";
-    if(currentNode->valid) cout << setw(12)<<hex << currentNode->address << dec;
+    if(currentNode->valid) cout << setw(12)<<hex << currentNode->tag << dec;
     else cout << setw(12) << "-";
 
     if(i%2) {

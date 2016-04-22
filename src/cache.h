@@ -4,6 +4,7 @@ struct Node {
   bool valid;
   bool dirty;
   Node * next;
+  Node * previous;
 };
 
 class LRU {
@@ -15,8 +16,8 @@ class LRU {
 
     LRU(unsigned int maxSize);
     Node * getNode(unsigned int index);
-    int access(unsigned long long int tag, unsigned long long int &address, bool dirty);
-    bool accessVC(unsigned long long int address, bool dirty);
+    bool access(unsigned long long int tag, unsigned long long int &address, bool &dirty);
+    bool accessVC(unsigned long long int address, unsigned long long int &kickedAddress, bool &dirty, unsigned int blockOffsetBits);
 };
 
 
@@ -38,7 +39,7 @@ class Cache {
     unsigned long int getIndex(unsigned long long int address);
     unsigned long long int getTag(unsigned long long int address);
 
-    int access(unsigned long long int address);
+    int access(unsigned long long int address, bool write);
     /******
      0 = not in cache
      1 = in victim cache
