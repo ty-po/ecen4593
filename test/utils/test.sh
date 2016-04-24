@@ -2,9 +2,6 @@
 cd ../../src
 make
 if [ $? -eq 0 ]; then
-  cd ../bin
-  cat ../test/traces/tr1 | ./ecen4593final >> output
-  #colordiff ../test/output/tr1.All-FA.txt output
-  colordiff ../test/output/tr1.default.txt output -w
-  rm output
+  cat ../test/traces/$1 | ../bin/ecen4593final $2 $1 > .output.tmp
+  colordiff .output.tmp ../test/output/$1/$1.$2 -w
 fi

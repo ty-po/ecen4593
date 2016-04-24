@@ -1,4 +1,7 @@
 #include <string>
+#include <iostream>
+#include <sstream>
+#include <fstream>
 
 struct Config {
   std::string traceFile;
