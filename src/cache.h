@@ -18,6 +18,10 @@ class LRU {
 
     LRU(unsigned int maxSize);
     Node * getNode(unsigned int index);
+    void toFront(Node * current);
+
+    void markDirty();
+
     bool access(unsigned long long int tag, unsigned long long int &address, bool &dirty);
     bool accessVC(unsigned long long int address, unsigned long long int &kickedAddress, bool &dirty, unsigned int blockOffsetBits);
 };

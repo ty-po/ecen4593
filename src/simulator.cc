@@ -1,6 +1,9 @@
 #include "simulator.h"
+//#define PRINTSTATUS
+//#define PRINTTRACE
+using namespace std;
 
-void align();
+void align(); //TODO
 
 
 Data simulator(Config params) {
@@ -20,7 +23,9 @@ Data simulator(Config params) {
 
   while (scanf("%c %Lx %d\n",&op,&address,&bytesize) == 3) {
     data.totalRefs++;
-    std::cout << op << "\t" << std::hex << address << std::dec << "\t" << bytesize << std::endl;
+    #ifdef PRINTTRACE
+    cout << op << "\t" <<hex << address << dec << "\t" << bytesize << "\t";
+    #endif
     switch(op) {
       case 'R':
         data.readRefs++;
@@ -37,23 +42,37 @@ Data simulator(Config params) {
         data.l1iTotalRequests++;
         rv = data.L1i->access(address, false);
         break;
-    }
-
+    } 
+    #ifdef PRINTSTATUS
+    cout << "\t";
+    #endif
     switch(rv) { 
       case 0:
-        std::cout<<"Hit Main"<<std::endl;
+        #ifdef PRINTSTATUS
+        cout<<"Hit L1 Main"<<endl;
+        #endif
         break;
       case 1:
-        std::cout<<"Hit VC"<<std::endl;
+        #ifdef PRINTSTATUS
+        cout<<"Hit L1 VC"<<endl;
+        #endif
         break;
       case 2:
-        std::cout<<"Kickout";
-        //data.L2->access(,true);
+        #ifdef PRINTSTATUS
+        cout<<"L1 Kickout"<<endl;
+        #endif
+        //data.L2->access(kickedAddress,true);//TODO
+        break;
       case 3:
         data.l2TotalRequests++;
-        std::cout<<"Miss Main Unfilled ";
+        #ifdef PRINTSTATUS
+        cout<<"Miss L1 - Main Unfilled "<<endl;
+        #endif
+
         l2 = data.L2->access(address, false);
-        std::cout<<l2<<std::endl;
+        #ifdef PRINTSTATUS
+        cout<<"\tL2 request status"<<l2<<endl;
+        #endif
         break;
     }
   }

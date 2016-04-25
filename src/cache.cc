@@ -1,4 +1,5 @@
 #include "cache.h"
+//#define DEBUG
 
 LRU::LRU(unsigned int maxSize) {
   size = 1;
@@ -39,43 +40,68 @@ Node * LRU::getNode(unsigned int index) {
   return nullptr;
 }
 
+void LRU::toFront(Node * current) {
+  if(current == head) return;
+  if(current == tail) {
+    tail = current->previous;
+    tail->next = nullptr;
+    current->previous = nullptr;
+
+    current->next = head;
+    
+    head->previous = current;
+
+    head = current;
+
+    return;
+  }
+  current->next->previous = current->previous;
+  current->previous->next = current->next;
+
+  current->previous = nullptr;
+  current->next = head;
+
+  head->previous = current;
+
+  head = current;
+}
+
+void LRU::markDirty() {
+  head->dirty = true;
+}
+
 bool LRU::access(unsigned long long int tag, unsigned long long int &address, bool &dirty) {
+  #ifdef DEBUG
+  std::cout<<std::hex<<"\t"<<tail<<std::dec<<std::endl;
+  std::cout<<std::hex<<"\t"<<current<<std::dec<<std::endl;
+  std::cout<<std::hex<<"\t"<<head<<std::dec<<std::endl;
+  std::cout<<"Access for Tag: "<<std::hex<<tag<<std::dec<<std::endl;
+  #endif
   Node * current = head;
   unsigned long long int trueAddress = address;
   bool trueDirty = dirty;
-  std::cout<<"LRU Tag: "<<std::hex<<tag<<std::dec<<std::endl;
-
   while(current && current->valid) {
-  std::cout<<"loop: "<<std::hex<<current->tag<<std::endl;
+  #ifdef DEBUG
+  std::cout<<"SC loop: "<<std::hex<<current->tag<<std::endl;
+  #endif
     if(current->tag == tag) {
       //found no kick; move to front
-      if(current == head) return true; //Already first
-      if(current == tail) tail = current->previous;
-      else current->next->previous = current->previous;
-      current->previous->next = current->next;
 
-      head->previous = current;
-      current->next = head;
-      current->previous = nullptr;
+      toFront(current);
+
       current->dirty = dirty;
-
-      head = current;
-
       return true;
     }
     current = current->next;
   }
   //not found; swap + kick
+  #ifdef DEBUG
   std::cout<<"Not in main cache"<<std::endl;
+  #endif
   address = 0;
   dirty = 0;
 
   current = tail;
-
-  std::cout<<std::hex<<tail<<std::dec<<std::endl;
-  std::cout<<std::hex<<current<<std::dec<<std::endl;
-  std::cout<<std::hex<<head<<std::dec<<std::endl;
-
 
   if(current->valid) {
     address = current->address;
@@ -107,8 +133,14 @@ bool LRU::access(unsigned long long int tag, unsigned long long int &address, bo
 }
 
 bool LRU::accessVC(unsigned long long int address, unsigned long long int &kickedAddress, bool &dirty, unsigned int blockOffsetBits) {
+  #ifdef DEBUG
+  std::cout<<std::hex<<tail<<std::dec<<std::endl;
+  std::cout<<std::hex<<current<<std::dec<<std::endl;
+  std::cout<<std::hex<<head<<std::dec<<std::endl;
+  std::cout<<"VC access Address: "<<std::hex<<address<<std::endl;
+  #endif
   Node * current = head;
-  std::cout<<"VC: "<<std::hex<<address<<std::endl;
+
   unsigned long long int tag = (address>>blockOffsetBits)<<blockOffsetBits;
   unsigned long long int kickedTag = (kickedAddress>>blockOffsetBits)<<blockOffsetBits;
 
@@ -116,33 +148,32 @@ bool LRU::accessVC(unsigned long long int address, unsigned long long int &kicke
   unsigned long long int trueKicked = kickedAddress;
 
   while(current && current->valid) {
-    std::cout<<"loop"<<std::endl;
+    #ifdef DEBUG
+    std::cout<<"VC loop:"<<std::hex<<current->tag<<std::dec<<std::endl;
+    #endif
     if(current->tag == tag){
       //found in VC; remove, push kicked and pass back dirty
+      #ifdef DEBUG
       std::cout<<"found in VC"<<std::endl;
-      if(current == head) return true; //Already first
-      current->previous->next = current->next;
-      current->next->previous = current->previous;
-
-      head->previous = current;
-      current->next = head;
-      current->previous = nullptr;
-
+      #endif
+      
+      toFront(current);
+      
       dirty = current->dirty;
+
       current->dirty = trueDirty;
-
-      current->address = kickedAddress;
+      //TODO pass back address here
+      current->address = trueKicked;
       current->tag = kickedTag;
-
-      head = current;
-      tail = tail->previous;
 
       return true;
     }
     current = current->next;
   }
   //not in VC; add Kicked and compute kickout; pass back dirty and address
+  #ifdef DEBUG
   std::cout<<"not in VC"<<std::endl;
+  #endif
   address = 0;
   dirty = 0;
 
@@ -259,7 +290,7 @@ int Cache::access(unsigned long long int address, bool write) {
     //found in VC
     //remove found from LRU, add kicked
     //mark block as dirty or not in main cache :TODO:
-  //indexArray[kickedIndex]->markDirty(tag, kickedAddress);
+    if(dirty) indexArray[index]->markDirty();
     //HIT NO KICKOUT
     return 1;
   }
