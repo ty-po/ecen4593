@@ -1,6 +1,11 @@
 #include "config.h" 
 using namespace std;
 
+unsigned int log_2(unsigned int x) {
+  unsigned int rv = 0;
+  while (x >>= 1) rv++;
+  return rv;
+}
 
 
 Config newConfig(int argc, char ** argv){
@@ -70,9 +75,9 @@ Config newConfig(int argc, char ** argv){
     }
     else cout << "failed to open" << endl;
   }
-  params.l1iCost = ((params.icacheSize*100)/4096)*(1 + (params.icacheWays/2));
-  params.l1dCost = ((params.dcacheSize*100)/4096)*(1 + (params.dcacheWays/2)); 
-  params.l2Cost = ((params.l2cacheSize*50)/16384)*(1 + (params.l2cacheWays/2)); 
+  params.l1iCost = ((params.icacheSize*100)/4096)*(1 + (log_2(params.icacheWays)));
+  params.l1dCost = ((params.dcacheSize*100)/4096)*(1 + log_2((params.dcacheWays))); 
+  params.l2Cost = ((params.l2cacheSize*50)/16384)*(1 + (log_2(params.l2cacheWays))); 
   params.memoryCost = 75 + 200*((50/params.memoryReadyTime) - 1) + 100*((params.chunkSize/8) - 1) ;
 
 

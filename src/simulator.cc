@@ -12,7 +12,7 @@ bool align(unsigned long long int requestAddress, unsigned long long int &addres
   #endif
   if(bytesize > 0 && bytesize < 1024) {
     address = requestAddress + (bytesize - 1); 
-    bytesize -= (address - (address & ~(0x11)) + 1);
+    bytesize -= (address - (address & ~(busWidth-1)) + 1);
     //if(address == (address& ~(0x11))) bytesize -= 4;
 
     #ifdef PRINTALIGN
