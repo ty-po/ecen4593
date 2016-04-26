@@ -176,6 +176,7 @@ Cache::Cache(unsigned int Size, unsigned int Ways, unsigned int BlockSize, unsig
   tagBits = addressBits - (blockOffsetBits + indexBits); 
 
   #ifdef DEBUG
+  cout <<cacheSets <<endl;
   cout << blockOffsetBits <<endl;
   cout << indexBits <<endl;
   cout << tagBits <<endl;
