@@ -20,10 +20,9 @@ class LRU {
     Node * getNode(unsigned int index);
     void toFront(Node * current);
 
-    void markDirty();
+    Node * contains(unsigned long long int tag);
 
-    bool access(unsigned long long int tag, unsigned long long int &address, bool &dirty);
-    bool accessVC(unsigned long long int address, unsigned long long int &kickedAddress, bool &dirty, unsigned int blockOffsetBits);
+    void markDirty();
 };
 
 
@@ -45,7 +44,7 @@ class Cache {
     unsigned long int getIndex(unsigned long long int address);
     unsigned long long int getTag(unsigned long long int address);
 
-    int access(unsigned long long int address, bool write, unsigned long long int &writeback);
+    Node * contains(unsigned long long int address);
     
     void markDirty(unsigned long long int address);
     /******
