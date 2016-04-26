@@ -1,6 +1,6 @@
 #include "output.h"
 using namespace std;
-
+/*
 void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
   unsigned int i;
   unsigned int j; 
@@ -58,7 +58,7 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
   }
 
 }
-
+*/
 void output(Config params, Data data) {
   cout << dec << endl;
   cout << "-------------------------------------------------------------------------" << endl;
@@ -130,7 +130,7 @@ void output(Config params, Data data) {
   cout << "Cache final contents - Index and Tag values are in HEX" << endl;
   cout << endl;
 
-  printCache(data.L1i, "L1i", params.vcSize);
-  printCache(data.L1d, "L1d", params.vcSize);
-  printCache(data.L2, "L2", params.vcSize);
+  data.L1i->printCache("L1i", params.vcSize);
+  data.L1d->printCache("L1d", params.vcSize);
+  data.L2->printCache("L2", params.vcSize);
 }

@@ -23,6 +23,14 @@ bool align(unsigned long long int requestAddress, unsigned long long int &addres
   return false;
 }
 
+void copyNode(Node * a, Node * b) {
+
+  b->valid = a->valid;
+  b->dirty = a->dirty;
+  b->address = a->address;
+
+}
+
 Data simulator(Config params) {
   
   Data data = {0};
@@ -36,6 +44,10 @@ Data simulator(Config params) {
   unsigned int bytesize;
 
   unsigned long long int requestAddress;
+
+  Node * current;
+  Node temp;
+
 
   while (scanf("%c %Lx %d\n",&op,&address,&bytesize) == 3) {
     data.totalRefs++;
@@ -58,16 +70,90 @@ Data simulator(Config params) {
       switch(op) {
         case 'R':
           data.l1dTotalRequests++;
+          current = data.L1d->contains(address);
+          if(current) {
+            //HIT L1
+            data.l1dHitCount++;
+            data.L1d->toFront(current);
+          }
+          else {
+            current = data.L1d->victimCache->contains(address);
+            if(current) {
+              //VC HIT L1
+              data.l1dHitCount++;
+              data.l1dVCHitCount++;
+              data.L1d->victimCache->toBack(current);
+              data.L1d->push(current);
+              copyNode(current, &temp);
+              temp.tag = temp.address & ~(0x1F);
+              data.L1d->victimCache->push(&temp);
+            }
+            else {
+              //MISS L1
+              data.l1dMissCount++;
+              current = data.L2->contains(address);
+              if(current) {
+                //HIT L2
+                data.l2HitCount++;
+                data.L2->toFront(current);
 
+              }
+              else {
+                current = data.L2->victimCache->contains(address);
+                if(current) {
+                  //VC HIT L2
+                  data.l2HitCount++;
+                  data.l2VCHitCount++;
+                  data.L2->victimCache->toBack(current);
+                  data.L2->push(current);
+                  copyNode(current, &temp);
+                  temp.tag = temp.address & ~(0x1F);
+                  data.L2->victimCache->push(&temp);
+                }
+                else{
+                  //MISS L2
+                  data.l2MissCount++;
+                  temp.valid = true;
+                  temp.dirty = false;
+                  temp.address = address;
+      
+//TODO: Transfer Alignment
+                  //
+                  data.L2->push(&temp);
+                  //TODO: Handle Kickout
+                }
+              }
+
+//TODO: Transfer Alignment
+              //
+              current = data.L2->contains(address);
+              data.L1d->push(current);
+              //TODO: Handle Kickout
+            }
+          }
           break;
+
         case 'W':
           data.l1dTotalRequests++;
+          current = data.L1i->contains(address);
+          if(current) {
 
+          }
+          else {
+
+          }
           break;
         case 'I':
           data.l1iTotalRequests++;
+          current = data.L1i->contains(address);
+          if(current) {
 
+          }
+          else {
+
+          }
           break;
+        
       } 
     }
   }

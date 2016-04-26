@@ -1,6 +1,9 @@
 #include <iostream>
+#include <iomanip>
+#include <string>
 
 struct Node {
+  unsigned long int index;
   unsigned long long int tag;
   unsigned long long int address;
   bool valid;
@@ -15,14 +18,22 @@ class LRU {
     Node * tail;
     
     unsigned int size;
+    unsigned int used;
 
     LRU(unsigned int maxSize);
     Node * getNode(unsigned int index);
     void toFront(Node * current);
+    void toBack(Node * current);
 
     Node * contains(unsigned long long int tag);
 
-    void markDirty();
+    bool isFull();
+
+    bool push(Node * current);
+
+    void remove(Node * current);
+
+    void printLRU();
 };
 
 
@@ -41,15 +52,14 @@ class Cache {
 
     Cache(unsigned int Size, unsigned int Ways, unsigned int BlockSize, unsigned int vcSize, unsigned int addressBits);
 
-    unsigned long int getIndex(unsigned long long int address);
+    unsigned int getIndex(unsigned long long int address);
     unsigned long long int getTag(unsigned long long int address);
 
     Node * contains(unsigned long long int address);
-    
-    void markDirty(unsigned long long int address);
-    /******
-     0 = not in cache
-     1 = in victim cache
-     2 = in cache
-    ******/
+
+    void toFront(Node * current);
+
+    bool push(Node * current);
+
+    void printCache(std::string cacheName, unsigned int vcSize);
 };
