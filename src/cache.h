@@ -3,7 +3,7 @@
 #include <string>
 
 struct Node {
-  unsigned long int index;
+  unsigned int index;
   unsigned long long int tag;
   unsigned long long int address;
   bool valid;

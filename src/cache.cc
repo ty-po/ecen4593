@@ -104,10 +104,21 @@ void copy(Node * a, Node * b) {
 
 Node * LRU::contains(unsigned long long int tag) {
   Node * current = head;
-  while(current) {
-    if(current->tag == tag) return current;
+  while(current && current->valid) {
+#ifdef DEBUG
+    cout << "Loop " << hex << current->tag << "\tt:" << tag << endl;
+#endif
+    if(current->tag == tag) {
+#ifdef DEBUG
+      cout << " FOUND " << !!(current) <<endl;
+#endif
+      return current;
+    }
     current = current->next;
   }
+#ifdef DEBUG
+  cout<<" NOT FOUND " << !!(nullptr)<<endl;
+#endif
   return nullptr;
 }
 
@@ -188,11 +199,17 @@ unsigned long long int Cache::getTag(unsigned long long int address) {
 }
 
 Node * Cache::contains(unsigned long long int address) {
+#ifdef LRUDEBUG
+  cout << hex << "i:" <<getIndex(address) << "\tt:" << getTag(address) <<dec<<endl;
+#endif
   return indexArray[getIndex(address)]->contains(getTag(address));
 }
 
 void Cache::toFront(Node * current) {
   indexArray[getIndex(current->address)]->toFront(current);
+#ifdef LRUDEBUG
+  indexArray[getIndex(current->address)]->printLRU();
+#endif
 }
 
 bool Cache::push(Node * current) {
