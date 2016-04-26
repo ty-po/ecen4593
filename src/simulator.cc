@@ -32,12 +32,14 @@ void copyNode(Node * a, Node * b) {
 
 }
 
-void L2Request(unsigned long long int address, Data &data, unsigned int blockSize) {
+void L2Request(unsigned long long int address, Data &data, unsigned int blockSize, bool writeback = false) {
 #ifdef PRINTREQUEST
   cout<<"L2 Request"<<endl;
 #endif
   Node * current;
   Node temp;
+  unsigned long long int l2VCMask = ~((unsigned long long int) blockSize - 1);
+
   data.l2TotalRequests++;
   current = data.L2->contains(address);
   if(current) {
@@ -47,10 +49,10 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
 #endif
     data.l2HitCount++;
     data.L2->toFront(current);
-
+    current->dirty = writeback;
   }
   else {
-    current = data.L2->victimCache->contains(address);
+    current = data.L2->victimCache->contains(address & l2VCMask);
     if(current) {
 #ifdef PRINTSTATUS
       cout << "L2 VC Hit" << endl;
@@ -60,8 +62,9 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
       data.l2VCHitCount++;
       data.L2->victimCache->toBack(current);
       copyNode(current, &temp);
+      temp.dirty = writeback;
       data.L2->push(&temp);
-      temp.tag = temp.address & ~((unsigned long long int) blockSize - 1);
+      temp.tag = temp.address & l2VCMask;
       data.L2->victimCache->push(&temp);
     }
     else{
@@ -71,7 +74,7 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
       //MISS L2
       data.l2MissCount++;
       temp.valid = true;
-      temp.dirty = false;
+      temp.dirty = writeback;
       temp.address = address;
 
 //TODO: Transfer Alignment
@@ -79,13 +82,24 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
       data.L2->push(&temp);
       //TODO: Handle Kickout
       if(temp.valid) {
-        temp.tag = temp.address & ~((unsigned long long int) blockSize - 1);
+        temp.tag = temp.address & l2VCMask;
         data.L2->victimCache->push(&temp);
+        if(temp.valid) {
+#ifdef PRINTSTATUS
+          cout << "L2 Kickout" << endl;
+#endif  
+          data.l2Kickouts++;
+          if(temp.dirty) {
+#ifdef PRINTSTATUS
+          cout << "L2 Dirty Kickout" << endl;
+#endif  
+            data.l2DirtyKickouts++;
+          }
+        }
       }
     }
   }
 }
-
 
 Data simulator(Config params) {
   
@@ -100,6 +114,9 @@ Data simulator(Config params) {
   unsigned int bytesize;
 
   unsigned long long int requestAddress;
+
+  unsigned long long int dcacheVCMask = ~((unsigned long long int) params.dcacheBlockSize - 1);
+  unsigned long long int icacheVCMask = ~((unsigned long long int) params.icacheBlockSize - 1);
 
   Node * current;
   Node temp;
@@ -138,7 +155,7 @@ Data simulator(Config params) {
             data.L1d->toFront(current);
           }
           else {
-            current = data.L1d->victimCache->contains(address);
+            current = data.L1d->victimCache->contains(address & dcacheVCMask);
             if(current) {
 #ifdef PRINTSTATUS
             cout << "L1d VC Hit" << endl;
@@ -148,7 +165,7 @@ Data simulator(Config params) {
               data.L1d->victimCache->toBack(current);
               copyNode(current, &temp);
               data.L1d->push(&temp);
-              temp.tag = temp.address & ~((unsigned long long int) params.dcacheBlockSize - 1);
+              temp.tag = temp.address & dcacheVCMask;
               data.L1d->victimCache->push(&temp);
             }
             else {
@@ -167,8 +184,21 @@ Data simulator(Config params) {
               data.L1d->push(&temp);
               //TODO: Handle Kickout
               if(temp.valid) {
-                temp.tag = temp.address & ~((unsigned long long int) params.dcacheBlockSize - 1);
+                temp.tag = temp.address & dcacheVCMask;
                 data.L1d->victimCache->push(&temp);
+                if(temp.valid) {
+#ifdef PRINTSTATUS
+                  cout<<"L1d Kickout" << endl;
+#endif
+                  data.l1dKickouts++;
+                  if(temp.dirty) {
+#ifdef PRINTSTATUS
+                    cout<<"L1d Dirty Kickout" << endl;
+#endif
+                    data.l1dDirtyKickouts++;
+                    L2Request(temp.address, data, params.l2cacheBlockSize, true);
+                  }
+                }
               }
             }
           }
@@ -187,7 +217,7 @@ Data simulator(Config params) {
             current->dirty = true;
           }
           else {
-            current = data.L1d->victimCache->contains(address);
+            current = data.L1d->victimCache->contains(address & dcacheVCMask);
             if(current) {
 #ifdef PRINTSTATUS
               cout << "L1d VC Hit" << endl;
@@ -199,7 +229,7 @@ Data simulator(Config params) {
               copyNode(current, &temp);
               temp.dirty = true;
               data.L1d->push(&temp);
-              temp.tag = temp.address & ~((unsigned long long int) params.dcacheBlockSize - 1);
+              temp.tag = temp.address & dcacheVCMask;
               data.L1d->victimCache->push(&temp);
             }
             else {
@@ -219,8 +249,21 @@ Data simulator(Config params) {
               data.L1d->push(&temp);
               //TODO: Handle Kickout
               if(temp.valid) {
-                temp.tag = temp.address & ~((unsigned long long int) params.dcacheBlockSize - 1);
+                temp.tag = temp.address & dcacheVCMask;
                 data.L1d->victimCache->push(&temp);
+                if(temp.valid) {
+#ifdef PRINTSTATUS
+                  cout<<"L1d Kickout" << endl;
+#endif
+                  data.l1dKickouts++;
+                  if(temp.dirty) {
+#ifdef PRINTSTATUS
+                    cout<<"L1d Dirty Kickout" << endl;
+#endif
+                    data.l1dDirtyKickouts++;
+                    L2Request(temp.address, data, params.l2cacheBlockSize, true);
+                  }
+                }
               }
             }
           }
@@ -237,7 +280,7 @@ Data simulator(Config params) {
             break;
           }
           else {
-            current = data.L1i->victimCache->contains(address);
+            current = data.L1i->victimCache->contains(address & icacheVCMask);
             if(current) {
 #ifdef PRINTSTATUS
               cout<<"L1i VC Hit" << endl;
@@ -248,7 +291,7 @@ Data simulator(Config params) {
               data.L1i->victimCache->toBack(current);
               copyNode(current, &temp);
               data.L1i->push(&temp);
-              temp.tag = temp.address & ~((unsigned long long int) params.icacheBlockSize - 1);
+              temp.tag = temp.address & icacheVCMask;
               data.L1i->victimCache->push(&temp);
             }
             else {
@@ -267,7 +310,7 @@ Data simulator(Config params) {
               data.L1i->push(&temp);
               //TODO: Handle Kickout
               if(temp.valid) {
-                temp.tag = temp.address & ~((unsigned long long int) params.dcacheBlockSize - 1);
+                temp.tag = temp.address & icacheVCMask;
                 data.L1i->victimCache->push(&temp);
                 if(temp.valid) {
 #ifdef PRINTSTATUS
