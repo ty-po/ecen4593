@@ -59,6 +59,8 @@ class Cache {
 
     void toFront(Node * current);
 
+    void cleanHead();
+
     bool push(Node * current);
 
     void printCache(std::string cacheName, unsigned int vcSize);

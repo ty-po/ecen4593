@@ -1,27 +1,22 @@
 #include "simulator.h"
-#define PRINTSTATUS
-#define PRINTTRACE
-#define PRINTREQUEST
+//#define PRINTSTATUS
+//#define PRINTTRACE
+//#define PRINTREQUEST
 //#define PRINTALIGN
 using namespace std;
 
 //bool align(); //TODO
 bool align(unsigned long long int requestAddress, unsigned int requestBytesize, unsigned long long int &address, unsigned int &bytesize, unsigned int busWidth, unsigned int blockSize) {
-  #ifdef PRINTALIGN
-  cout<<"Aligning for: "<<hex<<requestAddress<<dec<<endl;
-  cout<<""<<bytesize<<" from "<<hex<<address<<dec<<endl;
-  #endif
-  if(bytesize > 0 && bytesize < 1024) {
-    address = requestAddress + (bytesize - 1); 
-    bytesize -= (address - (address & ~(busWidth-1)) + 1);
-    //if(address == (address& ~(0x11))) bytesize -= 4;
+  unsigned long long int mask = ~((unsigned long long int)busWidth-1);
 
-    #ifdef PRINTALIGN
-    cout<<""<<bytesize<<" from "<<hex<<address<<dec<<endl;
-    #endif
-    return true;
+
+  if(bytesize > 1024 || bytesize == 0) return false;
+  if(bytesize != requestBytesize) {
+    address = ((address & mask) + 4);
   }
-  return false;
+  bytesize -= ((address & mask) + 4) - address;
+  return true;
+
 }
 
 void copyNode(Node * a, Node * b) {
@@ -49,7 +44,7 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
 #endif
     data.l2HitCount++;
     data.L2->toFront(current);
-    current->dirty = writeback;
+    if(writeback) current->dirty = true;
   }
   else {
     current = data.L2->victimCache->contains(address & l2VCMask);
@@ -62,7 +57,8 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
       data.l2VCHitCount++;
       data.L2->victimCache->toBack(current);
       copyNode(current, &temp);
-      temp.dirty = writeback;
+      temp.address = address;
+      if(writeback) temp.dirty = true;
       data.L2->push(&temp);
       temp.tag = temp.address & l2VCMask;
       data.L2->victimCache->push(&temp);
@@ -184,6 +180,7 @@ Data simulator(Config params) {
               copyNode(current, &temp);
               temp.address = address;
               data.L1d->push(&temp);
+              if(current->dirty) current->dirty = false;
               //TODO: Handle Kickout
               if(temp.valid) {
                 temp.tag = temp.address & dcacheVCMask;
@@ -249,6 +246,7 @@ Data simulator(Config params) {
               temp.address = address;
               temp.dirty = true;
               data.L1d->push(&temp);
+              if(current->dirty) current->dirty = false;
               //TODO: Handle Kickout
               if(temp.valid) {
                 temp.tag = temp.address & dcacheVCMask;
@@ -310,6 +308,7 @@ Data simulator(Config params) {
               copyNode(current, &temp);
               temp.address = address;
               data.L1i->push(&temp);
+              if(current->dirty) current->dirty = false;
               //TODO: Handle Kickout
               if(temp.valid) {
                 temp.tag = temp.address & icacheVCMask;
