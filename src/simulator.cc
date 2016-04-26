@@ -1,12 +1,12 @@
 #include "simulator.h"
-//#define PRINTSTATUS
-//#define PRINTTRACE
-//#define PRINTREQUEST
+#define PRINTSTATUS
+#define PRINTTRACE
+#define PRINTREQUEST
 //#define PRINTALIGN
 using namespace std;
 
 //bool align(); //TODO
-bool align(unsigned long long int requestAddress, unsigned long long int &address, unsigned int &bytesize, unsigned int busWidth, unsigned int blockSize) {
+bool align(unsigned long long int requestAddress, unsigned int requestBytesize, unsigned long long int &address, unsigned int &bytesize, unsigned int busWidth, unsigned int blockSize) {
   #ifdef PRINTALIGN
   cout<<"Aligning for: "<<hex<<requestAddress<<dec<<endl;
   cout<<""<<bytesize<<" from "<<hex<<address<<dec<<endl;
@@ -114,6 +114,7 @@ Data simulator(Config params) {
   unsigned int bytesize;
 
   unsigned long long int requestAddress;
+  unsigned int requestBytesize;
 
   unsigned long long int dcacheVCMask = ~((unsigned long long int) params.dcacheBlockSize - 1);
   unsigned long long int icacheVCMask = ~((unsigned long long int) params.icacheBlockSize - 1);
@@ -139,7 +140,8 @@ Data simulator(Config params) {
     cout << op << "\t" <<hex << address << dec << "\t" << bytesize << "\t" << endl;
     #endif
     requestAddress = address;
-    while(align(requestAddress, address, bytesize, params.l1busWidth, 32)) {
+    requestBytesize = bytesize;
+    while(align(requestAddress, requestBytesize, address, bytesize, params.l1busWidth, 32)) {
       #ifdef PRINTREQUEST
       cout << op << "\t" <<hex << requestAddress <<"\t" << address << dec << "\t" << bytesize << "\t" << endl;
       #endif
