@@ -1,3 +1,5 @@
+#include <iostream>
+
 struct Node {
   unsigned long long int tag;
   unsigned long long int address;
@@ -16,6 +18,10 @@ class LRU {
 
     LRU(unsigned int maxSize);
     Node * getNode(unsigned int index);
+    void toFront(Node * current);
+
+    void markDirty();
+
     bool access(unsigned long long int tag, unsigned long long int &address, bool &dirty);
     bool accessVC(unsigned long long int address, unsigned long long int &kickedAddress, bool &dirty, unsigned int blockOffsetBits);
 };
@@ -39,7 +45,9 @@ class Cache {
     unsigned long int getIndex(unsigned long long int address);
     unsigned long long int getTag(unsigned long long int address);
 
-    int access(unsigned long long int address, bool write);
+    int access(unsigned long long int address, bool write, unsigned long long int &writeback);
+    
+    void markDirty(unsigned long long int address);
     /******
      0 = not in cache
      1 = in victim cache

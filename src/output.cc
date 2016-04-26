@@ -9,7 +9,7 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
   LRU * currentLRU;
   Node * currentNode;
 
-  cout << "Memory Level: " << cacheName << endl;
+  cout << "Memory Lvl: " << cacheName << endl;
   for(i = 0; i < currentCache->cacheSets; i++) {
     currentLRU = currentCache->indexArray[i];
     if(currentLRU->head->valid) {
@@ -18,11 +18,15 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
         currentNode = currentLRU->getNode(j);
         if(!(j%2) && j) cout << setw(12)<<"";
         if(!j) cout << " ";
-        cout << "| V:" << currentNode->valid;
-        cout << " D:" << currentNode->dirty;
-        cout << " Tag: ";
-        if(currentNode->valid) cout << setw(12)<<hex << currentNode->tag << dec;
-        else cout << setw(12) << "-";
+
+        if(currentNode && currentNode->valid) {
+          cout << " | V:" << currentNode->valid;
+          cout << " D:" << currentNode->dirty;
+          cout << " Tag: ";
+          cout << setw(12)<<hex << currentNode->tag << dec;
+        }
+        else cout << " | V:0 D:0 Tag: " << setw(12) << "-";
+
 
         if(j%2 || j == (currentCache->ways - 1)) {
           cout << " |" << endl;
@@ -40,11 +44,13 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
     if(!(i%2)) {
       cout << setw(11)<<"";
     }
-    cout << " | V:" << currentNode->valid;
-    cout << " D:" << currentNode->dirty;
-    cout << " Addr: ";
-    if(currentNode->valid) cout << setw(12)<<hex << currentNode->tag << dec;
-    else cout << setw(12) << "-";
+    if(currentNode && currentNode->valid) {
+      cout << " | V:" << currentNode->valid;
+      cout << " D:" << currentNode->dirty;
+      cout << " Addr: ";
+      cout << setw(12)<<hex << currentNode->tag << dec;
+    }
+    else cout << " | V:0 D:0 Addr: " << setw(12) << "-";
 
     if(i%2) {
       cout << " |" << endl;
@@ -54,7 +60,7 @@ void printCache(Cache * currentCache, string cacheName, unsigned int vcSize) {
 }
 
 void output(Config params, Data data) {
-  cout << endl;
+  cout << dec << endl;
   cout << "-------------------------------------------------------------------------" << endl;
   cout << setw(6)<<"" << left << setw(3)<< params.traceFile << "." << setw(16)<< params.setupName << "Simulation Results" << endl;
   cout << "-------------------------------------------------------------------------" << endl;

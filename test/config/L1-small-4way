@@ -1,0 +1,4 @@
+icacheSize  4096                        
+icacheWays  4
+dcacheSize  4096
+dcacheWays  4
