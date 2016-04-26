@@ -17,6 +17,7 @@ struct Config {
   
   unsigned int l1hitTime;
   unsigned int l1missTime;
+  unsigned int l1busWidth;
 
   unsigned int l2cacheSize;
   unsigned int l2cacheWays;

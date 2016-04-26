@@ -1,0 +1,3 @@
+icacheWays  256
+dcacheWays  256
+l1cacheWays 512

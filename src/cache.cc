@@ -89,7 +89,7 @@ bool LRU::access(unsigned long long int tag, unsigned long long int &address, bo
 
       toFront(current);
 
-      current->dirty = dirty;
+      current->dirty = trueDirty;
       return true;
     }
     current = current->next;
@@ -108,26 +108,12 @@ bool LRU::access(unsigned long long int tag, unsigned long long int &address, bo
     dirty = current->dirty;
   }
 
+  toFront(current);
+
   current->tag = tag;
   current->address = trueAddress;
   current->valid = true;
   current->dirty = trueDirty; 
-  
-
-
-  if(current->previous) {
-    tail = current->previous;
-    current->previous->next = nullptr;
-
-  }
-
-
-  if(head->next) {
-    head->previous = current;
-    current->next = head;
-    current->previous = nullptr;
-    head = current;
-  }
 
   return false;
 }
@@ -162,7 +148,7 @@ bool LRU::accessVC(unsigned long long int address, unsigned long long int &kicke
       dirty = current->dirty;
 
       current->dirty = trueDirty;
-      //TODO pass back address here
+
       current->address = trueKicked;
       current->tag = kickedTag;
 
@@ -183,51 +169,14 @@ bool LRU::accessVC(unsigned long long int address, unsigned long long int &kicke
     address = current->address;
     dirty = current->dirty;
   }
+  
+  toFront(current);
 
   current->tag = tag;
   current->address = trueKicked;
   current->valid = true;
   current->dirty = trueDirty; 
-  
-  if(current->previous) {
-    tail = current->previous;
-    current->previous->next = nullptr;
 
-  }
-
-
-  if(head->next) {
-    head->previous = current;
-    current->next = head;
-    current->previous = nullptr;
-    head = current;
-  }
-
-/*  
-  kickedAddress = 0;
-  dirty = 0;
-
-  current = head;
-
-  if(tail) {
-    current = tail;
-    current->previous->next = nullptr;
-    tail = current->previous;
-
-    head->previous = current;
-    current->next = head;
-    head = current;
-    current->previous = nullptr;
-  }
-
-  kickedAddress = current->address;
-  dirty = current->dirty;
-
-  current->tag = kickedTag;
-  current->address = trueKicked;
-  current->valid = true;
-  current->dirty = trueDirty;
-*/
   return false;
 }
 
@@ -264,7 +213,7 @@ unsigned long long int Cache::getTag(unsigned long long int address) {
   return address>>(blockOffsetBits + indexBits);
 }
 
-int Cache::access(unsigned long long int address, bool write) {
+int Cache::access(unsigned long long int address, bool write, unsigned long long int writeback) {
 
   unsigned long int index = getIndex(address);
   unsigned long long int tag = getTag(address);
@@ -286,10 +235,10 @@ int Cache::access(unsigned long long int address, bool write) {
   }
 
   //may be in VC
+  dirty = write;
   if(victimCache->accessVC(address, kickedAddress, dirty, blockOffsetBits)) {
     //found in VC
     //remove found from LRU, add kicked
-    //mark block as dirty or not in main cache :TODO:
     if(dirty) indexArray[index]->markDirty();
     //HIT NO KICKOUT
     return 1;
@@ -299,5 +248,6 @@ int Cache::access(unsigned long long int address, bool write) {
   //add kickedAddress to LRUi
 
   //KICKOUT
+  writeback = kickedAddress;
   return 2; //dirty kickout TODO return dirty and address
 }     

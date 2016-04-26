@@ -42,6 +42,7 @@ Config newConfig(int argc, char ** argv){
           
           if(param == "l1hitTime") params.l1hitTime = value;
           if(param == "l1missTime") params.l1missTime = value;
+          if(param == "l1busWidth") params.l1busWidth = value;
 
           if(param == "l2cacheSize") params.l2cacheSize = value;
           if(param == "l2cacheWays") params.l2cacheWays = value;
@@ -95,6 +96,7 @@ Config defaultConfig() {
 
   d.l1hitTime = 1;
   d.l1missTime = 1;
+  d.l1busWidth = 4;
 
   d.l2cacheSize = 32768;
   d.l2cacheWays = 1;

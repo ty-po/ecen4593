@@ -45,7 +45,7 @@ class Cache {
     unsigned long int getIndex(unsigned long long int address);
     unsigned long long int getTag(unsigned long long int address);
 
-    int access(unsigned long long int address, bool write);
+    int access(unsigned long long int address, bool write, unsigned long long int writeback);
     /******
      0 = not in cache
      1 = in victim cache
