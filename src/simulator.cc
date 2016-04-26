@@ -12,8 +12,7 @@ bool align(unsigned long long int requestAddress, unsigned long long int &addres
   #endif
   if(bytesize > 0 && bytesize < 500000) {
     address = requestAddress + (bytesize - 1); 
-    bytesize -= (address - (address & ~(0x11)));
-    if(address == (address& ~(0x11))) bytesize -= 4;
+    bytesize -= (address - (address & ~(0x11)) + 1);
 
     #ifdef PRINTALIGN
     cout<<""<<bytesize<<" from "<<hex<<address<<dec<<endl;
