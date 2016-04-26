@@ -71,13 +71,13 @@ void LRU::markDirty() {
 }
 
 bool LRU::access(unsigned long long int tag, unsigned long long int &address, bool &dirty) {
+  Node * current = head;
   #ifdef DEBUG
   std::cout<<std::hex<<"\t"<<tail<<std::dec<<std::endl;
   std::cout<<std::hex<<"\t"<<current<<std::dec<<std::endl;
   std::cout<<std::hex<<"\t"<<head<<std::dec<<std::endl;
   std::cout<<"Access for Tag: "<<std::hex<<tag<<std::dec<<std::endl;
   #endif
-  Node * current = head;
   unsigned long long int trueAddress = address;
   bool trueDirty = dirty;
   while(current && current->valid) {
@@ -88,6 +88,8 @@ bool LRU::access(unsigned long long int tag, unsigned long long int &address, bo
       //found no kick; move to front
 
       toFront(current);
+
+      dirty = current->dirty;
 
       current->dirty = trueDirty;
       return true;
@@ -119,13 +121,14 @@ bool LRU::access(unsigned long long int tag, unsigned long long int &address, bo
 }
 
 bool LRU::accessVC(unsigned long long int address, unsigned long long int &kickedAddress, bool &dirty, unsigned int blockOffsetBits) {
+  Node * current = head;
+
   #ifdef DEBUG
   std::cout<<std::hex<<tail<<std::dec<<std::endl;
   std::cout<<std::hex<<current<<std::dec<<std::endl;
   std::cout<<std::hex<<head<<std::dec<<std::endl;
   std::cout<<"VC access Address: "<<std::hex<<address<<std::endl;
   #endif
-  Node * current = head;
 
   unsigned long long int tag = (address>>blockOffsetBits)<<blockOffsetBits;
   unsigned long long int kickedTag = (kickedAddress>>blockOffsetBits)<<blockOffsetBits;
@@ -213,7 +216,7 @@ unsigned long long int Cache::getTag(unsigned long long int address) {
   return address>>(blockOffsetBits + indexBits);
 }
 
-int Cache::access(unsigned long long int address, bool write, unsigned long long int writeback) {
+int Cache::access(unsigned long long int address, bool write, unsigned long long int &writeback) {
 
   unsigned long int index = getIndex(address);
   unsigned long long int tag = getTag(address);
@@ -224,6 +227,7 @@ int Cache::access(unsigned long long int address, bool write, unsigned long long
   if(indexArray[index]->access(tag, kickedAddress, dirty)) {
     //found in standard Cache
     //HIT - done
+    writeback = dirty;
     return 0;
   }
 
@@ -240,14 +244,23 @@ int Cache::access(unsigned long long int address, bool write, unsigned long long
     //found in VC
     //remove found from LRU, add kicked
     if(dirty) indexArray[index]->markDirty();
+    writeback = dirty;
     //HIT NO KICKOUT
     return 1;
   }
 
   //not in VC
-  //add kickedAddress to LRUi
+  //add kickedAddress to VC LRUi
 
   //KICKOUT
-  writeback = kickedAddress;
+  writeback = 0;
+  if(dirty) writeback = kickedAddress;
   return 2; //dirty kickout TODO return dirty and address
-}     
+}
+
+void Cache::markDirty(unsigned long long int address) {
+
+  unsigned long int index = getIndex(address);
+  indexArray[index]->markDirty();
+
+}

@@ -1,12 +1,11 @@
 #include "simulator.h"
-#define PRINTSTATUS
+//#define PRINTSTATUS
 //#define PRINTTRACE
-#define PRINTALIGN
+//#define PRINTALIGN
 using namespace std;
 
 //bool align(); //TODO
 bool align(unsigned long long int requestAddress, unsigned long long int &address, unsigned int &bytesize, unsigned int busWidth, unsigned int blockSize) {
-  /*
   #ifdef PRINTALIGN
   cout<<"Aligning for: "<<hex<<requestAddress<<dec<<endl;
   cout<<""<<bytesize<<" from "<<hex<<address<<dec<<endl;
@@ -14,6 +13,7 @@ bool align(unsigned long long int requestAddress, unsigned long long int &addres
   if(bytesize > 0 && bytesize < 500000) {
     address = requestAddress + (bytesize - 1); 
     bytesize -= (address - (address & ~(0x11)));
+    if(address == (address& ~(0x11))) bytesize -= 4;
 
     #ifdef PRINTALIGN
     cout<<""<<bytesize<<" from "<<hex<<address<<dec<<endl;
@@ -21,11 +21,6 @@ bool align(unsigned long long int requestAddress, unsigned long long int &addres
     return true;
   }
   return false;
-  */
-  bool rv = false;
-  if (bytesize) rv = true;
-  bytesize = 0;
-  return rv;
 }
 
 Data simulator(Config params) {
@@ -46,6 +41,7 @@ Data simulator(Config params) {
   int l2;
 
   unsigned long long int kickedAddress;
+  bool dirty;
 
   while (scanf("%c %Lx %d\n",&op,&address,&bytesize) == 3) {
     data.totalRefs++;
@@ -97,18 +93,52 @@ Data simulator(Config params) {
           #ifdef PRINTSTATUS
           cout<<"L1 Kickout"<<endl;
           #endif
-          data.L2->access(kickedAddress,true, kickedAddress);//TODO
-          break;
+          if(kickedAddress) { //when dirty
+            data.l2TotalRequests++;
+            l2 = data.L2->access(kickedAddress, true, kickedAddress);
+            switch(l2) {
+            case 0:
+              break;
+            case 1:
+              break;
+            case 2:
+              break;
+            case 3:
+              break;
+            }
+          }
         case 3:
           data.l2TotalRequests++;
           #ifdef PRINTSTATUS
-          cout<<"Miss L1 - Main Unfilled "<<endl;
+          cout<<"Miss L1"<<endl;
           #endif
-
           l2 = data.L2->access(address, false, kickedAddress);
           #ifdef PRINTSTATUS
           cout<<"\tL2 request status "<<l2<<endl;
           #endif
+          switch(l2) {
+            case 0:
+              #ifdef PRINTSTATUS
+              cout<<"Hit L2 Main"<<endl;
+              #endif
+              if(kickedAddress) data.L1d->markDirty(address);
+              break;
+            case 1:
+              #ifdef PRINTSTATUS
+              cout<<"Hit L2 VC"<<endl;
+              #endif
+              break;
+            case 2:
+              #ifdef PRINTSTATUS
+              cout<<"Miss - L2 Kickout"<<endl;
+              #endif
+              break;
+            case 3:
+              #ifdef PRINTSTATUS
+              cout<<"Miss - L2 Unfilled"<<endl;
+              #endif
+              break;
+          }
           break;
       }
     }
