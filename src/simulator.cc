@@ -182,6 +182,7 @@ Data simulator(Config params) {
               data.readCycles += params.l1missTime;
               data.L1d->victimCache->toBack(current);
               copyNode(current, &temp);
+              temp.address = address;
               data.L1d->push(&temp);
               data.readCycles += params.l1hitTime;
               temp.tag = temp.address & dcacheVCMask;
@@ -194,35 +195,41 @@ Data simulator(Config params) {
               //MISS L1
               data.l1dMissCount++;
               data.readCycles += params.l1missTime;
+              
+              if(data.L1d->tail(address)->valid && data.L1d->victimCache->tail->valid) {
+#ifdef PRINTSTATUS
+                cout<<"L1d Kickout" << endl;
+#endif
+                data.l1dKickouts++;
+
+                if(data.L1d->victimCache->tail->dirty) {
+#ifdef PRINTSTATUS
+                  cout<<"L1d Dirty Kickout" << endl;
+#endif
+                  data.l1dDirtyKickouts++;
+                  L2Request(data.L1d->victimCache->tail->address, data, params, data.writeCycles, true);
+
+                }
+              }
+
+              //TODO: Handle Kickout
               L2Request(address, data, params, data.readCycles);
 
 //TODO: Transfer Alignment
               data.l1dTransfers++;
               data.readCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
-              current = data.L2->contains(address);
+              current = data.L2->head(address);
               copyNode(current, &temp);
               temp.address = address;
               data.L1d->push(&temp);
               data.readCycles += params.l1hitTime;
-              //current->dirty = false;
-              //TODO: Handle Kickout
+              current->dirty = false;
               if(temp.valid) {
                 temp.tag = temp.address & dcacheVCMask;
                 data.L1d->victimCache->push(&temp);
-                if(temp.valid) {
-#ifdef PRINTSTATUS
-                  cout<<"L1d Kickout" << endl;
-#endif
-                  data.l1dKickouts++;
-                  if(temp.dirty) {
-#ifdef PRINTSTATUS
-                    cout<<"L1d Dirty Kickout" << endl;
-#endif
-                    data.l1dDirtyKickouts++;
-                    L2Request(temp.address, data, params, data.writeCycles, true);
-                  }
-                }
               }
+
+
             }
           }
           break;
@@ -252,6 +259,7 @@ Data simulator(Config params) {
               data.writeCycles += params.l1missTime;
               data.L1d->victimCache->toBack(current);
               copyNode(current, &temp);
+              temp.address = address;
               temp.dirty = true;
               data.L1d->push(&temp);
               data.writeCycles += params.l1hitTime;
@@ -265,35 +273,39 @@ Data simulator(Config params) {
               //MISS L1
               data.l1dMissCount++;
               data.writeCycles += params.l1missTime;
+
+              if(data.L1d->tail(address)->valid && data.L1d->victimCache->tail->valid) {
+#ifdef PRINTSTATUS
+                cout<<"L1d Kickout" << endl;
+#endif
+                data.l1dKickouts++;
+
+                if(data.L1d->victimCache->tail->dirty) {
+#ifdef PRINTSTATUS
+                  cout<<"L1d Dirty Kickout" << endl;
+#endif
+                  data.l1dDirtyKickouts++;
+                  L2Request(data.L1d->victimCache->tail->address, data, params, data.writeCycles, true);
+
+                }
+              }
+
+              //TODO: Handle Kickout
               L2Request(address, data, params, data.writeCycles);
 
 //TODO: Transfer Alignment
               data.l1dTransfers++;
               data.writeCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
-              current = data.L2->contains(address);
+              current = data.L2->head(address);
               copyNode(current, &temp);
               temp.address = address;
               temp.dirty = true;
               data.L1d->push(&temp);
               data.writeCycles += params.l1hitTime;
-              //current->dirty = false;
-              //TODO: Handle Kickout
+              current->dirty = false;
               if(temp.valid) {
                 temp.tag = temp.address & dcacheVCMask;
                 data.L1d->victimCache->push(&temp);
-                if(temp.valid) {
-#ifdef PRINTSTATUS
-                  cout<<"L1d Kickout" << endl;
-#endif
-                  data.l1dKickouts++;
-                  if(temp.dirty) {
-#ifdef PRINTSTATUS
-                    cout<<"L1d Dirty Kickout" << endl;
-#endif
-                    data.l1dDirtyKickouts++;
-                    L2Request(temp.address, data, params, data.writeCycles, true);
-                  }
-                }
               }
             }
           }
@@ -322,6 +334,7 @@ Data simulator(Config params) {
               data.instructionCycles += params.l1missTime;
               data.L1i->victimCache->toBack(current);
               copyNode(current, &temp);
+              temp.address = address;
               data.L1i->push(&temp);
               data.instructionCycles += params.l1hitTime;
               temp.tag = temp.address & icacheVCMask;

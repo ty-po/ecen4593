@@ -213,6 +213,15 @@ void Cache::toFront(Node * current) {
 #endif
 }
 
+Node * Cache::head(unsigned long long int address) {
+  return indexArray[getIndex(address)]->head;
+}
+
+
+Node * Cache::tail(unsigned long long int address) {
+  return indexArray[getIndex(address)]->tail;
+}
+
 bool Cache::push(Node * current) {
   current->tag = getTag(current->address);
   current->index = getIndex(current->address);

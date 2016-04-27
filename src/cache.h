@@ -57,6 +57,9 @@ class Cache {
 
     Node * contains(unsigned long long int address);
 
+    Node * head(unsigned long long int address);
+    Node * tail(unsigned long long int address);
+
     void toFront(Node * current);
 
     void cleanHead();
