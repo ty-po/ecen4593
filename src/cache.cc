@@ -236,7 +236,7 @@ void Cache::printCache(string cacheName, unsigned int vcSize) {
   LRU * currentLRU;
   Node * currentNode;
 
-  cout << "Memory Lvl: " << cacheName << endl;
+  cout << "Memory Level: " << cacheName << endl;
   for(i = 0; i < cacheSets; i++) {
     currentLRU = indexArray[i];
     if(currentLRU->head->valid) {

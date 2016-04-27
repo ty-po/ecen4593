@@ -38,7 +38,7 @@ void output(Config params, Data data) {
   cout << setw(2)<<"" << "Ideal mis-aligned: Exec. Time = " << data.idealMisAlignedTime << "; CPI = " << (float)data.idealMisAlignedTime/data.instructionRefs << endl;
   cout << endl;
 
-  cout << setw(2)<<"" << "Memory Lvl:  L1i" << endl;
+  cout << setw(2)<<"" << "Memory Level:  L1i" << endl;
   cout << setw(4)<<"" << "Hit Count = " << data.l1iHitCount << "  Miss Count = " << data.l1iMissCount << endl;
   cout << setw(4)<<"" << "Total Requests = " << data.l1iTotalRequests << endl;
   cout << setw(4)<<"" << "Hit Rate = " << (float)data.l1iHitCount/data.l1iTotalRequests * 100 << "%  Miss Rate = " << (float)data.l1iMissCount/data.l1iTotalRequests * 100 << "%" << endl;
@@ -46,7 +46,7 @@ void output(Config params, Data data) {
   cout << setw(4)<<"" << "VC Hit count = " << data.l1iVCHitCount << endl;
   cout << endl;
 
-  cout << setw(2)<<"" << "Memory Lvl:  L1d" << endl;
+  cout << setw(2)<<"" << "Memory Level:  L1d" << endl;
   cout << setw(4)<<"" << "Hit Count = " << data.l1dHitCount << "  Miss Count = " << data.l1dMissCount << endl;
   cout << setw(4)<<"" << "Total Requests = " << data.l1dTotalRequests << endl;
   cout << setw(4)<<"" << "Hit Rate = " << (float)data.l1dHitCount/data.l1dTotalRequests * 100 << "%  Miss Rate = " << (float)data.l1dMissCount/data.l1dTotalRequests * 100 << "%" << endl;
@@ -54,7 +54,7 @@ void output(Config params, Data data) {
   cout << setw(4)<<"" << "VC Hit count = " << data.l1dVCHitCount << endl;
   cout << endl;
 
-  cout << setw(2)<<"" << "Memory Lvl:  L2" << endl;
+  cout << setw(2)<<"" << "Memory Level:  L2" << endl;
   cout << setw(4)<<"" << "Hit Count = " << data.l2HitCount << "  Miss Count = " << data.l2MissCount << endl;
   cout << setw(4)<<"" << "Total Requests = " << data.l2TotalRequests << endl;
   cout << setw(4)<<"" << "Hit Rate = " << (float)data.l2HitCount/data.l2TotalRequests * 100 << "%  Miss Rate = " << (float)data.l2MissCount/data.l2TotalRequests * 100 << "%" << endl;
