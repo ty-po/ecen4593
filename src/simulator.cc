@@ -27,7 +27,9 @@ void copyNode(Node * a, Node * b) {
 
 }
 
-void L2Request(unsigned long long int address, Data &data, unsigned int blockSize, bool writeback = false) {
+void L2Request(unsigned long long int address, Data &data, Config params, unsigned long long int &cycles, bool writeback = false) {
+
+  unsigned int blockSize = params.l2cacheBlockSize;
 #ifdef PRINTREQUEST
   cout<<"L2 Request"<<endl;
 #endif
@@ -43,8 +45,11 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
     cout << "L2 Hit" << endl;
 #endif
     data.l2HitCount++;
+    cycles += params.l2hitTime;
     data.L2->toFront(current);
-    if(writeback) current->dirty = true;
+    //if(writeback) current->dirty = true;
+    //TODO
+    current->dirty = writeback;
   }
   else {
     current = data.L2->victimCache->contains(address & l2VCMask);
@@ -53,13 +58,17 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
       cout << "L2 VC Hit" << endl;
 #endif
       //VC HIT L2
-      data.l2HitCount++;
+      data.l2MissCount++;
       data.l2VCHitCount++;
+      cycles += params.l2missTime;
       data.L2->victimCache->toBack(current);
       copyNode(current, &temp);
       temp.address = address;
-      if(writeback) temp.dirty = true;
+      //if(writeback) temp.dirty = true;
+      //TODO
+      temp.dirty = writeback;
       data.L2->push(&temp);
+      cycles += params.l2hitTime;
       temp.tag = temp.address & l2VCMask;
       data.L2->victimCache->push(&temp);
     }
@@ -69,13 +78,18 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
 #endif
       //MISS L2
       data.l2MissCount++;
+      cycles += params.l2missTime;
       temp.valid = true;
       temp.dirty = writeback;
       temp.address = address;
 
 //TODO: Transfer Alignment
       data.l2Transfers++;
+      cycles += params.memorySendAddressTime;
+      cycles += params.memoryReadyTime;
+      cycles += params.chunkTime * (params.l2cacheBlockSize/params.chunkSize);
       data.L2->push(&temp);
+      cycles += params.l2hitTime;
       //TODO: Handle Kickout
       if(temp.valid) {
         temp.tag = temp.address & l2VCMask;
@@ -90,6 +104,9 @@ void L2Request(unsigned long long int address, Data &data, unsigned int blockSiz
           cout << "L2 Dirty Kickout" << endl;
 #endif  
             data.l2DirtyKickouts++;
+            cycles += params.memorySendAddressTime;
+            cycles += params.memoryReadyTime;
+            cycles += params.chunkTime * (params.l2cacheBlockSize/params.chunkSize);
           }
         }
       }
@@ -130,6 +147,7 @@ Data simulator(Config params) {
         break;
       case 'I':
         data.instructionRefs++;
+        data.instructionCycles++;
         break;
     }
     #ifdef PRINTTRACE
@@ -150,6 +168,7 @@ Data simulator(Config params) {
             cout << "L1d Hit" << endl;
 #endif
             data.l1dHitCount++;
+            data.readCycles += params.l1hitTime;
             data.L1d->toFront(current);
           }
           else {
@@ -158,11 +177,13 @@ Data simulator(Config params) {
 #ifdef PRINTSTATUS
             cout << "L1d VC Hit" << endl;
 #endif
-              data.l1dHitCount++;
+              data.l1dMissCount++;
               data.l1dVCHitCount++;
+              data.readCycles += params.l1missTime;
               data.L1d->victimCache->toBack(current);
               copyNode(current, &temp);
               data.L1d->push(&temp);
+              data.readCycles += params.l1hitTime;
               temp.tag = temp.address & dcacheVCMask;
               data.L1d->victimCache->push(&temp);
             }
@@ -172,15 +193,18 @@ Data simulator(Config params) {
 #endif
               //MISS L1
               data.l1dMissCount++;
-              L2Request(address, data, params.l2cacheBlockSize);
+              data.readCycles += params.l1missTime;
+              L2Request(address, data, params, data.readCycles);
 
 //TODO: Transfer Alignment
               data.l1dTransfers++;
+              data.readCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
               current = data.L2->contains(address);
               copyNode(current, &temp);
               temp.address = address;
               data.L1d->push(&temp);
-              if(current->dirty) current->dirty = false;
+              data.readCycles += params.l1hitTime;
+              //current->dirty = false;
               //TODO: Handle Kickout
               if(temp.valid) {
                 temp.tag = temp.address & dcacheVCMask;
@@ -195,7 +219,7 @@ Data simulator(Config params) {
                     cout<<"L1d Dirty Kickout" << endl;
 #endif
                     data.l1dDirtyKickouts++;
-                    L2Request(temp.address, data, params.l2cacheBlockSize, true);
+                    L2Request(temp.address, data, params, data.writeCycles, true);
                   }
                 }
               }
@@ -212,6 +236,7 @@ Data simulator(Config params) {
 #endif
             //HIT L1
             data.l1dHitCount++;
+            data.writeCycles += params.l1hitTime;
             data.L1d->toFront(current);
             current->dirty = true;
           }
@@ -222,12 +247,14 @@ Data simulator(Config params) {
               cout << "L1d VC Hit" << endl;
 #endif
               //VC HIT L1
-              data.l1dHitCount++;
+              data.l1dMissCount++;
               data.l1dVCHitCount++;
+              data.writeCycles += params.l1missTime;
               data.L1d->victimCache->toBack(current);
               copyNode(current, &temp);
               temp.dirty = true;
               data.L1d->push(&temp);
+              data.writeCycles += params.l1hitTime;
               temp.tag = temp.address & dcacheVCMask;
               data.L1d->victimCache->push(&temp);
             }
@@ -237,16 +264,19 @@ Data simulator(Config params) {
 #endif
               //MISS L1
               data.l1dMissCount++;
-              L2Request(address, data, params.l2cacheBlockSize);
+              data.writeCycles += params.l1missTime;
+              L2Request(address, data, params, data.writeCycles);
 
 //TODO: Transfer Alignment
               data.l1dTransfers++;
+              data.writeCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
               current = data.L2->contains(address);
               copyNode(current, &temp);
               temp.address = address;
               temp.dirty = true;
               data.L1d->push(&temp);
-              if(current->dirty) current->dirty = false;
+              data.writeCycles += params.l1hitTime;
+              //current->dirty = false;
               //TODO: Handle Kickout
               if(temp.valid) {
                 temp.tag = temp.address & dcacheVCMask;
@@ -261,7 +291,7 @@ Data simulator(Config params) {
                     cout<<"L1d Dirty Kickout" << endl;
 #endif
                     data.l1dDirtyKickouts++;
-                    L2Request(temp.address, data, params.l2cacheBlockSize, true);
+                    L2Request(temp.address, data, params, data.writeCycles, true);
                   }
                 }
               }
@@ -275,6 +305,7 @@ Data simulator(Config params) {
 #ifdef PRINTSTATUS
             cout<<"L1i Hit" << endl;
 #endif
+            data.instructionCycles += params.l1hitTime;
             data.l1iHitCount++;
             data.L1i->toFront(current);
             break;
@@ -286,11 +317,13 @@ Data simulator(Config params) {
               cout<<"L1i VC Hit" << endl;
 #endif
               //VC HIT L1
-              data.l1iHitCount++;
+              data.l1iMissCount++;
               data.l1iVCHitCount++;
+              data.instructionCycles += params.l1missTime;
               data.L1i->victimCache->toBack(current);
               copyNode(current, &temp);
               data.L1i->push(&temp);
+              data.instructionCycles += params.l1hitTime;
               temp.tag = temp.address & icacheVCMask;
               data.L1i->victimCache->push(&temp);
             }
@@ -300,14 +333,17 @@ Data simulator(Config params) {
               cout<<"L1i Miss" << endl;
 #endif
               data.l1iMissCount++;
-              L2Request(address, data, params.l2cacheBlockSize);
+              data.instructionCycles += params.l1missTime;
+              L2Request(address, data, params, data.instructionCycles);
 
 //TODO: Transfer Alignment
               data.l1iTransfers++;
+              data.instructionCycles += params.l2transferTime * (params.icacheBlockSize/params.l2busWidth);
               current = data.L2->contains(address);
               copyNode(current, &temp);
               temp.address = address;
               data.L1i->push(&temp);
+              data.instructionCycles += params.l1hitTime;
               if(current->dirty) current->dirty = false;
               //TODO: Handle Kickout
               if(temp.valid) {
@@ -327,6 +363,8 @@ Data simulator(Config params) {
       } 
     }
   }
-
+  data.totalCycles = data.readCycles + data.writeCycles + data.instructionCycles;
+  data.idealTime = (2 * data.instructionRefs) + data.readRefs + data.writeRefs;
+  data.idealMisAlignedTime = data.instructionRefs + data.l1iTotalRequests + data.l1dTotalRequests;
   return data;
 }

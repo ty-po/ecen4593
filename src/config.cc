@@ -20,7 +20,7 @@ Config newConfig(int argc, char ** argv){
   if(argc >= 2) {
 
     params.setupName = argv[1];
-    string path = "../test/config/";
+    string path = "../tools/config/";
     path.append(argv[1]);
     ifstream configFile (path);
 
