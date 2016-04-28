@@ -87,7 +87,7 @@ void L2Request(unsigned long long int address, Data &data, Config params, unsign
         cout<<"L2 Kickout" << endl;
 #endif
         data.l2Kickouts++;
-        //data.writeCycles += params.l2missTime;
+
 
         if(data.L2->victimCache->tail->dirty) {
 #ifdef PRINTSTATUS
@@ -95,9 +95,9 @@ void L2Request(unsigned long long int address, Data &data, Config params, unsign
 #endif
           data.l2DirtyKickouts++;
           //TODO Dirty Kickout
-          data.writeCycles += params.memorySendAddressTime;
-          data.writeCycles += params.memoryReadyTime;
-          data.writeCycles += params.chunkTime * (params.l2cacheBlockSize/params.chunkSize);
+          cycles += params.memorySendAddressTime;
+          cycles += params.memoryReadyTime;
+          cycles += params.chunkTime * (params.l2cacheBlockSize/params.chunkSize); 
 
         }
       }
@@ -213,13 +213,15 @@ Data simulator(Config params) {
                 cout<<"L1d Kickout" << endl;
 #endif
                 data.l1dKickouts++;
+                //data.readCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
 
                 if(data.L1d->victimCache->tail->dirty) {
 #ifdef PRINTSTATUS
                   cout<<"L1d Dirty Kickout" << endl;
 #endif
                   data.l1dDirtyKickouts++;
-                  L2Request(data.L1d->victimCache->tail->address, data, params, data.writeCycles, true);
+                  data.readCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
+                  L2Request(data.L1d->victimCache->tail->address, data, params, data.readCycles, true);
 
                 }
               }
@@ -292,12 +294,14 @@ Data simulator(Config params) {
                 cout<<"L1d Kickout" << endl;
 #endif
                 data.l1dKickouts++;
+                //data.writeCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
 
                 if(data.L1d->victimCache->tail->dirty) {
 #ifdef PRINTSTATUS
                   cout<<"L1d Dirty Kickout" << endl;
 #endif
                   data.l1dDirtyKickouts++;
+                  data.writeCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
                   L2Request(data.L1d->victimCache->tail->address, data, params, data.writeCycles, true);
 
                 }
@@ -366,13 +370,15 @@ Data simulator(Config params) {
                 cout<<"L1i Kickout" << endl;
 #endif
                 data.l1iKickouts++;
+                //data.instructionCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
 
                 if(data.L1i->victimCache->tail->dirty) {
 #ifdef PRINTSTATUS
                   cout<<"L1i Dirty Kickout" << endl;
 #endif
                   data.l1iDirtyKickouts++;
-                  L2Request(data.L1i->victimCache->tail->address, data, params, data.writeCycles, true);
+                  data.instructionCycles += params.l2transferTime * (params.dcacheBlockSize/params.l2busWidth);
+                  L2Request(data.L1i->victimCache->tail->address, data, params, data.instructionCycles, true);
 
                 }
               }
