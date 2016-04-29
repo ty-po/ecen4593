@@ -1,0 +1,588 @@
+
+-------------------------------------------------------------------------
+      gobmk.All-FA          Simulation Results
+-------------------------------------------------------------------------
+
+  Memory system:
+    Dcache size = 8192 : ways = 256 : block size = 32
+    Icache size = 8192 : ways = 256 : block size = 32
+    L2-cache size = 32768 : ways = 512 : block size = 64
+    Memory ready time = 50 : chunksize = 8 : chunktime = 15
+
+  Execute time =      8586715;  Total refs = 1000000
+  Inst refs = 682498;   Data refs = 317502
+
+  Number of reference types:  [Percentage]
+    Reads  =      213865    [21.4%]
+    Writes =      103637    [10.4%]
+    Inst.  =      682498    [68.2%]
+    Total  =     1000000
+
+  Total cycles for activities:  [Percentage]
+    Reads  =      780186    [ 9.1%]
+    Writes =     5671063    [66.0%]
+    Inst.  =     2135466    [24.9%]
+    Total  =     8586715
+
+  CPI = 12.6
+  Ideal: Exec. Time = 1682498; CPI = 2.5
+  Ideal mis-aligned: Exec. Time = 2516596; CPI = 3.7
+
+  Memory Level:  L1i
+    Hit Count = 1309362  Miss Count = 1266
+    Total Requests = 1310628
+    Hit Rate = 99.9%  Miss Rate = 0.1%
+    Kickouts = 994; Dirty kickouts = 0; Transfers = 1258
+    VC Hit count = 8
+
+  Memory Level:  L1d
+    Hit Count = 497365  Miss Count = 26105
+    Total Requests = 523470
+    Hit Rate = 95.0%  Miss Rate = 5.0%
+    Kickouts = 25830; Dirty kickouts = 23104; Transfers = 26094
+    VC Hit count = 11
+
+  Memory Level:  L2
+    Hit Count = 36702  Miss Count = 13754
+    Total Requests = 50456
+    Hit Rate = 72.7%  Miss Rate = 27.3%
+    Kickouts = 13231; Dirty kickouts = 11207; Transfers = 13751
+    VC Hit count = 3
+
+  L1 cache cost (Icache $1800) + (Dcache $1800) = $3600
+  L2 cache cost = $1000;  Memory cost = $75  Total cost = $4675
+
+-------------------------------------------------------------------------
+
+Cache final contents - Index and Tag values are in HEX
+
+Memory Level: L1i
+Index:    0  | V:1 D:0 Tag:        21089 | V:1 D:0 Tag:        2108a |
+             | V:1 D:0 Tag:  3fe53654d1a | V:1 D:0 Tag:  3fe53654d19 |
+             | V:1 D:0 Tag:  3fe53654d18 | V:1 D:0 Tag:  3fe53654d17 |
+             | V:1 D:0 Tag:  3fe53654d1c | V:1 D:0 Tag:  3fe53654d1b |
+             | V:1 D:0 Tag:  3fe53654d16 | V:1 D:0 Tag:  3fe53654d15 |
+             | V:1 D:0 Tag:  3fe53654d14 | V:1 D:0 Tag:  3fe53654d13 |
+             | V:1 D:0 Tag:  3fe53654d11 | V:1 D:0 Tag:  3fe53654d10 |
+             | V:1 D:0 Tag:  3fe53654d20 | V:1 D:0 Tag:  3fe53654d1f |
+             | V:1 D:0 Tag:  3fe53654d0f | V:1 D:0 Tag:  3fe53654d0e |
+             | V:1 D:0 Tag:  3fe54007cb8 | V:1 D:0 Tag:  3fe53654d0d |
+             | V:1 D:0 Tag:  3fe5364f628 | V:1 D:0 Tag:  3fe5364f627 |
+             | V:1 D:0 Tag:  3fe5364f61f | V:1 D:0 Tag:  3fe5364f61e |
+             | V:1 D:0 Tag:  3fe5364f697 | V:1 D:0 Tag:  3fe5364f696 |
+             | V:1 D:0 Tag:  3fe5364f68c | V:1 D:0 Tag:  3fe5364f68b |
+             | V:1 D:0 Tag:  3fe5364f67b | V:1 D:0 Tag:  3fe5364f67a |
+             | V:1 D:0 Tag:  3fe54008693 | V:1 D:0 Tag:  3fe54008692 |
+             | V:1 D:0 Tag:  3fe54008691 | V:1 D:0 Tag:  3fe5400833e |
+             | V:1 D:0 Tag:  3fe5400833d | V:1 D:0 Tag:  3fe5400833c |
+             | V:1 D:0 Tag:  3fe5400833b | V:1 D:0 Tag:  3fe5400812c |
+             | V:1 D:0 Tag:  3fe5400812b | V:1 D:0 Tag:  3fe5400812a |
+             | V:1 D:0 Tag:  3fe54008129 | V:1 D:0 Tag:  3fe540080e5 |
+             | V:1 D:0 Tag:  3fe540080e4 | V:1 D:0 Tag:  3fe540080e8 |
+             | V:1 D:0 Tag:  3fe540080e7 | V:1 D:0 Tag:  3fe540080e6 |
+             | V:1 D:0 Tag:  3fe54008115 | V:1 D:0 Tag:  3fe54008114 |
+             | V:1 D:0 Tag:  3fe540080d0 | V:1 D:0 Tag:  3fe540080d3 |
+             | V:1 D:0 Tag:  3fe54008847 | V:1 D:0 Tag:  3fe54008846 |
+             | V:1 D:0 Tag:  3fe540080cf | V:1 D:0 Tag:  3fe540080ce |
+             | V:1 D:0 Tag:  3fe540080cd | V:1 D:0 Tag:  3fe540080cc |
+             | V:1 D:0 Tag:  3fe540080cb | V:1 D:0 Tag:  3fe540080ca |
+             | V:1 D:0 Tag:  3fe540080d4 | V:1 D:0 Tag:  3fe540080c9 |
+             | V:1 D:0 Tag:  3fe54008113 | V:1 D:0 Tag:  3fe54008112 |
+             | V:1 D:0 Tag:  3fe54008111 | V:1 D:0 Tag:  3fe54008110 |
+             | V:1 D:0 Tag:  3fe540080e1 | V:1 D:0 Tag:  3fe540080e0 |
+             | V:1 D:0 Tag:  3fe540080df | V:1 D:0 Tag:  3fe540080de |
+             | V:1 D:0 Tag:  3fe540080dd | V:1 D:0 Tag:  3fe540080dc |
+             | V:1 D:0 Tag:  3fe540080db | V:1 D:0 Tag:  3fe540080da |
+             | V:1 D:0 Tag:  3fe540080e3 | V:1 D:0 Tag:  3fe54008425 |
+             | V:1 D:0 Tag:  3fe54008423 | V:1 D:0 Tag:  3fe54008424 |
+             | V:1 D:0 Tag:  3fe54008422 | V:1 D:0 Tag:  3fe540080e2 |
+             | V:1 D:0 Tag:  3fe540080d9 | V:1 D:0 Tag:  3fe540080d8 |
+             | V:1 D:0 Tag:  3fe540080d7 | V:1 D:0 Tag:  3fe54008128 |
+             | V:1 D:0 Tag:  3fe54008127 | V:1 D:0 Tag:  3fe54008126 |
+             | V:1 D:0 Tag:  3fe54008125 | V:1 D:0 Tag:  3fe54008124 |
+             | V:1 D:0 Tag:  3fe54008123 | V:1 D:0 Tag:  3fe54008122 |
+             | V:1 D:0 Tag:  3fe54008121 | V:1 D:0 Tag:  3fe54008120 |
+             | V:1 D:0 Tag:  3fe5400811f | V:1 D:0 Tag:  3fe5400833a |
+             | V:1 D:0 Tag:  3fe54008339 | V:1 D:0 Tag:  3fe54008338 |
+             | V:1 D:0 Tag:  3fe54008337 | V:1 D:0 Tag:  3fe54008336 |
+             | V:1 D:0 Tag:  3fe54008335 | V:1 D:0 Tag:  3fe54008334 |
+             | V:1 D:0 Tag:  3fe54008690 | V:1 D:0 Tag:        20086 |
+             | V:1 D:0 Tag:        20085 | V:1 D:0 Tag:        2008b |
+             | V:1 D:0 Tag:        2008a | V:1 D:0 Tag:        2110d |
+             | V:1 D:0 Tag:        2110c | V:1 D:0 Tag:        23929 |
+             | V:1 D:0 Tag:        246d7 | V:1 D:0 Tag:        246d6 |
+             | V:1 D:0 Tag:        23928 | V:1 D:0 Tag:        23926 |
+             | V:1 D:0 Tag:        23925 | V:1 D:0 Tag:        246df |
+             | V:1 D:0 Tag:        246de | V:1 D:0 Tag:        246dd |
+             | V:1 D:0 Tag:        246dc | V:1 D:0 Tag:        246d9 |
+             | V:1 D:0 Tag:        246d8 | V:1 D:0 Tag:        23927 |
+             | V:1 D:0 Tag:        246db | V:1 D:0 Tag:        246da |
+             | V:1 D:0 Tag:  3fe540081fe | V:1 D:0 Tag:  3fe540081fd |
+             | V:1 D:0 Tag:  3fe540081fc | V:1 D:0 Tag:  3fe540081fb |
+             | V:1 D:0 Tag:  3fe540081fa | V:1 D:0 Tag:  3fe54008206 |
+             | V:1 D:0 Tag:  3fe540081f9 | V:1 D:0 Tag:  3fe540081f8 |
+             | V:1 D:0 Tag:  3fe540081f7 | V:1 D:0 Tag:  3fe540081f6 |
+             | V:1 D:0 Tag:  3fe540081f5 | V:1 D:0 Tag:  3fe54008214 |
+             | V:1 D:0 Tag:  3fe54008213 | V:1 D:0 Tag:  3fe54008200 |
+             | V:1 D:0 Tag:  3fe540081ff | V:1 D:0 Tag:  3fe54008144 |
+             | V:1 D:0 Tag:  3fe54008143 | V:1 D:0 Tag:  3fe54008167 |
+             | V:1 D:0 Tag:  3fe54008222 | V:1 D:0 Tag:  3fe54008221 |
+             | V:1 D:0 Tag:  3fe54008220 | V:1 D:0 Tag:  3fe54008225 |
+             | V:1 D:0 Tag:  3fe54008224 | V:1 D:0 Tag:  3fe540081f4 |
+             | V:1 D:0 Tag:  3fe540081f3 | V:1 D:0 Tag:  3fe540081f2 |
+             | V:1 D:0 Tag:  3fe540081f1 | V:1 D:0 Tag:  3fe540081f0 |
+             | V:1 D:0 Tag:  3fe540081ef | V:1 D:0 Tag:  3fe540081e6 |
+             | V:1 D:0 Tag:  3fe540081e5 | V:1 D:0 Tag:  3fe540081e4 |
+             | V:1 D:0 Tag:  3fe54008205 | V:1 D:0 Tag:  3fe540081e3 |
+             | V:1 D:0 Tag:  3fe540081e2 | V:1 D:0 Tag:  3fe540081e1 |
+             | V:1 D:0 Tag:  3fe540081e0 | V:1 D:0 Tag:  3fe54008204 |
+             | V:1 D:0 Tag:  3fe54008203 | V:1 D:0 Tag:  3fe54008202 |
+             | V:1 D:0 Tag:  3fe54008201 | V:1 D:0 Tag:  3fe540081df |
+             | V:1 D:0 Tag:  3fe540081de | V:1 D:0 Tag:  3fe540081dd |
+             | V:1 D:0 Tag:  3fe540081dc | V:1 D:0 Tag:  3fe540081db |
+             | V:1 D:0 Tag:  3fe540081da | V:1 D:0 Tag:  3fe54007dd9 |
+             | V:1 D:0 Tag:  3fe54007dd8 | V:1 D:0 Tag:  3fe54007dd7 |
+             | V:1 D:0 Tag:  3fe54007dd6 | V:1 D:0 Tag:  3fe54007dda |
+             | V:1 D:0 Tag:  3fe54007e75 | V:1 D:0 Tag:  3fe54007dd5 |
+             | V:1 D:0 Tag:  3fe54007dd4 | V:1 D:0 Tag:  3fe54007dbb |
+             | V:1 D:0 Tag:  3fe54007dba | V:1 D:0 Tag:  3fe54007db9 |
+             | V:1 D:0 Tag:  3fe54007dfa | V:1 D:0 Tag:  3fe54007db1 |
+             | V:1 D:0 Tag:  3fe54007db0 | V:1 D:0 Tag:  3fe54007d31 |
+             | V:1 D:0 Tag:  3fe54007d30 | V:1 D:0 Tag:  3fe54007d2f |
+             | V:1 D:0 Tag:  3fe54007d2e | V:1 D:0 Tag:  3fe54007daf |
+             | V:1 D:0 Tag:  3fe54007dfc | V:1 D:0 Tag:  3fe54007dfb |
+             | V:1 D:0 Tag:  3fe54007c81 | V:1 D:0 Tag:  3fe54007c80 |
+             | V:1 D:0 Tag:  3fe54007c7f | V:1 D:0 Tag:  3fe54007c7e |
+             | V:1 D:0 Tag:  3fe540084eb | V:1 D:0 Tag:  3fe540084ea |
+             | V:1 D:0 Tag:  3fe54008747 | V:1 D:0 Tag:  3fe54008746 |
+             | V:1 D:0 Tag:  3fe54008745 | V:1 D:0 Tag:  3fe54008821 |
+             | V:1 D:0 Tag:  3fe54008744 | V:1 D:0 Tag:  3fe54008743 |
+             | V:1 D:0 Tag:  3fe54008742 | V:1 D:0 Tag:  3fe54008741 |
+             | V:1 D:0 Tag:  3fe54007c54 | V:1 D:0 Tag:  3fe54008749 |
+             | V:1 D:0 Tag:  3fe54007c55 | V:1 D:0 Tag:  3fe5400874b |
+             | V:1 D:0 Tag:  3fe5400874a | V:1 D:0 Tag:  3fe54007c56 |
+             | V:1 D:0 Tag:  3fe540084e9 | V:1 D:0 Tag:  3fe540084e8 |
+             | V:1 D:0 Tag:  3fe540084e7 | V:1 D:0 Tag:  3fe540084e6 |
+             | V:1 D:0 Tag:  3fe54007c7d | V:1 D:0 Tag:  3fe540084dc |
+             | V:1 D:0 Tag:  3fe540084db | V:1 D:0 Tag:  3fe540084da |
+             | V:1 D:0 Tag:  3fe540084d6 | V:1 D:0 Tag:  3fe540084d5 |
+             | V:1 D:0 Tag:  3fe540084d9 | V:1 D:0 Tag:  3fe540084d8 |
+             | V:1 D:0 Tag:  3fe540084d7 | V:1 D:0 Tag:  3fe540084d4 |
+             | V:1 D:0 Tag:  3fe540084d3 | V:1 D:0 Tag:  3fe540084d2 |
+             | V:1 D:0 Tag:  3fe540084d1 | V:1 D:0 Tag:  3fe54007c7c |
+             | V:1 D:0 Tag:  3fe54007c7b | V:1 D:0 Tag:  3fe54007c7a |
+             | V:1 D:0 Tag:  3fe54007c79 | V:1 D:0 Tag:  3fe54007c78 |
+             | V:1 D:0 Tag:  3fe54008393 | V:1 D:0 Tag:  3fe54008392 |
+             | V:1 D:0 Tag:  3fe54007d36 | V:1 D:0 Tag:  3fe54007d35 |
+             | V:1 D:0 Tag:  3fe5400846f | V:1 D:0 Tag:  3fe5400846e |
+             | V:1 D:0 Tag:  3fe5400845a | V:1 D:0 Tag:  3fe54008459 |
+             | V:1 D:0 Tag:  3fe54008463 | V:1 D:0 Tag:  3fe54008462 |
+             | V:1 D:0 Tag:  3fe54008461 | V:1 D:0 Tag:  3fe54008460 |
+             | V:1 D:0 Tag:  3fe5400845c | V:1 D:0 Tag:  3fe5400845b |
+             | V:1 D:0 Tag:  3fe54008458 | V:1 D:0 Tag:  3fe54008457 |
+             | V:1 D:0 Tag:  3fe5400844a | V:1 D:0 Tag:  3fe54008449 |
+             | V:1 D:0 Tag:  3fe54008448 | V:1 D:0 Tag:  3fe5400846d |
+             | V:1 D:0 Tag:  3fe5400845f | V:1 D:0 Tag:  3fe5400845e |
+             | V:1 D:0 Tag:  3fe5400845d | V:1 D:0 Tag:  3fe54008453 |
+             | V:1 D:0 Tag:  3fe54008452 | V:1 D:0 Tag:  3fe54008451 |
+Victim cache:
+            | V:1 D:0 Addr: 7fca80108680 | V:1 D:0 Addr: 7fca80108660 |
+            | V:1 D:0 Addr: 7fca80108640 | V:1 D:0 Addr: 7fca80108580 |
+            | V:1 D:0 Addr: 7fca801085a0 | V:1 D:0 Addr: 7fca80108560 |
+            | V:1 D:0 Addr: 7fca80108540 | V:1 D:0 Addr: 7fca80108520 |
+Memory Level: L1d
+Index:    0  | V:1 D:0 Tag:        cae80 | V:1 D:1 Tag:  3fe5363253e |
+             | V:1 D:1 Tag:  3fe5363253d | V:1 D:1 Tag:  3fe5363253c |
+             | V:1 D:1 Tag:  3fe5363253b | V:1 D:1 Tag:  3fe5363253a |
+             | V:1 D:1 Tag:  3fe53632539 | V:1 D:1 Tag:  3fe53632538 |
+             | V:1 D:1 Tag:  3fe53632537 | V:1 D:1 Tag:  3fe53632536 |
+             | V:1 D:1 Tag:  3fe53632535 | V:1 D:1 Tag:  3fe53632534 |
+             | V:1 D:1 Tag:  3fe53632533 | V:1 D:1 Tag:  3fe53632532 |
+             | V:1 D:1 Tag:  3fe53632531 | V:1 D:1 Tag:  3fe53632530 |
+             | V:1 D:1 Tag:  3fe5363252f | V:1 D:1 Tag:  3fe5363252e |
+             | V:1 D:1 Tag:  3fe5363252d | V:1 D:1 Tag:  3fe5363252c |
+             | V:1 D:1 Tag:  3fe5363252b | V:1 D:1 Tag:  3fe5363252a |
+             | V:1 D:1 Tag:  3fe53632529 | V:1 D:1 Tag:  3fe53632528 |
+             | V:1 D:1 Tag:  3fe53632527 | V:1 D:1 Tag:  3fe53632526 |
+             | V:1 D:1 Tag:  3fe53632525 | V:1 D:1 Tag:  3fe53632524 |
+             | V:1 D:1 Tag:  3fe53632523 | V:1 D:1 Tag:  3fe53632522 |
+             | V:1 D:1 Tag:  3fe53632521 | V:1 D:1 Tag:  3fe53632520 |
+             | V:1 D:1 Tag:  3fe5363251f | V:1 D:1 Tag:  3fe5363251e |
+             | V:1 D:1 Tag:  3fe5363251d | V:1 D:1 Tag:  3fe5363251c |
+             | V:1 D:1 Tag:  3fe5363251b | V:1 D:1 Tag:  3fe5363251a |
+             | V:1 D:1 Tag:  3fe53632519 | V:1 D:1 Tag:  3fe53632518 |
+             | V:1 D:1 Tag:  3fe53632517 | V:1 D:1 Tag:  3fe53632516 |
+             | V:1 D:1 Tag:  3fe53632515 | V:1 D:1 Tag:  3fe53632514 |
+             | V:1 D:1 Tag:  3fe53632513 | V:1 D:1 Tag:  3fe53632512 |
+             | V:1 D:1 Tag:  3fe53632511 | V:1 D:1 Tag:  3fe53632510 |
+             | V:1 D:1 Tag:  3fe5363250f | V:1 D:1 Tag:  3fe5363250e |
+             | V:1 D:1 Tag:  3fe5363250d | V:1 D:1 Tag:  3fe5363250c |
+             | V:1 D:1 Tag:  3fe5363250b | V:1 D:1 Tag:  3fe5363250a |
+             | V:1 D:1 Tag:  3fe53632509 | V:1 D:1 Tag:  3fe53632508 |
+             | V:1 D:1 Tag:  3fe53632507 | V:1 D:1 Tag:  3fe53632506 |
+             | V:1 D:1 Tag:  3fe53632505 | V:1 D:1 Tag:  3fe53632504 |
+             | V:1 D:1 Tag:  3fe53632503 | V:1 D:1 Tag:  3fe53632502 |
+             | V:1 D:1 Tag:  3fe53632501 | V:1 D:1 Tag:  3fe53632500 |
+             | V:1 D:1 Tag:  3fe536324ff | V:1 D:1 Tag:  3fe536324fe |
+             | V:1 D:1 Tag:  3fe536324fd | V:1 D:1 Tag:  3fe536324fc |
+             | V:1 D:1 Tag:  3fe536324fb | V:1 D:1 Tag:  3fe536324fa |
+             | V:1 D:1 Tag:  3fe536324f9 | V:1 D:1 Tag:  3fe536324f8 |
+             | V:1 D:1 Tag:  3fe536324f7 | V:1 D:1 Tag:  3fe536324f6 |
+             | V:1 D:1 Tag:  3fe536324f5 | V:1 D:1 Tag:  3fe536324f4 |
+             | V:1 D:1 Tag:  3fe536324f3 | V:1 D:1 Tag:  3fe536324f2 |
+             | V:1 D:1 Tag:  3fe536324f1 | V:1 D:1 Tag:  3fe536324f0 |
+             | V:1 D:1 Tag:  3fe536324ef | V:1 D:1 Tag:  3fe536324ee |
+             | V:1 D:1 Tag:  3fe536324ed | V:1 D:1 Tag:  3fe536324ec |
+             | V:1 D:1 Tag:  3fe536324eb | V:1 D:1 Tag:  3fe536324ea |
+             | V:1 D:1 Tag:  3fe536324e9 | V:1 D:1 Tag:  3fe536324e8 |
+             | V:1 D:1 Tag:  3fe536324e7 | V:1 D:1 Tag:  3fe536324e6 |
+             | V:1 D:1 Tag:  3fe536324e5 | V:1 D:1 Tag:  3fe536324e4 |
+             | V:1 D:1 Tag:  3fe536324e3 | V:1 D:1 Tag:  3fe536324e2 |
+             | V:1 D:1 Tag:  3fe536324e1 | V:1 D:1 Tag:  3fe536324e0 |
+             | V:1 D:1 Tag:  3fe536324df | V:1 D:1 Tag:  3fe536324de |
+             | V:1 D:1 Tag:  3fe536324dd | V:1 D:1 Tag:  3fe536324dc |
+             | V:1 D:1 Tag:  3fe536324db | V:1 D:1 Tag:  3fe536324da |
+             | V:1 D:1 Tag:  3fe536324d9 | V:1 D:1 Tag:  3fe536324d8 |
+             | V:1 D:1 Tag:  3fe536324d7 | V:1 D:1 Tag:  3fe536324d6 |
+             | V:1 D:1 Tag:  3fe536324d5 | V:1 D:1 Tag:  3fe536324d4 |
+             | V:1 D:1 Tag:  3fe536324d3 | V:1 D:1 Tag:  3fe536324d2 |
+             | V:1 D:1 Tag:  3fe536324d1 | V:1 D:1 Tag:  3fe536324d0 |
+             | V:1 D:1 Tag:  3fe536324cf | V:1 D:1 Tag:  3fe536324ce |
+             | V:1 D:1 Tag:  3fe536324cd | V:1 D:1 Tag:  3fe536324cc |
+             | V:1 D:1 Tag:  3fe536324cb | V:1 D:1 Tag:  3fe536324ca |
+             | V:1 D:1 Tag:  3fe536324c9 | V:1 D:1 Tag:  3fe536324c8 |
+             | V:1 D:1 Tag:  3fe536324c7 | V:1 D:1 Tag:  3fe536324c6 |
+             | V:1 D:1 Tag:  3fe536324c5 | V:1 D:1 Tag:  3fe536324c4 |
+             | V:1 D:1 Tag:  3fe536324c3 | V:1 D:1 Tag:  3fe536324c2 |
+             | V:1 D:1 Tag:  3fe536324c1 | V:1 D:1 Tag:  3fe536324c0 |
+             | V:1 D:1 Tag:  3fe536324bf | V:1 D:1 Tag:  3fe536324be |
+             | V:1 D:1 Tag:  3fe536324bd | V:1 D:1 Tag:  3fe536324bc |
+             | V:1 D:1 Tag:  3fe536324bb | V:1 D:1 Tag:  3fe536324ba |
+             | V:1 D:1 Tag:  3fe536324b9 | V:1 D:1 Tag:  3fe536324b8 |
+             | V:1 D:1 Tag:  3fe536324b7 | V:1 D:1 Tag:  3fe536324b6 |
+             | V:1 D:1 Tag:  3fe536324b5 | V:1 D:1 Tag:  3fe536324b4 |
+             | V:1 D:1 Tag:  3fe536324b3 | V:1 D:1 Tag:  3fe536324b2 |
+             | V:1 D:1 Tag:  3fe536324b1 | V:1 D:1 Tag:  3fe536324b0 |
+             | V:1 D:1 Tag:  3fe536324af | V:1 D:1 Tag:  3fe536324ae |
+             | V:1 D:1 Tag:  3fe536324ad | V:1 D:1 Tag:  3fe536324ac |
+             | V:1 D:1 Tag:  3fe536324ab | V:1 D:1 Tag:  3fe536324aa |
+             | V:1 D:1 Tag:  3fe536324a9 | V:1 D:1 Tag:  3fe536324a8 |
+             | V:1 D:1 Tag:  3fe536324a7 | V:1 D:1 Tag:  3fe536324a6 |
+             | V:1 D:1 Tag:  3fe536324a5 | V:1 D:1 Tag:  3fe536324a4 |
+             | V:1 D:1 Tag:  3fe536324a3 | V:1 D:1 Tag:  3fe536324a2 |
+             | V:1 D:1 Tag:  3fe536324a1 | V:1 D:1 Tag:  3fe536324a0 |
+             | V:1 D:1 Tag:  3fe5363249f | V:1 D:1 Tag:  3fe5363249e |
+             | V:1 D:1 Tag:  3fe5363249d | V:1 D:1 Tag:  3fe5363249c |
+             | V:1 D:1 Tag:  3fe5363249b | V:1 D:1 Tag:  3fe5363249a |
+             | V:1 D:1 Tag:  3fe53632499 | V:1 D:1 Tag:  3fe53632498 |
+             | V:1 D:1 Tag:  3fe53632497 | V:1 D:1 Tag:  3fe53632496 |
+             | V:1 D:1 Tag:  3fe53632495 | V:1 D:1 Tag:  3fe53632494 |
+             | V:1 D:1 Tag:  3fe53632493 | V:1 D:1 Tag:  3fe53632492 |
+             | V:1 D:1 Tag:  3fe53632491 | V:1 D:1 Tag:  3fe53632490 |
+             | V:1 D:1 Tag:  3fe5363248f | V:1 D:1 Tag:  3fe5363248e |
+             | V:1 D:1 Tag:  3fe5363248d | V:1 D:1 Tag:  3fe5363248c |
+             | V:1 D:1 Tag:  3fe5363248b | V:1 D:1 Tag:  3fe5363248a |
+             | V:1 D:1 Tag:  3fe53632489 | V:1 D:1 Tag:  3fe53632488 |
+             | V:1 D:1 Tag:  3fe53632487 | V:1 D:1 Tag:  3fe53632486 |
+             | V:1 D:1 Tag:  3fe53632485 | V:1 D:1 Tag:  3fe53632484 |
+             | V:1 D:1 Tag:  3fe53632483 | V:1 D:1 Tag:  3fe53632482 |
+             | V:1 D:1 Tag:  3fe53632481 | V:1 D:1 Tag:  3fe53632480 |
+             | V:1 D:1 Tag:  3fe5363247f | V:1 D:1 Tag:  3fe5363247e |
+             | V:1 D:1 Tag:  3fe5363247d | V:1 D:1 Tag:  3fe5363247c |
+             | V:1 D:1 Tag:  3fe5363247b | V:1 D:1 Tag:  3fe5363247a |
+             | V:1 D:1 Tag:  3fe53632479 | V:1 D:1 Tag:  3fe53632478 |
+             | V:1 D:1 Tag:  3fe53632477 | V:1 D:1 Tag:  3fe53632476 |
+             | V:1 D:1 Tag:  3fe53632475 | V:1 D:1 Tag:  3fe53632474 |
+             | V:1 D:1 Tag:  3fe53632473 | V:1 D:1 Tag:  3fe53632472 |
+             | V:1 D:1 Tag:  3fe53632471 | V:1 D:1 Tag:  3fe53632470 |
+             | V:1 D:1 Tag:  3fe5363246f | V:1 D:1 Tag:  3fe5363246e |
+             | V:1 D:1 Tag:  3fe5363246d | V:1 D:1 Tag:  3fe5363246c |
+             | V:1 D:1 Tag:  3fe5363246b | V:1 D:1 Tag:  3fe5363246a |
+             | V:1 D:1 Tag:  3fe53632469 | V:1 D:1 Tag:  3fe53632468 |
+             | V:1 D:1 Tag:  3fe53632467 | V:1 D:1 Tag:  3fe53632466 |
+             | V:1 D:1 Tag:  3fe53632465 | V:1 D:1 Tag:  3fe53632464 |
+             | V:1 D:1 Tag:  3fe53632463 | V:1 D:1 Tag:  3fe53632462 |
+             | V:1 D:1 Tag:  3fe53632461 | V:1 D:1 Tag:  3fe53632460 |
+             | V:1 D:1 Tag:  3fe5363245f | V:1 D:1 Tag:  3fe5363245e |
+             | V:1 D:1 Tag:  3fe5363245d | V:1 D:1 Tag:  3fe5363245c |
+             | V:1 D:1 Tag:  3fe5363245b | V:1 D:1 Tag:  3fe5363245a |
+             | V:1 D:1 Tag:  3fe53632459 | V:1 D:1 Tag:  3fe53632458 |
+             | V:1 D:1 Tag:  3fe53632457 | V:1 D:1 Tag:  3fe53632456 |
+             | V:1 D:1 Tag:  3fe53632455 | V:1 D:1 Tag:  3fe53632454 |
+             | V:1 D:1 Tag:  3fe53632453 | V:1 D:1 Tag:  3fe53632452 |
+             | V:1 D:1 Tag:  3fe53632451 | V:1 D:1 Tag:  3fe53632450 |
+             | V:1 D:1 Tag:  3fe5363244f | V:1 D:1 Tag:  3fe5363244e |
+             | V:1 D:1 Tag:  3fe5363244d | V:1 D:1 Tag:  3fe5363244c |
+             | V:1 D:1 Tag:  3fe5363244b | V:1 D:1 Tag:  3fe5363244a |
+             | V:1 D:1 Tag:  3fe53632449 | V:1 D:1 Tag:  3fe53632448 |
+             | V:1 D:1 Tag:  3fe53632447 | V:1 D:1 Tag:  3fe53632446 |
+             | V:1 D:1 Tag:  3fe53632445 | V:1 D:1 Tag:  3fe53632444 |
+             | V:1 D:1 Tag:  3fe53632443 | V:1 D:1 Tag:  3fe53632442 |
+             | V:1 D:1 Tag:  3fe53632441 | V:1 D:1 Tag:  3fe53632440 |
+Victim cache:
+            | V:1 D:1 Addr: 7fca6c6487e0 | V:1 D:1 Addr: 7fca6c6487c0 |
+            | V:1 D:1 Addr: 7fca6c6487a0 | V:1 D:1 Addr: 7fca6c648780 |
+            | V:1 D:1 Addr: 7fca6c648760 | V:1 D:1 Addr: 7fca6c648740 |
+            | V:1 D:1 Addr: 7fca6c648720 | V:1 D:1 Addr: 7fca6c648700 |
+Memory Level: L2
+Index:    0  | V:1 D:0 Tag:  1ff29b1929f | V:1 D:1 Tag:  1ff29b1921b |
+             | V:1 D:0 Tag:  1ff29b1929e | V:1 D:1 Tag:  1ff29b1921a |
+             | V:1 D:0 Tag:  1ff29b1929d | V:1 D:1 Tag:  1ff29b19219 |
+             | V:1 D:0 Tag:  1ff29b1929c | V:1 D:1 Tag:  1ff29b19218 |
+             | V:1 D:0 Tag:  1ff29b1929b | V:1 D:1 Tag:  1ff29b19217 |
+             | V:1 D:0 Tag:  1ff29b1929a | V:1 D:1 Tag:  1ff29b19216 |
+             | V:1 D:0 Tag:  1ff29b19299 | V:1 D:1 Tag:  1ff29b19215 |
+             | V:1 D:0 Tag:  1ff29b19298 | V:1 D:1 Tag:  1ff29b19214 |
+             | V:1 D:0 Tag:  1ff29b19297 | V:1 D:1 Tag:  1ff29b19213 |
+             | V:1 D:0 Tag:  1ff29b19296 | V:1 D:1 Tag:  1ff29b19212 |
+             | V:1 D:0 Tag:  1ff29b19295 | V:1 D:1 Tag:  1ff29b19211 |
+             | V:1 D:0 Tag:  1ff29b19294 | V:1 D:1 Tag:  1ff29b19210 |
+             | V:1 D:0 Tag:  1ff29b19293 | V:1 D:1 Tag:  1ff29b1920f |
+             | V:1 D:0 Tag:  1ff29b19292 | V:1 D:1 Tag:  1ff29b1920e |
+             | V:1 D:0 Tag:  1ff29b19291 | V:1 D:1 Tag:  1ff29b1920d |
+             | V:1 D:0 Tag:  1ff29b19290 | V:1 D:1 Tag:  1ff29b1920c |
+             | V:1 D:0 Tag:  1ff29b1928f | V:1 D:1 Tag:  1ff29b1920b |
+             | V:1 D:0 Tag:  1ff29b1928e | V:1 D:1 Tag:  1ff29b1920a |
+             | V:1 D:0 Tag:  1ff29b1928d | V:1 D:1 Tag:  1ff29b19209 |
+             | V:1 D:0 Tag:  1ff29b1928c | V:1 D:1 Tag:  1ff29b19208 |
+             | V:1 D:0 Tag:  1ff29b1928b | V:1 D:1 Tag:  1ff29b19207 |
+             | V:1 D:0 Tag:  1ff29b1928a | V:1 D:1 Tag:  1ff29b19206 |
+             | V:1 D:0 Tag:  1ff29b19289 | V:1 D:1 Tag:  1ff29b19205 |
+             | V:1 D:0 Tag:  1ff29b19288 | V:1 D:1 Tag:  1ff29b19204 |
+             | V:1 D:0 Tag:  1ff29b19287 | V:1 D:1 Tag:  1ff29b19203 |
+             | V:1 D:0 Tag:  1ff29b19286 | V:1 D:1 Tag:  1ff29b19202 |
+             | V:1 D:0 Tag:  1ff29b19285 | V:1 D:1 Tag:  1ff29b19201 |
+             | V:1 D:0 Tag:  1ff29b19284 | V:1 D:1 Tag:  1ff29b19200 |
+             | V:1 D:0 Tag:  1ff29b19283 | V:1 D:1 Tag:  1ff29b191ff |
+             | V:1 D:0 Tag:  1ff29b19282 | V:1 D:1 Tag:  1ff29b191fe |
+             | V:1 D:0 Tag:  1ff29b19281 | V:1 D:1 Tag:  1ff29b191fd |
+             | V:1 D:0 Tag:  1ff29b19280 | V:1 D:1 Tag:  1ff29b191fc |
+             | V:1 D:0 Tag:  1ff29b1927f | V:1 D:1 Tag:  1ff29b191fb |
+             | V:1 D:0 Tag:  1ff29b1927e | V:1 D:1 Tag:  1ff29b191fa |
+             | V:1 D:0 Tag:  1ff29b1927d | V:1 D:1 Tag:  1ff29b191f9 |
+             | V:1 D:0 Tag:  1ff29b1927c | V:1 D:1 Tag:  1ff29b191f8 |
+             | V:1 D:0 Tag:  1ff29b1927b | V:1 D:1 Tag:  1ff29b191f7 |
+             | V:1 D:0 Tag:  1ff29b1927a | V:1 D:1 Tag:  1ff29b191f6 |
+             | V:1 D:0 Tag:  1ff29b19279 | V:1 D:1 Tag:  1ff29b191f5 |
+             | V:1 D:0 Tag:  1ff29b19278 | V:1 D:1 Tag:  1ff29b191f4 |
+             | V:1 D:0 Tag:  1ff29b19277 | V:1 D:1 Tag:  1ff29b191f3 |
+             | V:1 D:0 Tag:  1ff29b19276 | V:1 D:1 Tag:  1ff29b191f2 |
+             | V:1 D:0 Tag:  1ff29b19275 | V:1 D:1 Tag:  1ff29b191f1 |
+             | V:1 D:0 Tag:  1ff29b19274 | V:1 D:1 Tag:  1ff29b191f0 |
+             | V:1 D:0 Tag:  1ff29b19273 | V:1 D:1 Tag:  1ff29b191ef |
+             | V:1 D:0 Tag:  1ff29b19272 | V:1 D:1 Tag:  1ff29b191ee |
+             | V:1 D:0 Tag:  1ff29b19271 | V:1 D:1 Tag:  1ff29b191ed |
+             | V:1 D:0 Tag:  1ff29b19270 | V:1 D:1 Tag:  1ff29b191ec |
+             | V:1 D:0 Tag:  1ff29b1926f | V:1 D:1 Tag:  1ff29b191eb |
+             | V:1 D:0 Tag:  1ff29b1926e | V:1 D:1 Tag:  1ff29b191ea |
+             | V:1 D:0 Tag:  1ff29b1926d | V:1 D:1 Tag:  1ff29b191e9 |
+             | V:1 D:0 Tag:  1ff29b1926c | V:1 D:1 Tag:  1ff29b191e8 |
+             | V:1 D:0 Tag:  1ff29b1926b | V:1 D:1 Tag:  1ff29b191e7 |
+             | V:1 D:0 Tag:  1ff29b1926a | V:1 D:1 Tag:  1ff29b191e6 |
+             | V:1 D:0 Tag:  1ff29b19269 | V:1 D:1 Tag:  1ff29b191e5 |
+             | V:1 D:0 Tag:  1ff29b19268 | V:1 D:1 Tag:  1ff29b191e4 |
+             | V:1 D:0 Tag:  1ff29b19267 | V:1 D:1 Tag:  1ff29b191e3 |
+             | V:1 D:0 Tag:  1ff29b19266 | V:1 D:1 Tag:  1ff29b191e2 |
+             | V:1 D:0 Tag:  1ff29b19265 | V:1 D:1 Tag:  1ff29b191e1 |
+             | V:1 D:0 Tag:  1ff29b19264 | V:1 D:1 Tag:  1ff29b191e0 |
+             | V:1 D:0 Tag:  1ff29b19263 | V:1 D:1 Tag:  1ff29b191df |
+             | V:1 D:0 Tag:  1ff29b19262 | V:1 D:1 Tag:  1ff29b191de |
+             | V:1 D:0 Tag:  1ff29b19261 | V:1 D:1 Tag:  1ff29b191dd |
+             | V:1 D:0 Tag:  1ff29b19260 | V:1 D:1 Tag:  1ff29b191dc |
+             | V:1 D:0 Tag:  1ff29b1925f | V:1 D:1 Tag:  1ff29b191db |
+             | V:1 D:0 Tag:  1ff29b1925e | V:1 D:1 Tag:  1ff29b191da |
+             | V:1 D:0 Tag:  1ff29b1925d | V:1 D:1 Tag:  1ff29b191d9 |
+             | V:1 D:0 Tag:  1ff29b1925c | V:1 D:1 Tag:  1ff29b191d8 |
+             | V:1 D:0 Tag:  1ff29b1925b | V:1 D:1 Tag:  1ff29b191d7 |
+             | V:1 D:0 Tag:  1ff29b1925a | V:1 D:1 Tag:  1ff29b191d6 |
+             | V:1 D:0 Tag:  1ff29b19259 | V:1 D:1 Tag:  1ff29b191d5 |
+             | V:1 D:0 Tag:  1ff29b19258 | V:1 D:1 Tag:  1ff29b191d4 |
+             | V:1 D:0 Tag:  1ff29b19257 | V:1 D:1 Tag:  1ff29b191d3 |
+             | V:1 D:0 Tag:  1ff29b19256 | V:1 D:1 Tag:  1ff29b191d2 |
+             | V:1 D:0 Tag:  1ff29b19255 | V:1 D:1 Tag:  1ff29b191d1 |
+             | V:1 D:0 Tag:  1ff29b19254 | V:1 D:1 Tag:  1ff29b191d0 |
+             | V:1 D:0 Tag:  1ff29b19253 | V:1 D:1 Tag:  1ff29b191cf |
+             | V:1 D:0 Tag:  1ff29b19252 | V:1 D:1 Tag:  1ff29b191ce |
+             | V:1 D:0 Tag:  1ff29b19251 | V:1 D:1 Tag:  1ff29b191cd |
+             | V:1 D:0 Tag:  1ff29b19250 | V:1 D:1 Tag:  1ff29b191cc |
+             | V:1 D:0 Tag:  1ff29b1924f | V:1 D:1 Tag:  1ff29b191cb |
+             | V:1 D:0 Tag:  1ff29b1924e | V:1 D:1 Tag:  1ff29b191ca |
+             | V:1 D:0 Tag:  1ff29b1924d | V:1 D:1 Tag:  1ff29b191c9 |
+             | V:1 D:0 Tag:  1ff29b1924c | V:1 D:1 Tag:  1ff29b191c8 |
+             | V:1 D:0 Tag:  1ff29b1924b | V:1 D:1 Tag:  1ff29b191c7 |
+             | V:1 D:0 Tag:  1ff29b1924a | V:1 D:1 Tag:  1ff29b191c6 |
+             | V:1 D:0 Tag:  1ff29b19249 | V:1 D:1 Tag:  1ff29b191c5 |
+             | V:1 D:0 Tag:  1ff29b19248 | V:1 D:1 Tag:  1ff29b191c4 |
+             | V:1 D:0 Tag:  1ff29b19247 | V:1 D:1 Tag:  1ff29b191c3 |
+             | V:1 D:0 Tag:  1ff29b19246 | V:1 D:1 Tag:  1ff29b191c2 |
+             | V:1 D:0 Tag:  1ff29b19245 | V:1 D:1 Tag:  1ff29b191c1 |
+             | V:1 D:0 Tag:  1ff29b19244 | V:1 D:1 Tag:  1ff29b191c0 |
+             | V:1 D:0 Tag:  1ff29b19243 | V:1 D:1 Tag:  1ff29b191bf |
+             | V:1 D:0 Tag:  1ff29b19242 | V:1 D:1 Tag:  1ff29b191be |
+             | V:1 D:0 Tag:  1ff29b19241 | V:1 D:1 Tag:  1ff29b191bd |
+             | V:1 D:0 Tag:  1ff29b19240 | V:1 D:1 Tag:  1ff29b191bc |
+             | V:1 D:0 Tag:  1ff29b1923f | V:1 D:1 Tag:  1ff29b191bb |
+             | V:1 D:0 Tag:  1ff29b1923e | V:1 D:1 Tag:  1ff29b191ba |
+             | V:1 D:0 Tag:  1ff29b1923d | V:1 D:1 Tag:  1ff29b191b9 |
+             | V:1 D:0 Tag:  1ff29b1923c | V:1 D:1 Tag:  1ff29b191b8 |
+             | V:1 D:0 Tag:  1ff29b1923b | V:1 D:1 Tag:  1ff29b191b7 |
+             | V:1 D:0 Tag:  1ff29b1923a | V:1 D:1 Tag:  1ff29b191b6 |
+             | V:1 D:0 Tag:  1ff29b19239 | V:1 D:1 Tag:  1ff29b191b5 |
+             | V:1 D:0 Tag:  1ff29b19238 | V:1 D:1 Tag:  1ff29b191b4 |
+             | V:1 D:0 Tag:  1ff29b19237 | V:1 D:1 Tag:  1ff29b191b3 |
+             | V:1 D:0 Tag:  1ff29b19236 | V:1 D:1 Tag:  1ff29b191b2 |
+             | V:1 D:0 Tag:  1ff29b19235 | V:1 D:1 Tag:  1ff29b191b1 |
+             | V:1 D:0 Tag:  1ff29b19234 | V:1 D:1 Tag:  1ff29b191b0 |
+             | V:1 D:0 Tag:  1ff29b19233 | V:1 D:1 Tag:  1ff29b191af |
+             | V:1 D:0 Tag:  1ff29b19232 | V:1 D:1 Tag:  1ff29b191ae |
+             | V:1 D:0 Tag:  1ff29b19231 | V:1 D:1 Tag:  1ff29b191ad |
+             | V:1 D:0 Tag:  1ff29b19230 | V:1 D:1 Tag:  1ff29b191ac |
+             | V:1 D:0 Tag:  1ff29b1922f | V:1 D:1 Tag:  1ff29b191ab |
+             | V:1 D:0 Tag:  1ff29b1922e | V:1 D:1 Tag:  1ff29b191aa |
+             | V:1 D:0 Tag:  1ff29b1922d | V:1 D:1 Tag:  1ff29b191a9 |
+             | V:1 D:0 Tag:  1ff29b1922c | V:1 D:1 Tag:  1ff29b191a8 |
+             | V:1 D:0 Tag:  1ff29b1922b | V:1 D:1 Tag:  1ff29b191a7 |
+             | V:1 D:0 Tag:  1ff29b1922a | V:1 D:1 Tag:  1ff29b191a6 |
+             | V:1 D:0 Tag:  1ff29b19229 | V:1 D:1 Tag:  1ff29b191a5 |
+             | V:1 D:0 Tag:  1ff29b19228 | V:1 D:1 Tag:  1ff29b191a4 |
+             | V:1 D:0 Tag:  1ff29b19227 | V:1 D:1 Tag:  1ff29b191a3 |
+             | V:1 D:0 Tag:  1ff29b19226 | V:1 D:1 Tag:  1ff29b191a2 |
+             | V:1 D:0 Tag:  1ff29b19225 | V:1 D:1 Tag:  1ff29b191a1 |
+             | V:1 D:0 Tag:  1ff29b19224 | V:1 D:1 Tag:  1ff29b191a0 |
+             | V:1 D:0 Tag:  1ff29b19223 | V:1 D:1 Tag:  1ff29b1919f |
+             | V:1 D:0 Tag:  1ff29b19222 | V:1 D:1 Tag:  1ff29b1919e |
+             | V:1 D:0 Tag:  1ff29b19221 | V:1 D:1 Tag:  1ff29b1919d |
+             | V:1 D:0 Tag:  1ff29b19220 | V:1 D:1 Tag:  1ff29b1919c |
+             | V:1 D:0 Tag:  1ff29b1921f | V:1 D:1 Tag:  1ff29b1919b |
+             | V:1 D:0 Tag:  1ff29b1921e | V:1 D:1 Tag:  1ff29b1919a |
+             | V:1 D:0 Tag:  1ff29b1921d | V:1 D:1 Tag:  1ff29b19199 |
+             | V:1 D:0 Tag:  1ff29b1921c | V:1 D:1 Tag:  1ff29b19198 |
+             | V:1 D:1 Tag:  1ff29b19197 | V:1 D:1 Tag:  1ff29b19196 |
+             | V:1 D:1 Tag:  1ff29b19195 | V:1 D:1 Tag:  1ff29b19194 |
+             | V:1 D:1 Tag:  1ff29b19193 | V:1 D:1 Tag:  1ff29b19192 |
+             | V:1 D:1 Tag:  1ff29b19191 | V:1 D:1 Tag:  1ff29b19190 |
+             | V:1 D:1 Tag:  1ff29b1918f | V:1 D:1 Tag:  1ff29b1918e |
+             | V:1 D:1 Tag:  1ff29b1918d | V:1 D:1 Tag:  1ff29b1918c |
+             | V:1 D:1 Tag:  1ff29b1918b | V:1 D:1 Tag:  1ff29b1918a |
+             | V:1 D:1 Tag:  1ff29b19189 | V:1 D:1 Tag:  1ff29b19188 |
+             | V:1 D:1 Tag:  1ff29b19187 | V:1 D:1 Tag:  1ff29b19186 |
+             | V:1 D:1 Tag:  1ff29b19185 | V:1 D:1 Tag:  1ff29b19184 |
+             | V:1 D:1 Tag:  1ff29b19183 | V:1 D:1 Tag:  1ff29b19182 |
+             | V:1 D:1 Tag:  1ff29b19181 | V:1 D:1 Tag:  1ff29b19180 |
+             | V:1 D:1 Tag:  1ff29b1917f | V:1 D:1 Tag:  1ff29b1917e |
+             | V:1 D:1 Tag:  1ff29b1917d | V:1 D:1 Tag:  1ff29b1917c |
+             | V:1 D:1 Tag:  1ff29b1917b | V:1 D:1 Tag:  1ff29b1917a |
+             | V:1 D:1 Tag:  1ff29b19179 | V:1 D:1 Tag:  1ff29b19178 |
+             | V:1 D:1 Tag:  1ff29b19177 | V:1 D:1 Tag:  1ff29b19176 |
+             | V:1 D:1 Tag:  1ff29b19175 | V:1 D:1 Tag:  1ff29b19174 |
+             | V:1 D:1 Tag:  1ff29b19173 | V:1 D:1 Tag:  1ff29b19172 |
+             | V:1 D:1 Tag:  1ff29b19171 | V:1 D:1 Tag:  1ff29b19170 |
+             | V:1 D:1 Tag:  1ff29b1916f | V:1 D:1 Tag:  1ff29b1916e |
+             | V:1 D:1 Tag:  1ff29b1916d | V:1 D:1 Tag:  1ff29b1916c |
+             | V:1 D:1 Tag:  1ff29b1916b | V:1 D:1 Tag:  1ff29b1916a |
+             | V:1 D:1 Tag:  1ff29b19169 | V:1 D:1 Tag:  1ff29b19168 |
+             | V:1 D:1 Tag:  1ff29b19167 | V:1 D:1 Tag:  1ff29b19166 |
+             | V:1 D:1 Tag:  1ff29b19165 | V:1 D:1 Tag:  1ff29b19164 |
+             | V:1 D:1 Tag:  1ff29b19163 | V:1 D:1 Tag:  1ff29b19162 |
+             | V:1 D:1 Tag:  1ff29b19161 | V:1 D:1 Tag:  1ff29b19160 |
+             | V:1 D:1 Tag:  1ff29b1915f | V:1 D:1 Tag:  1ff29b1915e |
+             | V:1 D:1 Tag:  1ff29b1915d | V:1 D:1 Tag:  1ff29b1915c |
+             | V:1 D:1 Tag:  1ff29b1915b | V:1 D:1 Tag:  1ff29b1915a |
+             | V:1 D:1 Tag:  1ff29b19159 | V:1 D:1 Tag:  1ff29b19158 |
+             | V:1 D:1 Tag:  1ff29b19157 | V:1 D:1 Tag:  1ff29b19156 |
+             | V:1 D:1 Tag:  1ff29b19155 | V:1 D:1 Tag:  1ff29b19154 |
+             | V:1 D:1 Tag:  1ff29b19153 | V:1 D:1 Tag:  1ff29b19152 |
+             | V:1 D:1 Tag:  1ff29b19151 | V:1 D:1 Tag:  1ff29b19150 |
+             | V:1 D:1 Tag:  1ff29b1914f | V:1 D:1 Tag:  1ff29b1914e |
+             | V:1 D:1 Tag:  1ff29b1914d | V:1 D:1 Tag:  1ff29b1914c |
+             | V:1 D:1 Tag:  1ff29b1914b | V:1 D:1 Tag:  1ff29b1914a |
+             | V:1 D:1 Tag:  1ff29b19149 | V:1 D:1 Tag:  1ff29b19148 |
+             | V:1 D:1 Tag:  1ff29b19147 | V:1 D:1 Tag:  1ff29b19146 |
+             | V:1 D:1 Tag:  1ff29b19145 | V:1 D:1 Tag:  1ff29b19144 |
+             | V:1 D:1 Tag:  1ff29b19143 | V:1 D:1 Tag:  1ff29b19142 |
+             | V:1 D:1 Tag:  1ff29b19141 | V:1 D:1 Tag:  1ff29b19140 |
+             | V:1 D:1 Tag:  1ff29b1913f | V:1 D:1 Tag:  1ff29b1913e |
+             | V:1 D:1 Tag:  1ff29b1913d | V:1 D:1 Tag:  1ff29b1913c |
+             | V:1 D:1 Tag:  1ff29b1913b | V:1 D:1 Tag:  1ff29b1913a |
+             | V:1 D:1 Tag:  1ff29b19139 | V:1 D:1 Tag:  1ff29b19138 |
+             | V:1 D:1 Tag:  1ff29b19137 | V:1 D:1 Tag:  1ff29b19136 |
+             | V:1 D:1 Tag:  1ff29b19135 | V:1 D:1 Tag:  1ff29b19134 |
+             | V:1 D:1 Tag:  1ff29b19133 | V:1 D:1 Tag:  1ff29b19132 |
+             | V:1 D:1 Tag:  1ff29b19131 | V:1 D:1 Tag:  1ff29b19130 |
+             | V:1 D:1 Tag:  1ff29b1912f | V:1 D:1 Tag:  1ff29b1912e |
+             | V:1 D:1 Tag:  1ff29b1912d | V:1 D:1 Tag:  1ff29b1912c |
+             | V:1 D:1 Tag:  1ff29b1912b | V:1 D:1 Tag:  1ff29b1912a |
+             | V:1 D:1 Tag:  1ff29b19129 | V:1 D:1 Tag:  1ff29b19128 |
+             | V:1 D:1 Tag:  1ff29b19127 | V:1 D:1 Tag:  1ff29b19126 |
+             | V:1 D:1 Tag:  1ff29b19125 | V:1 D:1 Tag:  1ff29b19124 |
+             | V:1 D:1 Tag:  1ff29b19123 | V:1 D:1 Tag:  1ff29b19122 |
+             | V:1 D:1 Tag:  1ff29b19121 | V:1 D:1 Tag:  1ff29b19120 |
+             | V:1 D:1 Tag:  1ff29b1911f | V:1 D:1 Tag:  1ff29b1911e |
+             | V:1 D:1 Tag:  1ff29b1911d | V:1 D:1 Tag:  1ff29b1911c |
+             | V:1 D:1 Tag:  1ff29b1911b | V:1 D:1 Tag:  1ff29b1911a |
+             | V:1 D:1 Tag:  1ff29b19119 | V:1 D:1 Tag:  1ff29b19118 |
+             | V:1 D:1 Tag:  1ff29b19117 | V:1 D:1 Tag:  1ff29b19116 |
+             | V:1 D:1 Tag:  1ff29b19115 | V:1 D:1 Tag:  1ff29b19114 |
+             | V:1 D:1 Tag:  1ff29b19113 | V:1 D:1 Tag:  1ff29b19112 |
+             | V:1 D:1 Tag:  1ff29b19111 | V:1 D:1 Tag:  1ff29b19110 |
+             | V:1 D:1 Tag:  1ff29b1910f | V:1 D:1 Tag:  1ff29b1910e |
+             | V:1 D:1 Tag:  1ff29b1910d | V:1 D:1 Tag:  1ff29b1910c |
+             | V:1 D:1 Tag:  1ff29b1910b | V:1 D:1 Tag:  1ff29b1910a |
+             | V:1 D:1 Tag:  1ff29b19109 | V:1 D:1 Tag:  1ff29b19108 |
+             | V:1 D:1 Tag:  1ff29b19107 | V:1 D:1 Tag:  1ff29b19106 |
+             | V:1 D:1 Tag:  1ff29b19105 | V:1 D:1 Tag:  1ff29b19104 |
+             | V:1 D:1 Tag:  1ff29b19103 | V:1 D:1 Tag:  1ff29b19102 |
+             | V:1 D:1 Tag:  1ff29b19101 | V:1 D:1 Tag:  1ff29b19100 |
+             | V:1 D:1 Tag:  1ff29b190ff | V:1 D:1 Tag:  1ff29b190fe |
+             | V:1 D:1 Tag:  1ff29b190fd | V:1 D:1 Tag:  1ff29b190fc |
+             | V:1 D:1 Tag:  1ff29b190fb | V:1 D:1 Tag:  1ff29b190fa |
+             | V:1 D:1 Tag:  1ff29b190f9 | V:1 D:1 Tag:  1ff29b190f8 |
+             | V:1 D:1 Tag:  1ff29b190f7 | V:1 D:1 Tag:  1ff29b190f6 |
+             | V:1 D:1 Tag:  1ff29b190f5 | V:1 D:1 Tag:  1ff29b190f4 |
+             | V:1 D:1 Tag:  1ff29b190f3 | V:1 D:1 Tag:  1ff29b190f2 |
+             | V:1 D:1 Tag:  1ff29b190f1 | V:1 D:1 Tag:  1ff29b190f0 |
+             | V:1 D:1 Tag:  1ff29b190ef | V:1 D:1 Tag:  1ff29b190ee |
+             | V:1 D:1 Tag:  1ff29b190ed | V:1 D:1 Tag:  1ff29b190ec |
+             | V:1 D:1 Tag:  1ff29b190eb | V:1 D:1 Tag:  1ff29b190ea |
+             | V:1 D:1 Tag:  1ff29b190e9 | V:1 D:1 Tag:  1ff29b190e8 |
+             | V:1 D:1 Tag:  1ff29b190e7 | V:1 D:1 Tag:  1ff29b190e6 |
+             | V:1 D:1 Tag:  1ff29b190e5 | V:1 D:1 Tag:  1ff29b190e4 |
+             | V:1 D:1 Tag:  1ff29b190e3 | V:1 D:1 Tag:  1ff29b190e2 |
+             | V:1 D:1 Tag:  1ff29b190e1 | V:1 D:1 Tag:  1ff29b190e0 |
+             | V:1 D:1 Tag:  1ff29b190df | V:1 D:1 Tag:  1ff29b190de |
+             | V:1 D:1 Tag:  1ff29b190dd | V:1 D:1 Tag:  1ff29b190dc |
+             | V:1 D:1 Tag:  1ff29b190db | V:1 D:1 Tag:  1ff29b190da |
+             | V:1 D:1 Tag:  1ff29b190d9 | V:1 D:1 Tag:  1ff29b190d8 |
+             | V:1 D:1 Tag:  1ff29b190d7 | V:1 D:1 Tag:  1ff29b190d6 |
+             | V:1 D:1 Tag:  1ff29b190d5 | V:1 D:1 Tag:  1ff29b190d4 |
+             | V:1 D:1 Tag:  1ff29b190d3 | V:1 D:1 Tag:  1ff29b190d2 |
+             | V:1 D:1 Tag:  1ff29b190d1 | V:1 D:1 Tag:  1ff29b190d0 |
+             | V:1 D:1 Tag:  1ff29b190cf | V:1 D:1 Tag:  1ff29b190ce |
+             | V:1 D:1 Tag:  1ff29b190cd | V:1 D:1 Tag:  1ff29b190cc |
+             | V:1 D:1 Tag:  1ff29b190cb | V:1 D:1 Tag:  1ff29b190ca |
+             | V:1 D:1 Tag:  1ff29b190c9 | V:1 D:1 Tag:  1ff29b190c8 |
+             | V:1 D:1 Tag:  1ff29b190c7 | V:1 D:1 Tag:  1ff29b190c6 |
+             | V:1 D:1 Tag:  1ff29b190c5 | V:1 D:1 Tag:  1ff29b190c4 |
+             | V:1 D:1 Tag:  1ff29b190c3 | V:1 D:1 Tag:  1ff29b190c2 |
+             | V:1 D:1 Tag:  1ff29b190c1 | V:1 D:1 Tag:  1ff29b190c0 |
+             | V:1 D:1 Tag:  1ff29b190bf | V:1 D:1 Tag:  1ff29b190be |
+             | V:1 D:1 Tag:  1ff29b190bd | V:1 D:1 Tag:  1ff29b190bc |
+             | V:1 D:1 Tag:  1ff29b190bb | V:1 D:1 Tag:  1ff29b190ba |
+             | V:1 D:1 Tag:  1ff29b190b9 | V:1 D:1 Tag:  1ff29b190b8 |
+             | V:1 D:1 Tag:  1ff29b190b7 | V:1 D:1 Tag:  1ff29b190b6 |
+             | V:1 D:1 Tag:  1ff29b190b5 | V:1 D:1 Tag:  1ff29b190b4 |
+             | V:1 D:1 Tag:  1ff29b190b3 | V:1 D:1 Tag:  1ff29b190b2 |
+             | V:1 D:1 Tag:  1ff29b190b1 | V:1 D:1 Tag:  1ff29b190b0 |
+             | V:1 D:1 Tag:  1ff29b190af | V:1 D:1 Tag:  1ff29b190ae |
+             | V:1 D:1 Tag:  1ff29b190ad | V:1 D:1 Tag:  1ff29b190ac |
+             | V:1 D:1 Tag:  1ff29b190ab | V:1 D:1 Tag:  1ff29b190aa |
+             | V:1 D:1 Tag:  1ff29b190a9 | V:1 D:1 Tag:  1ff29b190a8 |
+             | V:1 D:1 Tag:  1ff29b190a7 | V:1 D:1 Tag:  1ff29b190a6 |
+             | V:1 D:1 Tag:  1ff29b190a5 | V:1 D:1 Tag:  1ff29b190a4 |
+             | V:1 D:1 Tag:  1ff29b190a3 | V:1 D:1 Tag:  1ff29b190a2 |
+             | V:1 D:1 Tag:  1ff29b190a1 | V:1 D:1 Tag:  1ff29b190a0 |
+Victim cache:
+            | V:1 D:1 Addr: 7fca6c6427c0 | V:1 D:1 Addr: 7fca6c642780 |
+            | V:1 D:1 Addr: 7fca6c642740 | V:1 D:1 Addr: 7fca6c642700 |
+            | V:1 D:1 Addr: 7fca6c6426c0 | V:1 D:1 Addr: 7fca6c642680 |
+            | V:1 D:1 Addr: 7fca6c642640 | V:1 D:1 Addr: 7fca6c642600 |

@@ -1,0 +1,76 @@
+
+-------------------------------------------------------------------------
+      tr1.L1-small-4way   Simulation Results
+-------------------------------------------------------------------------
+
+  Memory system:
+    Dcache size = 4096 : ways = 4 : block size = 32
+    Icache size = 4096 : ways = 4 : block size = 32
+    L2-cache size = 32768 : ways = 1 : block size = 64
+    Memory ready time = 50 : chunksize = 8 : chunktime = 15
+
+  Execute time =            0;  Total refs = 0
+  Inst refs = 0;   Data refs = 0
+
+  Number of reference types:  [Percentage]
+    Reads  =           0    [-nan%]
+    Writes =           0    [-nan%]
+    Inst.  =           0    [-nan%]
+    Total  =           0
+
+  Total cycles for activities:  [Percentage]
+    Reads  =           0    [-nan%]
+    Writes =           0    [-nan%]
+    Inst.  =           0    [-nan%]
+    Total  =           0
+
+  CPI = -nan
+  Ideal: Exec. Time = 0; CPI = -nan
+  Ideal mis-aligned: Exec. Time = 0; CPI = -nan
+
+  Memory Level:  L1i
+    Hit Count = 0  Miss Count = 0
+    Total Requests = 0
+    Hit Rate = -nan%  Miss Rate = -nan%
+    Kickouts = 0; Dirty kickouts = 0; Transfers = 0
+    VC Hit count = 0
+
+  Memory Level:  L1d
+    Hit Count = 0  Miss Count = 0
+    Total Requests = 0
+    Hit Rate = -nan%  Miss Rate = -nan%
+    Kickouts = 0; Dirty kickouts = 0; Transfers = 0
+    VC Hit count = 0
+
+  Memory Level:  L2
+    Hit Count = 0  Miss Count = 0
+    Total Requests = 0
+    Hit Rate = -nan%  Miss Rate = -nan%
+    Kickouts = 0; Dirty kickouts = 0; Transfers = 0
+    VC Hit count = 0
+
+  L1 cache cost (Icache $300) + (Dcache $300) = $600
+  L2 cache cost = $100;  Memory cost = $75  Total cost = $775
+
+-------------------------------------------------------------------------
+
+Cache final contents - Index and Tag values are in HEX
+
+Memory Level: L1i
+Victim cache:
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+Memory Level: L1d
+Victim cache:
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+Memory Level: L2
+Victim cache:
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |
+            | V:0 D:0 Addr:            - | V:0 D:0 Addr:            - |

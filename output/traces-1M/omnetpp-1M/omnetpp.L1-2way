@@ -1,0 +1,844 @@
+
+-------------------------------------------------------------------------
+      omnetpp.L1-2way         Simulation Results
+-------------------------------------------------------------------------
+
+  Memory system:
+    Dcache size = 8192 : ways = 2 : block size = 32
+    Icache size = 8192 : ways = 2 : block size = 32
+    L2-cache size = 32768 : ways = 1 : block size = 64
+    Memory ready time = 50 : chunksize = 8 : chunktime = 15
+
+  Execute time =      5827853;  Total refs = 1000000
+  Inst refs = 771907;   Data refs = 228093
+
+  Number of reference types:  [Percentage]
+    Reads  =      142639    [14.3%]
+    Writes =       85454    [ 8.5%]
+    Inst.  =      771907    [77.2%]
+    Total  =     1000000
+
+  Total cycles for activities:  [Percentage]
+    Reads  =     1411587    [24.2%]
+    Writes =      597522    [10.3%]
+    Inst.  =     3818744    [65.5%]
+    Total  =     5827853
+
+  CPI = 7.5
+  Ideal: Exec. Time = 1771907; CPI = 2.3
+  Ideal mis-aligned: Exec. Time = 2375525; CPI = 3.1
+
+  Memory Level:  L1i
+    Hit Count = 1200717  Miss Count = 18343
+    Total Requests = 1219060
+    Hit Rate = 98.5%  Miss Rate = 1.5%
+    Kickouts = 17344; Dirty kickouts = 0; Transfers = 17608
+    VC Hit count = 735
+
+  Memory Level:  L1d
+    Hit Count = 373749  Miss Count = 10809
+    Total Requests = 384558
+    Hit Rate = 97.2%  Miss Rate = 2.8%
+    Kickouts = 9853; Dirty kickouts = 3582; Transfers = 10117
+    VC Hit count = 692
+
+  Memory Level:  L2
+    Hit Count = 19037  Miss Count = 12270
+    Total Requests = 31307
+    Hit Rate = 60.8%  Miss Rate = 39.2%
+    Kickouts = 11198; Dirty kickouts = 1748; Transfers = 11718
+    VC Hit count = 552
+
+  L1 cache cost (Icache $400) + (Dcache $400) = $800
+  L2 cache cost = $100;  Memory cost = $75  Total cost = $975
+
+-------------------------------------------------------------------------
+
+Cache final contents - Index and Tag values are in HEX
+
+Memory Level: L1i
+Index:    0  | V:1 D:0 Tag:    7f8aa3386 | V:1 D:0 Tag:    7f8aa3382 |
+Index:    1  | V:1 D:0 Tag:    7f8aa3386 | V:1 D:0 Tag:    7f8aa33ab |
+Index:    2  | V:1 D:0 Tag:    7f8aa33ab | V:1 D:0 Tag:    7f8aa337c |
+Index:    3  | V:1 D:0 Tag:    7f8aa33ab | V:1 D:0 Tag:    7f8aa337c |
+Index:    4  | V:1 D:0 Tag:    7f8aa337c | V:1 D:0 Tag:    7f8aa3382 |
+Index:    5  | V:1 D:0 Tag:    7f8aa337c | V:1 D:0 Tag:    7f8aa3382 |
+Index:    6  | V:1 D:0 Tag:    7f8aa33ab | V:1 D:0 Tag:    7f8aa337c |
+Index:    7  | V:1 D:0 Tag:    7f8aa337c | V:1 D:0 Tag:    7f8aa3382 |
+Index:    8  | V:1 D:0 Tag:    7f8aa33ab | V:1 D:0 Tag:    7f8aa337c |
+Index:    9  | V:1 D:0 Tag:    7f8aa33ab | V:1 D:0 Tag:    7f8aa337c |
+Index:    a  | V:1 D:0 Tag:    7f8aa33ab | V:1 D:0 Tag:    7f8aa337c |
+Index:    b  | V:1 D:0 Tag:    7f8aa33ab | V:1 D:0 Tag:    7f8aa337c |
+Index:    c  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337c |
+Index:    d  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337c |
+Index:    e  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa33a0 |
+Index:    f  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa33a0 |
+Index:   10  | V:1 D:0 Tag:    7f8aa33a0 | V:1 D:0 Tag:    7f8aa337c |
+Index:   11  | V:1 D:0 Tag:    7f8aa337c | V:1 D:0 Tag:    7f8aa33ac |
+Index:   12  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337c |
+Index:   13  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337b |
+Index:   14  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337b |
+Index:   15  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa337c |
+Index:   16  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa337e |
+Index:   17  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337b |
+Index:   18  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337b |
+Index:   19  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337b |
+Index:   1a  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   1b  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:          402 |
+Index:   1c  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa337c |
+Index:   1d  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa337e |
+Index:   1e  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa33aa |
+Index:   1f  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa337b |
+Index:   20  | V:1 D:0 Tag:    7f8aa33a8 | V:1 D:0 Tag:    7f8aa33aa |
+Index:   21  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa337e |
+Index:   22  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa33aa |
+Index:   23  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa33aa |
+Index:   24  | V:1 D:0 Tag:    7f8aa33aa | V:1 D:0 Tag:    7f8aa3381 |
+Index:   25  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa33aa |
+Index:   26  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa33c1 |
+Index:   27  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa33c1 |
+Index:   28  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa33c1 |
+Index:   29  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa33c1 |
+Index:   2a  | V:1 D:0 Tag:    7f8aa337e | V:1 D:0 Tag:    7f8aa337b |
+Index:   2b  | V:1 D:0 Tag:    7f8aa337e | V:1 D:0 Tag:    7f8aa337b |
+Index:   2c  | V:1 D:0 Tag:    7f8aa337e | V:1 D:0 Tag:    7f8aa337b |
+Index:   2d  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   2e  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   2f  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   30  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   31  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3379 |
+Index:   32  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3379 |
+Index:   33  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   34  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   35  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:          40f |
+Index:   36  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3382 |
+Index:   37  | V:1 D:0 Tag:    7f8aa3380 | V:1 D:0 Tag:    7f8aa3381 |
+Index:   38  | V:1 D:0 Tag:    7f8aa3380 | V:1 D:0 Tag:    7f8aa3381 |
+Index:   39  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3380 |
+Index:   3a  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3380 |
+Index:   3b  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3380 |
+Index:   3c  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3380 |
+Index:   3d  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3380 |
+Index:   3e  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa337e |
+Index:   3f  | V:1 D:0 Tag:    7f8aa3380 | V:1 D:0 Tag:    7f8aa3381 |
+Index:   40  | V:1 D:0 Tag:    7f8aa3380 | V:1 D:0 Tag:    7f8aa3381 |
+Index:   41  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3382 |
+Index:   42  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   43  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   44  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   45  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   46  | V:1 D:0 Tag:    7f8aa337e | V:1 D:0 Tag:    7f8aa337b |
+Index:   47  | V:1 D:0 Tag:    7f8aa337e | V:1 D:0 Tag:    7f8aa3381 |
+Index:   48  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:          43c |
+Index:   49  | V:1 D:0 Tag:          43e | V:1 D:0 Tag:    7f8aa3381 |
+Index:   4a  | V:1 D:0 Tag:          43e | V:1 D:0 Tag:    7f8aa3381 |
+Index:   4b  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3382 |
+Index:   4c  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   4d  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   4e  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   4f  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   50  | V:1 D:0 Tag:    7f8aa3355 | V:1 D:0 Tag:          43b |
+Index:   51  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   52  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   53  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   54  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   55  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   56  | V:1 D:0 Tag:          43b | V:1 D:0 Tag:    7f8aa3381 |
+Index:   57  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3380 |
+Index:   58  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3378 |
+Index:   59  | V:1 D:0 Tag:    7f8aa33af | V:1 D:0 Tag:          440 |
+Index:   5a  | V:1 D:0 Tag:    7f8aa33b7 | V:1 D:0 Tag:    7f8aa3381 |
+Index:   5b  | V:1 D:0 Tag:    7f8aa33b7 | V:1 D:0 Tag:    7f8aa3368 |
+Index:   5c  | V:1 D:0 Tag:          439 | V:1 D:0 Tag:    7f8aa33b7 |
+Index:   5d  | V:1 D:0 Tag:          439 | V:1 D:0 Tag:    7f8aa3381 |
+Index:   5e  | V:1 D:0 Tag:          439 | V:1 D:0 Tag:    7f8aa33b7 |
+Index:   5f  | V:1 D:0 Tag:    7f8aa33b7 | V:1 D:0 Tag:    7f8aa3382 |
+Index:   60  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3382 |
+Index:   61  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:          43f |
+Index:   62  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:          43f |
+Index:   63  | V:1 D:0 Tag:    7f8aa337a | V:1 D:0 Tag:    7f8aa3381 |
+Index:   64  | V:1 D:0 Tag:    7f8aa337a | V:1 D:0 Tag:    7f8aa337e |
+Index:   65  | V:1 D:0 Tag:    7f8aa337d | V:1 D:0 Tag:    7f8aa337e |
+Index:   66  | V:1 D:0 Tag:    7f8aa337d | V:1 D:0 Tag:          43e |
+Index:   67  | V:1 D:0 Tag:    7f8aa337d | V:1 D:0 Tag:          405 |
+Index:   68  | V:1 D:0 Tag:    7f8aa337a | V:1 D:0 Tag:          405 |
+Index:   69  | V:1 D:0 Tag:    7f8aa337a | V:1 D:0 Tag:          405 |
+Index:   6a  | V:1 D:0 Tag:    7f8aa337d | V:1 D:0 Tag:          405 |
+Index:   6b  | V:1 D:0 Tag:    7f8aa337d | V:1 D:0 Tag:          405 |
+Index:   6c  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   6d  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3382 |
+Index:   6e  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:          405 |
+Index:   6f  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:          405 |
+Index:   70  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3380 |
+Index:   71  | V:1 D:0 Tag:    7f8aa337b | V:1 D:0 Tag:    7f8aa3380 |
+Index:   72  | V:1 D:0 Tag:    7f8aa3380 | V:1 D:0 Tag:          43a |
+Index:   73  | V:1 D:0 Tag:          43a | V:1 D:0 Tag:    7f8aa33ae |
+Index:   74  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa33ae |
+Index:   75  | V:1 D:0 Tag:    7f8aa3382 | V:1 D:0 Tag:          43a |
+Index:   76  | V:1 D:0 Tag:    7f8aa33aa | V:1 D:0 Tag:    7f8aa3381 |
+Index:   77  | V:1 D:0 Tag:    7f8aa33aa | V:1 D:0 Tag:    7f8aa33ba |
+Index:   78  | V:1 D:0 Tag:    7f8aa33b1 | V:1 D:0 Tag:    7f8aa33aa |
+Index:   79  | V:1 D:0 Tag:    7f8aa337d | V:1 D:0 Tag:    7f8aa33ba |
+Index:   7a  | V:1 D:0 Tag:    7f8aa337d | V:1 D:0 Tag:    7f8aa33ba |
+Index:   7b  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3378 |
+Index:   7c  | V:1 D:0 Tag:    7f8aa3381 | V:1 D:0 Tag:    7f8aa3378 |
+Index:   7d  | V:1 D:0 Tag:    7f8aa3385 | V:1 D:0 Tag:    7f8aa3380 |
+Index:   7e  | V:1 D:0 Tag:    7f8aa3385 | V:1 D:0 Tag:    7f8aa33b1 |
+Index:   7f  | V:1 D:0 Tag:    7f8aa3385 | V:1 D:0 Tag:    7f8aa3381 |
+Victim cache:
+            | V:1 D:0 Addr:       402580 | V:1 D:0 Addr: 7f8aa337b400 |
+            | V:1 D:0 Addr: 7f8aa33aa3e0 | V:1 D:0 Addr: 7f8aa337c280 |
+            | V:1 D:0 Addr: 7f8aa337c260 | V:1 D:0 Addr: 7f8aa337c1e0 |
+            | V:1 D:0 Addr: 7f8aa337c520 | V:1 D:0 Addr: 7f8aa337c1c0 |
+Memory Level: L1d
+Index:    0  | V:1 D:1 Tag:    7ffff613f | V:1 D:1 Tag:         181e |
+Index:    1  | V:1 D:0 Tag:    7f8aa36c4 | V:1 D:1 Tag:    7ffff613f |
+Index:    2  | V:1 D:1 Tag:    7ffff613f | V:1 D:1 Tag:         181e |
+Index:    3  | V:1 D:1 Tag:    7ffff613f | V:1 D:0 Tag:         177f |
+Index:    4  | V:1 D:1 Tag:    7ffff613f | V:1 D:0 Tag:         177f |
+Index:    5  | V:1 D:1 Tag:    7ffff613f | V:1 D:0 Tag:         177d |
+Index:    6  | V:1 D:1 Tag:    7ffff613f | V:1 D:0 Tag:         177d |
+Index:    7  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:    7ffff613f |
+Index:    8  | V:1 D:0 Tag:          46b | V:1 D:1 Tag:    7ffff613f |
+Index:    9  | V:1 D:1 Tag:    7ffff613f | V:1 D:1 Tag:          695 |
+Index:    a  | V:1 D:1 Tag:    7ffff613f | V:1 D:0 Tag:         177d |
+Index:    b  | V:1 D:1 Tag:    7ffff613f | V:1 D:0 Tag:         177d |
+Index:    c  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:          695 |
+Index:    d  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         177a |
+Index:    e  | V:1 D:0 Tag:    7f8aa3490 | V:1 D:1 Tag:         1780 |
+Index:    f  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:    7f8aa3490 |
+Index:   10  | V:1 D:1 Tag:         177d | V:1 D:0 Tag:    7f8aa3490 |
+Index:   11  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         177f |
+Index:   12  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         17ac |
+Index:   13  | V:1 D:0 Tag:    7f8aa3490 | V:1 D:1 Tag:         1795 |
+Index:   14  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:    7f8aa3e53 |
+Index:   15  | V:1 D:0 Tag:    7f8aa36c2 | V:1 D:0 Tag:         177d |
+Index:   16  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:         1796 |
+Index:   17  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:         17f4 |
+Index:   18  | V:1 D:0 Tag:         177f | V:1 D:0 Tag:          468 |
+Index:   19  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:    7ffff613e |
+Index:   1a  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         1776 |
+Index:   1b  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         17ae |
+Index:   1c  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         177f |
+Index:   1d  | V:1 D:0 Tag:         1780 | V:1 D:0 Tag:         17ae |
+Index:   1e  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         17f3 |
+Index:   1f  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         177f |
+Index:   20  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:          695 |
+Index:   21  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:    7ffff613e |
+Index:   22  | V:1 D:1 Tag:          695 | V:1 D:0 Tag:         17f3 |
+Index:   23  | V:1 D:0 Tag:          690 | V:1 D:0 Tag:         177d |
+Index:   24  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:          466 |
+Index:   25  | V:1 D:0 Tag:    7f8aa36c9 | V:1 D:0 Tag:         177d |
+Index:   26  | V:1 D:0 Tag:         177e | V:1 D:0 Tag:         177d |
+Index:   27  | V:1 D:0 Tag:         177d | V:1 D:0 Tag:         177e |
+Index:   28  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   29  | V:1 D:0 Tag:    7f8aa36c3 | V:1 D:1 Tag:    7ffff613e |
+Index:   2a  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:    7f8aa32d2 |
+Index:   2b  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:    7f8aa32d2 |
+Index:   2c  | V:1 D:0 Tag:          692 | V:1 D:0 Tag:          690 |
+Index:   2d  | V:1 D:0 Tag:         177e | V:1 D:1 Tag:    7ffff613e |
+Index:   2e  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         1827 |
+Index:   2f  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         1827 |
+Index:   30  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         1827 |
+Index:   31  | V:1 D:0 Tag:         1827 | V:1 D:1 Tag:    7ffff613e |
+Index:   32  | V:1 D:0 Tag:         1827 | V:1 D:0 Tag:    7f8aa3485 |
+Index:   33  | V:1 D:0 Tag:    7f8aa36c9 | V:1 D:1 Tag:    7ffff613e |
+Index:   34  | V:1 D:0 Tag:    7f8aa3485 | V:1 D:0 Tag:    7f8aa3ee3 |
+Index:   35  | V:1 D:0 Tag:    7f8aa3ee3 | V:1 D:1 Tag:    7ffff613e |
+Index:   36  | V:1 D:0 Tag:    7f8aa3ee3 | V:1 D:0 Tag:    7f8aa3485 |
+Index:   37  | V:1 D:1 Tag:    7f8aa32d2 | V:1 D:1 Tag:    7ffff613e |
+Index:   38  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa3485 |
+Index:   39  | V:1 D:0 Tag:    7f8aa3ee3 | V:1 D:1 Tag:    7ffff613e |
+Index:   3a  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa3485 |
+Index:   3b  | V:1 D:0 Tag:    7f8aa36c3 | V:1 D:0 Tag:    7f8aa3485 |
+Index:   3c  | V:1 D:0 Tag:    7f8aa36c4 | V:1 D:1 Tag:    7ffff613e |
+Index:   3d  | V:1 D:1 Tag:    7f8aa36c4 | V:1 D:1 Tag:    7ffff613e |
+Index:   3e  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:          46b |
+Index:   3f  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177e |
+Index:   40  | V:1 D:0 Tag:    7f8aa36c4 | V:1 D:1 Tag:    7ffff613e |
+Index:   41  | V:1 D:0 Tag:    7f8aa3484 | V:1 D:1 Tag:    7ffff613e |
+Index:   42  | V:1 D:0 Tag:    7f8aa36c4 | V:1 D:1 Tag:    7ffff613e |
+Index:   43  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:          693 |
+Index:   44  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:          46f |
+Index:   45  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:         181d |
+Index:   46  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177e |
+Index:   47  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:          468 |
+Index:   48  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   49  | V:1 D:1 Tag:          693 | V:1 D:1 Tag:    7ffff613e |
+Index:   4a  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         17ab |
+Index:   4b  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:          464 |
+Index:   4c  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:          464 |
+Index:   4d  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:          464 |
+Index:   4e  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:          46a |
+Index:   4f  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:         181d |
+Index:   50  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   51  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   52  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   53  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   54  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:         181d |
+Index:   55  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   56  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   57  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   58  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177d |
+Index:   59  | V:1 D:1 Tag:         181d | V:1 D:1 Tag:         1812 |
+Index:   5a  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:         181d |
+Index:   5b  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:         181d |
+Index:   5c  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:         181d |
+Index:   5d  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:         181d |
+Index:   5e  | V:1 D:1 Tag:         181d | V:1 D:1 Tag:         1812 |
+Index:   5f  | V:1 D:0 Tag:         177d | V:1 D:1 Tag:         181d |
+Index:   60  | V:1 D:0 Tag:          46c | V:1 D:0 Tag:         177d |
+Index:   61  | V:1 D:0 Tag:          46c | V:1 D:0 Tag:         177d |
+Index:   62  | V:1 D:0 Tag:    7f8aa3485 | V:1 D:1 Tag:         181d |
+Index:   63  | V:1 D:0 Tag:    7f8aa3485 | V:1 D:1 Tag:         181d |
+Index:   64  | V:1 D:1 Tag:         181d | V:1 D:1 Tag:         1812 |
+Index:   65  | V:1 D:1 Tag:         181d | V:1 D:1 Tag:         1812 |
+Index:   66  | V:1 D:0 Tag:          46b | V:1 D:1 Tag:         181d |
+Index:   67  | V:1 D:0 Tag:    7f8aa3485 | V:1 D:1 Tag:    7ffff613e |
+Index:   68  | V:1 D:1 Tag:         181d | V:1 D:1 Tag:         1812 |
+Index:   69  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa36c3 |
+Index:   6a  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:         181d |
+Index:   6b  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:         181d |
+Index:   6c  | V:1 D:0 Tag:    7f8aa36c3 | V:1 D:1 Tag:    7ffff613e |
+Index:   6d  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:          693 |
+Index:   6e  | V:1 D:1 Tag:          693 | V:1 D:1 Tag:          694 |
+Index:   6f  | V:1 D:0 Tag:          466 | V:1 D:1 Tag:    7ffff613e |
+Index:   70  | V:1 D:1 Tag:    7f8aa36c5 | V:1 D:1 Tag:    7ffff613e |
+Index:   71  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:          694 |
+Index:   72  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa36c5 |
+Index:   73  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa36c3 |
+Index:   74  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:    7f8aa36c5 |
+Index:   75  | V:1 D:0 Tag:          46a | V:1 D:1 Tag:    7ffff613e |
+Index:   76  | V:1 D:1 Tag:    7ffff613e | V:1 D:1 Tag:    7f8aa36c5 |
+Index:   77  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa36c5 |
+Index:   78  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa3478 |
+Index:   79  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         17c1 |
+Index:   7a  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa36c3 |
+Index:   7b  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:    7f8aa36c3 |
+Index:   7c  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177c |
+Index:   7d  | V:1 D:0 Tag:    7f8aa36c3 | V:1 D:1 Tag:    7ffff613e |
+Index:   7e  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         181d |
+Index:   7f  | V:1 D:1 Tag:    7ffff613e | V:1 D:0 Tag:         177e |
+Victim cache:
+            | V:1 D:1 Addr: 7ffff613e760 | V:1 D:1 Addr: 7ffff613e580 |
+            | V:1 D:0 Addr: 7f8aa3485620 | V:1 D:1 Addr: 7f8aa32d2640 |
+            | V:1 D:0 Addr: 7f8aa34856e0 | V:1 D:0 Addr: 7f8aa3485660 |
+            | V:1 D:0 Addr: 7f8aa3485720 | V:1 D:0 Addr: 7f8aa348ce60 |
+Memory Level: L2
+Index:    0  | V:1 D:0 Tag:           8d |
+Index:    1  | V:1 D:0 Tag:     ff154678 |
+Index:    2  | V:1 D:0 Tag:     ff154678 |
+Index:    3  | V:1 D:0 Tag:     ff154678 |
+Index:    4  | V:1 D:1 Tag:          2fb |
+Index:    5  | V:1 D:0 Tag:     ff154674 |
+Index:    6  | V:1 D:0 Tag:     ff154675 |
+Index:    7  | V:1 D:0 Tag:     ff154675 |
+Index:    8  | V:1 D:0 Tag:     ff154674 |
+Index:    9  | V:1 D:0 Tag:     ff154675 |
+Index:    a  | V:1 D:0 Tag:     ff154675 |
+Index:    b  | V:1 D:0 Tag:     ff154675 |
+Index:    c  | V:1 D:0 Tag:     ff154675 |
+Index:    d  | V:1 D:0 Tag:          2f0 |
+Index:    e  | V:1 D:0 Tag:          2f0 |
+Index:    f  | V:1 D:0 Tag:     ff154675 |
+Index:   10  | V:1 D:0 Tag:     ff154675 |
+Index:   11  | V:1 D:0 Tag:           d2 |
+Index:   12  | V:1 D:1 Tag:          2fb |
+Index:   13  | V:1 D:0 Tag:          2f0 |
+Index:   14  | V:1 D:0 Tag:           d2 |
+Index:   15  | V:1 D:0 Tag:     ff154676 |
+Index:   16  | V:1 D:0 Tag:           d2 |
+Index:   17  | V:1 D:0 Tag:          2ef |
+Index:   18  | V:1 D:0 Tag:          2ef |
+Index:   19  | V:1 D:0 Tag:           d2 |
+Index:   1a  | V:1 D:0 Tag:           d2 |
+Index:   1b  | V:1 D:0 Tag:     ff154670 |
+Index:   1c  | V:1 D:0 Tag:     ff154670 |
+Index:   1d  | V:1 D:0 Tag:     ff154670 |
+Index:   1e  | V:1 D:0 Tag:     ff154670 |
+Index:   1f  | V:1 D:0 Tag:     ff154670 |
+Index:   20  | V:1 D:0 Tag:     ff154670 |
+Index:   21  | V:1 D:0 Tag:     ff15468f |
+Index:   22  | V:1 D:1 Tag:          2fb |
+Index:   23  | V:1 D:0 Tag:           8d |
+Index:   24  | V:1 D:0 Tag:           88 |
+Index:   25  | V:1 D:1 Tag:          2fb |
+Index:   26  | V:1 D:1 Tag:          2fb |
+Index:   27  | V:1 D:0 Tag:          2f0 |
+Index:   28  | V:1 D:1 Tag:          2fb |
+Index:   29  | V:1 D:0 Tag:     ff154670 |
+Index:   2a  | V:1 D:0 Tag:     ff154670 |
+Index:   2b  | V:1 D:0 Tag:     ff154670 |
+Index:   2c  | V:1 D:0 Tag:     ff15466f |
+Index:   2d  | V:1 D:0 Tag:     ff154670 |
+Index:   2e  | V:1 D:0 Tag:     ff15466d |
+Index:   2f  | V:1 D:0 Tag:     ff15466d |
+Index:   30  | V:1 D:0 Tag:           8a |
+Index:   31  | V:1 D:0 Tag:          2f0 |
+Index:   32  | V:1 D:0 Tag:          2f0 |
+Index:   33  | V:1 D:1 Tag:          2fb |
+Index:   34  | V:1 D:0 Tag:     ff154670 |
+Index:   35  | V:1 D:0 Tag:     ff154670 |
+Index:   36  | V:1 D:0 Tag:     ff15466f |
+Index:   37  | V:1 D:0 Tag:     ff15466f |
+Index:   38  | V:1 D:0 Tag:     ff154670 |
+Index:   39  | V:1 D:0 Tag:     ff154670 |
+Index:   3a  | V:1 D:0 Tag:           88 |
+Index:   3b  | V:1 D:1 Tag:          2fb |
+Index:   3c  | V:1 D:0 Tag:     ff15468f |
+Index:   3d  | V:1 D:0 Tag:     ff15466f |
+Index:   3e  | V:1 D:0 Tag:     ff154670 |
+Index:   3f  | V:1 D:0 Tag:     ff15466f |
+Index:   40  | V:1 D:0 Tag:     ff15466f |
+Index:   41  | V:1 D:0 Tag:     ff15466f |
+Index:   42  | V:1 D:0 Tag:     ff15466f |
+Index:   43  | V:1 D:0 Tag:     ff154670 |
+Index:   44  | V:1 D:0 Tag:     ff15466f |
+Index:   45  | V:1 D:0 Tag:     ff154670 |
+Index:   46  | V:1 D:0 Tag:     ff154670 |
+Index:   47  | V:1 D:0 Tag:     ff154670 |
+Index:   48  | V:1 D:0 Tag:     ff154670 |
+Index:   49  | V:1 D:1 Tag:          2fb |
+Index:   4a  | V:1 D:0 Tag:     ff15466e |
+Index:   4b  | V:1 D:0 Tag:     ff15466e |
+Index:   4c  | V:1 D:0 Tag:     ff15466e |
+Index:   4d  | V:1 D:0 Tag:          2ef |
+Index:   4e  | V:1 D:0 Tag:     ff154670 |
+Index:   4f  | V:1 D:0 Tag:     ff154670 |
+Index:   50  | V:1 D:0 Tag:     ff154670 |
+Index:   51  | V:1 D:0 Tag:     ff154670 |
+Index:   52  | V:1 D:0 Tag:     ff154670 |
+Index:   53  | V:1 D:0 Tag:     ff154678 |
+Index:   54  | V:1 D:0 Tag:     ff154678 |
+Index:   55  | V:1 D:0 Tag:     ff154670 |
+Index:   56  | V:1 D:0 Tag:     ff154670 |
+Index:   57  | V:1 D:0 Tag:     ff154670 |
+Index:   58  | V:1 D:0 Tag:     ff154670 |
+Index:   59  | V:1 D:0 Tag:     ff154670 |
+Index:   5a  | V:1 D:0 Tag:     ff154670 |
+Index:   5b  | V:1 D:0 Tag:     ff154670 |
+Index:   5c  | V:1 D:0 Tag:     ff154670 |
+Index:   5d  | V:1 D:0 Tag:     ff154670 |
+Index:   5e  | V:1 D:0 Tag:     ff154670 |
+Index:   5f  | V:1 D:0 Tag:     ff154670 |
+Index:   60  | V:1 D:0 Tag:     ff154670 |
+Index:   61  | V:1 D:0 Tag:           88 |
+Index:   62  | V:1 D:0 Tag:           88 |
+Index:   63  | V:1 D:0 Tag:     ff154670 |
+Index:   64  | V:1 D:0 Tag:     ff154670 |
+Index:   65  | V:1 D:0 Tag:     ff154670 |
+Index:   66  | V:1 D:0 Tag:     ff154670 |
+Index:   67  | V:1 D:0 Tag:     ff154670 |
+Index:   68  | V:1 D:0 Tag:     ff154670 |
+Index:   69  | V:1 D:0 Tag:     ff154670 |
+Index:   6a  | V:1 D:0 Tag:     ff154670 |
+Index:   6b  | V:1 D:0 Tag:     ff154670 |
+Index:   6c  | V:1 D:0 Tag:     ff154670 |
+Index:   6d  | V:1 D:0 Tag:     ff154670 |
+Index:   6e  | V:1 D:0 Tag:           87 |
+Index:   6f  | V:1 D:0 Tag:           87 |
+Index:   70  | V:1 D:0 Tag:     ff154670 |
+Index:   71  | V:1 D:0 Tag:     ff154670 |
+Index:   72  | V:1 D:0 Tag:     ff154670 |
+Index:   73  | V:1 D:0 Tag:           8a |
+Index:   74  | V:1 D:0 Tag:     ff154670 |
+Index:   75  | V:1 D:0 Tag:     ff154670 |
+Index:   76  | V:1 D:0 Tag:     ff154670 |
+Index:   77  | V:1 D:0 Tag:     ff154670 |
+Index:   78  | V:1 D:0 Tag:           8d |
+Index:   79  | V:1 D:0 Tag:          2ef |
+Index:   7a  | V:1 D:0 Tag:     ff154670 |
+Index:   7b  | V:1 D:0 Tag:     ff154670 |
+Index:   7c  | V:1 D:0 Tag:     ff154676 |
+Index:   7d  | V:1 D:0 Tag:     ff154670 |
+Index:   7e  | V:1 D:0 Tag:     ff154670 |
+Index:   7f  | V:1 D:0 Tag:     ff154670 |
+Index:   80  | V:1 D:0 Tag:     ff154670 |
+Index:   81  | V:1 D:0 Tag:     ff154670 |
+Index:   82  | V:1 D:0 Tag:     ff154670 |
+Index:   83  | V:1 D:0 Tag:     ff154670 |
+Index:   84  | V:1 D:0 Tag:     ff154670 |
+Index:   85  | V:1 D:0 Tag:     ff154670 |
+Index:   86  | V:1 D:0 Tag:     ff154670 |
+Index:   87  | V:1 D:0 Tag:     ff154670 |
+Index:   88  | V:1 D:0 Tag:     ff154670 |
+Index:   89  | V:1 D:0 Tag:     ff154670 |
+Index:   8a  | V:1 D:0 Tag:     ff1546d8 |
+Index:   8b  | V:1 D:0 Tag:     ff154670 |
+Index:   8c  | V:1 D:0 Tag:     ff154670 |
+Index:   8d  | V:1 D:0 Tag:           80 |
+Index:   8e  | V:1 D:0 Tag:     ff154670 |
+Index:   8f  | V:1 D:0 Tag:     ff154675 |
+Index:   90  | V:1 D:0 Tag:     ff154675 |
+Index:   91  | V:1 D:0 Tag:     ff154675 |
+Index:   92  | V:1 D:0 Tag:     ff154675 |
+Index:   93  | V:1 D:0 Tag:           81 |
+Index:   94  | V:1 D:0 Tag:     ff154675 |
+Index:   95  | V:1 D:0 Tag:     ff15465a |
+Index:   96  | V:1 D:0 Tag:           80 |
+Index:   97  | V:1 D:0 Tag:     ff15466f |
+Index:   98  | V:1 D:0 Tag:     ff15466f |
+Index:   99  | V:1 D:0 Tag:     ff15466f |
+Index:   9a  | V:1 D:1 Tag:     ff15465a |
+Index:   9b  | V:1 D:1 Tag:     ff15465a |
+Index:   9c  | V:1 D:0 Tag:     ff154670 |
+Index:   9d  | V:1 D:0 Tag:           80 |
+Index:   9e  | V:1 D:0 Tag:     ff15468d |
+Index:   9f  | V:1 D:0 Tag:     ff15468d |
+Index:   a0  | V:1 D:0 Tag:     ff154670 |
+Index:   a1  | V:1 D:0 Tag:     ff154670 |
+Index:   a2  | V:1 D:0 Tag:     ff154670 |
+Index:   a3  | V:1 D:0 Tag:     ff154670 |
+Index:   a4  | V:1 D:0 Tag:     ff154670 |
+Index:   a5  | V:1 D:0 Tag:     ff154670 |
+Index:   a6  | V:1 D:0 Tag:     ff154670 |
+Index:   a7  | V:1 D:0 Tag:     ff154670 |
+Index:   a8  | V:1 D:0 Tag:     ff154670 |
+Index:   a9  | V:1 D:0 Tag:     ff154670 |
+Index:   aa  | V:1 D:0 Tag:     ff154670 |
+Index:   ab  | V:1 D:1 Tag:          302 |
+Index:   ac  | V:1 D:1 Tag:          302 |
+Index:   ad  | V:1 D:0 Tag:     ff154670 |
+Index:   ae  | V:1 D:0 Tag:     ff154670 |
+Index:   af  | V:1 D:0 Tag:     ff154670 |
+Index:   b0  | V:1 D:0 Tag:     ff154670 |
+Index:   b1  | V:1 D:0 Tag:     ff15466f |
+Index:   b2  | V:1 D:0 Tag:     ff15466f |
+Index:   b3  | V:1 D:1 Tag:          302 |
+Index:   b4  | V:1 D:0 Tag:     ff15466f |
+Index:   b5  | V:1 D:1 Tag:          302 |
+Index:   b6  | V:1 D:0 Tag:     ff154670 |
+Index:   b7  | V:1 D:1 Tag:          302 |
+Index:   b8  | V:1 D:0 Tag:           87 |
+Index:   b9  | V:1 D:0 Tag:           8d |
+Index:   ba  | V:1 D:0 Tag:     ff154670 |
+Index:   bb  | V:1 D:0 Tag:     ff154675 |
+Index:   bc  | V:1 D:0 Tag:     ff154675 |
+Index:   bd  | V:1 D:0 Tag:     ff154677 |
+Index:   be  | V:1 D:0 Tag:          2fe |
+Index:   bf  | V:1 D:0 Tag:          2fe |
+Index:   c0  | V:1 D:0 Tag:          2fe |
+Index:   c1  | V:1 D:0 Tag:     ff154675 |
+Index:   c2  | V:1 D:0 Tag:     ff154675 |
+Index:   c3  | V:1 D:0 Tag:     ff154675 |
+Index:   c4  | V:1 D:0 Tag:     ff154675 |
+Index:   c5  | V:1 D:0 Tag:     ff154675 |
+Index:   c6  | V:1 D:0 Tag:           8c |
+Index:   c7  | V:1 D:0 Tag:           8c |
+Index:   c8  | V:1 D:0 Tag:           8c |
+Index:   c9  | V:1 D:0 Tag:     ff15466f |
+Index:   ca  | V:1 D:0 Tag:     ff15466f |
+Index:   cb  | V:1 D:0 Tag:     ff154670 |
+Index:   cc  | V:1 D:0 Tag:     ff15466f |
+Index:   cd  | V:1 D:0 Tag:     ff15466f |
+Index:   ce  | V:1 D:0 Tag:     ff15466f |
+Index:   cf  | V:1 D:0 Tag:     ff15466f |
+Index:   d0  | V:1 D:0 Tag:     ff15466f |
+Index:   d1  | V:1 D:0 Tag:     ff15466f |
+Index:   d2  | V:1 D:0 Tag:     ff15466f |
+Index:   d3  | V:1 D:0 Tag:     ff15466f |
+Index:   d4  | V:1 D:0 Tag:     ff15466f |
+Index:   d5  | V:1 D:0 Tag:     ff15466f |
+Index:   d6  | V:1 D:0 Tag:     ff15466f |
+Index:   d7  | V:1 D:0 Tag:     ff15466f |
+Index:   d8  | V:1 D:0 Tag:     ff15466f |
+Index:   d9  | V:1 D:0 Tag:     ff15466f |
+Index:   da  | V:1 D:0 Tag:     ff1547dc |
+Index:   db  | V:1 D:0 Tag:     ff1547dc |
+Index:   dc  | V:1 D:0 Tag:     ff1547dc |
+Index:   dd  | V:1 D:0 Tag:     ff1546d8 |
+Index:   de  | V:1 D:1 Tag:          2f7 |
+Index:   df  | V:1 D:0 Tag:           8d |
+Index:   e0  | V:1 D:1 Tag:          2f7 |
+Index:   e1  | V:1 D:0 Tag:           d2 |
+Index:   e2  | V:1 D:0 Tag:     ff15466f |
+Index:   e3  | V:1 D:0 Tag:     ff15466f |
+Index:   e4  | V:1 D:0 Tag:           d2 |
+Index:   e5  | V:1 D:0 Tag:          2f5 |
+Index:   e6  | V:1 D:0 Tag:           87 |
+Index:   e7  | V:1 D:0 Tag:           87 |
+Index:   e8  | V:1 D:0 Tag:           87 |
+Index:   e9  | V:1 D:0 Tag:           87 |
+Index:   ea  | V:1 D:0 Tag:           87 |
+Index:   eb  | V:1 D:0 Tag:           87 |
+Index:   ec  | V:1 D:0 Tag:          2fe |
+Index:   ed  | V:1 D:0 Tag:           8a |
+Index:   ee  | V:1 D:0 Tag:           8a |
+Index:   ef  | V:1 D:0 Tag:          2fe |
+Index:   f0  | V:1 D:0 Tag:           8a |
+Index:   f1  | V:1 D:0 Tag:           89 |
+Index:   f2  | V:1 D:0 Tag:           89 |
+Index:   f3  | V:1 D:0 Tag:           8d |
+Index:   f4  | V:1 D:0 Tag:     ff1546d8 |
+Index:   f5  | V:1 D:1 Tag:          2fe |
+Index:   f6  | V:1 D:0 Tag:     ff15466f |
+Index:   f7  | V:1 D:0 Tag:     ff15466f |
+Index:   f8  | V:1 D:0 Tag:     ff15466f |
+Index:   f9  | V:1 D:0 Tag:     ff1546d8 |
+Index:   fa  | V:1 D:0 Tag:           8c |
+Index:   fb  | V:1 D:1 Tag:          2fe |
+Index:   fc  | V:1 D:1 Tag:          2fe |
+Index:   fd  | V:1 D:0 Tag:     ff1546d8 |
+Index:   fe  | V:1 D:0 Tag:     ff1546d8 |
+Index:   ff  | V:1 D:1 Tag:          2fe |
+Index:  100  | V:1 D:0 Tag:     ff1546d8 |
+Index:  101  | V:1 D:0 Tag:     ff15466f |
+Index:  102  | V:1 D:0 Tag:     ff15466f |
+Index:  103  | V:1 D:0 Tag:     ff15466f |
+Index:  104  | V:1 D:0 Tag:     ff15466f |
+Index:  105  | V:1 D:0 Tag:     ff15466f |
+Index:  106  | V:1 D:0 Tag:     ff15466f |
+Index:  107  | V:1 D:0 Tag:     ff15466f |
+Index:  108  | V:1 D:0 Tag:     ff15466f |
+Index:  109  | V:1 D:0 Tag:     ff15466f |
+Index:  10a  | V:1 D:0 Tag:     ff15466f |
+Index:  10b  | V:1 D:1 Tag:          2fe |
+Index:  10c  | V:1 D:0 Tag:     ff15466f |
+Index:  10d  | V:1 D:0 Tag:     ff15466f |
+Index:  10e  | V:1 D:0 Tag:     ff15466f |
+Index:  10f  | V:1 D:0 Tag:     ff15466f |
+Index:  110  | V:1 D:0 Tag:     ff15466f |
+Index:  111  | V:1 D:0 Tag:           87 |
+Index:  112  | V:1 D:0 Tag:           87 |
+Index:  113  | V:1 D:0 Tag:     ff1546d8 |
+Index:  114  | V:1 D:0 Tag:     ff15466f |
+Index:  115  | V:1 D:0 Tag:           87 |
+Index:  116  | V:1 D:0 Tag:     ff1546d8 |
+Index:  117  | V:1 D:0 Tag:           8b |
+Index:  118  | V:1 D:0 Tag:           8a |
+Index:  119  | V:1 D:0 Tag:           8b |
+Index:  11a  | V:1 D:0 Tag:           8b |
+Index:  11b  | V:1 D:0 Tag:          2ef |
+Index:  11c  | V:1 D:0 Tag:           8a |
+Index:  11d  | V:1 D:0 Tag:          2ef |
+Index:  11e  | V:1 D:0 Tag:     ff1546d8 |
+Index:  11f  | V:1 D:0 Tag:           8b |
+Index:  120  | V:1 D:0 Tag:     ff154690 |
+Index:  121  | V:1 D:0 Tag:     ff154690 |
+Index:  122  | V:1 D:0 Tag:           87 |
+Index:  123  | V:1 D:0 Tag:           87 |
+Index:  124  | V:1 D:0 Tag:           87 |
+Index:  125  | V:1 D:0 Tag:           8c |
+Index:  126  | V:1 D:0 Tag:           8c |
+Index:  127  | V:1 D:0 Tag:           87 |
+Index:  128  | V:1 D:0 Tag:           87 |
+Index:  129  | V:1 D:0 Tag:           87 |
+Index:  12a  | V:1 D:0 Tag:          2f2 |
+Index:  12b  | V:1 D:0 Tag:           87 |
+Index:  12c  | V:1 D:0 Tag:           87 |
+Index:  12d  | V:1 D:0 Tag:           d2 |
+Index:  12e  | V:1 D:0 Tag:           87 |
+Index:  12f  | V:1 D:0 Tag:           87 |
+Index:  130  | V:1 D:0 Tag:           8d |
+Index:  131  | V:1 D:0 Tag:     ff154671 |
+Index:  132  | V:1 D:0 Tag:     ff154671 |
+Index:  133  | V:1 D:0 Tag:           8a |
+Index:  134  | V:1 D:0 Tag:           8a |
+Index:  135  | V:1 D:0 Tag:     ff154671 |
+Index:  136  | V:1 D:1 Tag:           d2 |
+Index:  137  | V:1 D:1 Tag:           d2 |
+Index:  138  | V:1 D:1 Tag:           d2 |
+Index:  139  | V:1 D:0 Tag:     ff154691 |
+Index:  13a  | V:1 D:1 Tag:           d2 |
+Index:  13b  | V:1 D:1 Tag:           d2 |
+Index:  13c  | V:1 D:1 Tag:           d2 |
+Index:  13d  | V:1 D:1 Tag:          2ef |
+Index:  13e  | V:1 D:1 Tag:           d2 |
+Index:  13f  | V:1 D:1 Tag:           d2 |
+Index:  140  | V:1 D:1 Tag:           d2 |
+Index:  141  | V:1 D:1 Tag:           d2 |
+Index:  142  | V:1 D:1 Tag:           d2 |
+Index:  143  | V:1 D:1 Tag:           d2 |
+Index:  144  | V:1 D:1 Tag:           d2 |
+Index:  145  | V:1 D:1 Tag:           d2 |
+Index:  146  | V:1 D:0 Tag:          2ef |
+Index:  147  | V:1 D:1 Tag:          2ef |
+Index:  148  | V:1 D:0 Tag:          2f2 |
+Index:  149  | V:1 D:0 Tag:          2f2 |
+Index:  14a  | V:1 D:0 Tag:          2ef |
+Index:  14b  | V:1 D:1 Tag:          2ef |
+Index:  14c  | V:1 D:0 Tag:           8a |
+Index:  14d  | V:1 D:0 Tag:          2ef |
+Index:  14e  | V:1 D:0 Tag:          2f2 |
+Index:  14f  | V:1 D:0 Tag:          2f2 |
+Index:  150  | V:1 D:0 Tag:           d2 |
+Index:  151  | V:1 D:0 Tag:           d2 |
+Index:  152  | V:1 D:0 Tag:           8d |
+Index:  153  | V:1 D:1 Tag:          2ef |
+Index:  154  | V:1 D:0 Tag:          2ef |
+Index:  155  | V:1 D:0 Tag:          2ef |
+Index:  156  | V:1 D:1 Tag:          2ef |
+Index:  157  | V:1 D:1 Tag:          2ef |
+Index:  158  | V:1 D:0 Tag:     ff154690 |
+Index:  159  | V:1 D:0 Tag:     ff154690 |
+Index:  15a  | V:1 D:0 Tag:     ff154690 |
+Index:  15b  | V:1 D:0 Tag:     ff154690 |
+Index:  15c  | V:1 D:0 Tag:     ff154690 |
+Index:  15d  | V:1 D:0 Tag:     ff154690 |
+Index:  15e  | V:1 D:0 Tag:          2ef |
+Index:  15f  | V:1 D:0 Tag:          2ef |
+Index:  160  | V:1 D:0 Tag:          2ef |
+Index:  161  | V:1 D:0 Tag:          2ef |
+Index:  162  | V:1 D:1 Tag:          303 |
+Index:  163  | V:1 D:0 Tag:          2ef |
+Index:  164  | V:1 D:0 Tag:          2ef |
+Index:  165  | V:1 D:1 Tag:          303 |
+Index:  166  | V:1 D:1 Tag:          303 |
+Index:  167  | V:1 D:1 Tag:          303 |
+Index:  168  | V:1 D:0 Tag:     ff15466a |
+Index:  169  | V:1 D:1 Tag:          303 |
+Index:  16a  | V:1 D:1 Tag:          303 |
+Index:  16b  | V:1 D:1 Tag:          303 |
+Index:  16c  | V:1 D:1 Tag:          303 |
+Index:  16d  | V:1 D:0 Tag:          303 |
+Index:  16e  | V:1 D:0 Tag:          303 |
+Index:  16f  | V:1 D:0 Tag:          303 |
+Index:  170  | V:1 D:1 Tag:          303 |
+Index:  171  | V:1 D:0 Tag:          303 |
+Index:  172  | V:1 D:0 Tag:     ff15466f |
+Index:  173  | V:1 D:0 Tag:           80 |
+Index:  174  | V:1 D:0 Tag:           80 |
+Index:  175  | V:1 D:0 Tag:     ff15466f |
+Index:  176  | V:1 D:0 Tag:           80 |
+Index:  177  | V:1 D:0 Tag:           80 |
+Index:  178  | V:1 D:0 Tag:     ff1546d8 |
+Index:  179  | V:1 D:0 Tag:     ff1546d8 |
+Index:  17a  | V:1 D:1 Tag:     ff1546d8 |
+Index:  17b  | V:1 D:1 Tag:     ff1546d8 |
+Index:  17c  | V:1 D:0 Tag:     ff1546d8 |
+Index:  17d  | V:1 D:0 Tag:     ff15466f |
+Index:  17e  | V:1 D:0 Tag:     ff154670 |
+Index:  17f  | V:1 D:0 Tag:     ff154670 |
+Index:  180  | V:1 D:0 Tag:     ff154670 |
+Index:  181  | V:1 D:0 Tag:     ff154670 |
+Index:  182  | V:1 D:0 Tag:          2ee |
+Index:  183  | V:1 D:0 Tag:     ff154670 |
+Index:  184  | V:1 D:0 Tag:     ff154670 |
+Index:  185  | V:1 D:0 Tag:     ff154670 |
+Index:  186  | V:1 D:1 Tag:          2f3 |
+Index:  187  | V:1 D:0 Tag:           87 |
+Index:  188  | V:1 D:0 Tag:           87 |
+Index:  189  | V:1 D:0 Tag:     ff15466f |
+Index:  18a  | V:1 D:0 Tag:     ff15466f |
+Index:  18b  | V:1 D:0 Tag:     ff15466f |
+Index:  18c  | V:1 D:0 Tag:     ff15468b |
+Index:  18d  | V:1 D:0 Tag:     ff15466f |
+Index:  18e  | V:1 D:0 Tag:     ff15466f |
+Index:  18f  | V:1 D:1 Tag:     ffffec27 |
+Index:  190  | V:1 D:0 Tag:     ff15466f |
+Index:  191  | V:1 D:1 Tag:     ffffec27 |
+Index:  192  | V:1 D:1 Tag:     ffffec27 |
+Index:  193  | V:1 D:0 Tag:          2ef |
+Index:  194  | V:1 D:0 Tag:     ffffec27 |
+Index:  195  | V:1 D:0 Tag:     ff15466f |
+Index:  196  | V:1 D:0 Tag:     ff15466f |
+Index:  197  | V:1 D:1 Tag:     ffffec27 |
+Index:  198  | V:1 D:0 Tag:     ffffec27 |
+Index:  199  | V:1 D:1 Tag:     ffffec27 |
+Index:  19a  | V:1 D:1 Tag:     ffffec27 |
+Index:  19b  | V:1 D:1 Tag:     ffffec27 |
+Index:  19c  | V:1 D:0 Tag:     ffffec27 |
+Index:  19d  | V:1 D:1 Tag:     ffffec27 |
+Index:  19e  | V:1 D:1 Tag:     ffffec27 |
+Index:  19f  | V:1 D:0 Tag:     ff15466f |
+Index:  1a0  | V:1 D:1 Tag:          2f5 |
+Index:  1a1  | V:1 D:1 Tag:     ffffec27 |
+Index:  1a2  | V:1 D:0 Tag:           87 |
+Index:  1a3  | V:1 D:0 Tag:     ff15466f |
+Index:  1a4  | V:1 D:0 Tag:           87 |
+Index:  1a5  | V:1 D:0 Tag:           87 |
+Index:  1a6  | V:1 D:0 Tag:     ffffec27 |
+Index:  1a7  | V:1 D:1 Tag:     ffffec27 |
+Index:  1a8  | V:1 D:1 Tag:     ffffec27 |
+Index:  1a9  | V:1 D:1 Tag:     ffffec27 |
+Index:  1aa  | V:1 D:1 Tag:     ffffec27 |
+Index:  1ab  | V:1 D:1 Tag:     ffffec27 |
+Index:  1ac  | V:1 D:1 Tag:     ffffec27 |
+Index:  1ad  | V:1 D:1 Tag:     ffffec27 |
+Index:  1ae  | V:1 D:1 Tag:     ffffec27 |
+Index:  1af  | V:1 D:1 Tag:     ffffec27 |
+Index:  1b0  | V:1 D:0 Tag:           87 |
+Index:  1b1  | V:1 D:0 Tag:           87 |
+Index:  1b2  | V:1 D:0 Tag:     ff15466f |
+Index:  1b3  | V:1 D:1 Tag:     ffffec27 |
+Index:  1b4  | V:1 D:0 Tag:           87 |
+Index:  1b5  | V:1 D:0 Tag:     ffffec27 |
+Index:  1b6  | V:1 D:1 Tag:     ffffec27 |
+Index:  1b7  | V:1 D:0 Tag:           8c |
+Index:  1b8  | V:1 D:0 Tag:     ffffec27 |
+Index:  1b9  | V:1 D:1 Tag:     ffffec27 |
+Index:  1ba  | V:1 D:1 Tag:     ffffec27 |
+Index:  1bb  | V:1 D:1 Tag:     ffffec27 |
+Index:  1bc  | V:1 D:0 Tag:          2ef |
+Index:  1bd  | V:1 D:1 Tag:     ffffec27 |
+Index:  1be  | V:1 D:1 Tag:     ffffec27 |
+Index:  1bf  | V:1 D:0 Tag:          2ef |
+Index:  1c0  | V:1 D:1 Tag:     ffffec27 |
+Index:  1c1  | V:1 D:0 Tag:          2ef |
+Index:  1c2  | V:1 D:0 Tag:          2ef |
+Index:  1c3  | V:1 D:1 Tag:     ffffec27 |
+Index:  1c4  | V:1 D:0 Tag:     ffffec27 |
+Index:  1c5  | V:1 D:0 Tag:     ffffec27 |
+Index:  1c6  | V:1 D:0 Tag:     ff15466f |
+Index:  1c7  | V:1 D:0 Tag:     ff15466f |
+Index:  1c8  | V:1 D:0 Tag:           89 |
+Index:  1c9  | V:1 D:0 Tag:           89 |
+Index:  1ca  | V:1 D:0 Tag:          2ef |
+Index:  1cb  | V:1 D:0 Tag:           81 |
+Index:  1cc  | V:1 D:0 Tag:     ff154783 |
+Index:  1cd  | V:1 D:0 Tag:           81 |
+Index:  1ce  | V:1 D:0 Tag:           81 |
+Index:  1cf  | V:1 D:0 Tag:          2ef |
+Index:  1d0  | V:1 D:0 Tag:           81 |
+Index:  1d1  | V:1 D:0 Tag:          2ef |
+Index:  1d2  | V:1 D:0 Tag:           81 |
+Index:  1d3  | V:1 D:0 Tag:          2ef |
+Index:  1d4  | V:1 D:0 Tag:           81 |
+Index:  1d5  | V:1 D:0 Tag:          304 |
+Index:  1d6  | V:1 D:0 Tag:          304 |
+Index:  1d7  | V:1 D:0 Tag:          304 |
+Index:  1d8  | V:1 D:0 Tag:          304 |
+Index:  1d9  | V:1 D:0 Tag:          304 |
+Index:  1da  | V:1 D:0 Tag:          2ef |
+Index:  1db  | V:1 D:1 Tag:          2f2 |
+Index:  1dc  | V:1 D:0 Tag:          2ef |
+Index:  1dd  | V:1 D:0 Tag:          2ef |
+Index:  1de  | V:1 D:0 Tag:           81 |
+Index:  1df  | V:1 D:0 Tag:          2ef |
+Index:  1e0  | V:1 D:0 Tag:           81 |
+Index:  1e1  | V:1 D:1 Tag:          2f2 |
+Index:  1e2  | V:1 D:0 Tag:           8d |
+Index:  1e3  | V:1 D:1 Tag:          2f2 |
+Index:  1e4  | V:1 D:1 Tag:          2f2 |
+Index:  1e5  | V:1 D:1 Tag:          2f2 |
+Index:  1e6  | V:1 D:1 Tag:          2f2 |
+Index:  1e7  | V:1 D:0 Tag:          2f2 |
+Index:  1e8  | V:1 D:0 Tag:     ff154675 |
+Index:  1e9  | V:1 D:0 Tag:     ff154675 |
+Index:  1ea  | V:1 D:0 Tag:           87 |
+Index:  1eb  | V:1 D:0 Tag:           87 |
+Index:  1ec  | V:1 D:0 Tag:     ff154675 |
+Index:  1ed  | V:1 D:0 Tag:     ff154676 |
+Index:  1ee  | V:1 D:0 Tag:     ff154676 |
+Index:  1ef  | V:1 D:0 Tag:     ff154676 |
+Index:  1f0  | V:1 D:0 Tag:           87 |
+Index:  1f1  | V:1 D:0 Tag:           87 |
+Index:  1f2  | V:1 D:0 Tag:           87 |
+Index:  1f3  | V:1 D:0 Tag:     ff154675 |
+Index:  1f4  | V:1 D:0 Tag:     ff154666 |
+Index:  1f5  | V:1 D:0 Tag:           8d |
+Index:  1f6  | V:1 D:0 Tag:     ff154671 |
+Index:  1f7  | V:1 D:0 Tag:     ff154690 |
+Index:  1f8  | V:1 D:0 Tag:     ff154690 |
+Index:  1f9  | V:1 D:1 Tag:          300 |
+Index:  1fa  | V:1 D:1 Tag:          300 |
+Index:  1fb  | V:1 D:0 Tag:     ff154675 |
+Index:  1fc  | V:1 D:0 Tag:     ff154675 |
+Index:  1fd  | V:1 D:0 Tag:     ff154675 |
+Index:  1fe  | V:1 D:1 Tag:          300 |
+Index:  1ff  | V:1 D:1 Tag:          300 |
+Victim cache:
+            | V:1 D:0 Addr: 7f8aa33a01c0 | V:1 D:0 Addr: 7f8aa33a0180 |
+            | V:1 D:0 Addr: 7f8aa33ac200 | V:1 D:0 Addr: 7f8aa33ac1c0 |
+            | V:1 D:0 Addr: 7f8aa33ac180 | V:1 D:0 Addr: 7f8aa3382c80 |
+            | V:1 D:0 Addr: 7f8aa3382c40 | V:1 D:0 Addr: 7f8aa33baf00 |
