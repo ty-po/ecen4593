@@ -8,6 +8,7 @@ To Run Once
 2. in `bin/` do `cat trX | ./ecen4593final`
 
 To Watch
+
 1. in `test/utils/` do `./watch.sh`
 2. or `./watch.sh trX
 
@@ -42,8 +43,8 @@ Raw data
 Printout
 
 ##TODO
-- [ ] Config File and Parsing
-- [ ] Alignment Calculation
-- [ ] Tracking in simulator.cc
-- [ ] Testing
-- [ ] VC Dirty kickout writeback
+- [x] Config File and Parsing
+- [x] Alignment Calculation
+- [x] Tracking in simulator.cc
+- [x] Testing
+- [x] VC Dirty kickout writeback
