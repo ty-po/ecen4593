@@ -18,28 +18,28 @@ To Watch
 3. Read/Simulate Billion Line Traces
 4. Output computed data
 
-##Components
-###Memory Config File/Parser/Specification
+###Components
+####Memory Config File/Parser/Specification
 Read in Memory Config/Compute Simulator Config Inputs
-#####Inputs
+######Inputs
 Command Line Arguments
-#####Outputs
+######Outputs
 Config data type with cache configuration
 
 
-###Cache Simulator
+####Cache Simulator
 Body
-#####Inputs
+######Inputs
 Config data type
-#####Outputs
+######Outputs
 Raw data
 
 
-###Data Output
+####Data Output
 Print Collected Data
-#####Inputs
+######Inputs
 Raw data
-#####Outputs
+######Outputs
 Printout
 
 ##TODO
